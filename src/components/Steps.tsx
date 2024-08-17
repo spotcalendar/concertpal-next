@@ -9,7 +9,7 @@ const Steps = () => {
         <AnimatePresence>
             <motion.div className="z-50 flex w-full  items-center justify-center p-4 px-3 pt-10 font-base text-white" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5 }}>
                 <Tabs defaultValue="spotify-login" className="flex w-full max-w-[1150px] flex-col items-center py-8">
-                    <TabsList className="my-4 rounded-full border-2 border-primary bg-transparent px-4 py-6">
+                    <TabsList className="my-4 rounded-full border-2 border-primary bg-transparent p-0 ">
                         <TabsTrigger className="font-medium text-xs md:text-lg  px-2 uppercase  rounded-full text-primary" value="spotify-login">
                             Compare
                         </TabsTrigger>

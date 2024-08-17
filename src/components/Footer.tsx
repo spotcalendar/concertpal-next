@@ -6,7 +6,7 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <footer className=" bg-primary mt-12 md:p-8 md:px-20 text-white">
+        <footer className=" bg-primary mt-12 md:p-8 md:px-20 text-white md:mb-4 md:rounded-xl">
             <div className="flex md:justify-between md:flex-wrap p-4 md:p-0 md:flex-row flex-col md:items-center">
                 <div className="flex md:flex-row flex-col-reverse mt-12 md:mt-0 items-center gap-6 md:gap-12">
                     <div className="flex flex-col gap-12 justify-center items-center text-center">
@@ -16,7 +16,7 @@ const Footer = () => {
                         <h1 className=" font-bold md:text-4xl text-2xl">SAVE ON CONCERTS!</h1>
                         <div className="flex items-center gap-3">
                             <LogoWhite width="120" height="30" />
-                            <span className=" text-[9px]  md:text-sm">Copyright © 2024 Concertpal. All rights reserved.</span>
+                            <span className=" text-[9px]  md:text-sm">Copyright © 2024 ConcertPal. All rights reserved.</span>
                         </div>
                     </div>
                 </div>
