@@ -1,113 +1,66 @@
+import React from "react";
+import { chrome, arrow, star, ticketMaster, stubhub, seatGeek, liveNation, vividSeats, ticketweb, mobilearrow } from "@/assets";
+import Link from "next/link";
 import Image from "next/image";
+import Steps from "@/components/Steps";
+import TestimonialsSlider from "@/components/Testiomonials";
+import NeedHelp from "@/components/NeedHelp";
+const page = () => {
+    return (
+        <section className="flex flex-col w-full justify-center items-center min-h-screen mt-28">
+            <div className="flex p-2 md:p-0 flex-col items-center md:gap-16 gap-8">
+                <h1 className="text-5xl font-bold tracking-normal">YOUR TICKET TO CONCERT SAVINGS!</h1>
+                <div className="md:text-center w-full text-left text-lg relative">
+                    <p className=" max-w-[70%]">
+                        Find the cheapest tickets to see your favorite artists- with just one click! <br /> Compare, track, and get notified about the lowest prices with <span className=" text-primary">Concert</span>Pal today.
+                    </p>
+                    <Image src={mobilearrow} alt="arrow" className=" absolute -top-16 rotate-12 w-28 right-0" />
+                </div>
+                <div className=" relative ">
+                    <div className="flex justify-center items-center flex-col">
+                        <Link href="/add-to-chrome" className=" bg-primary text-white p-4 rounded-full px-14 flex items-center gap-3">
+                            <Image src={chrome} alt="chrome-icon" width={32} height={32} />
+                            Add to Chrome - It&apos;s Free!
+                        </Link>
+                        <div className="flex gap-6 justify-center items-center w-full mt-2">
+                            <div className="flex items-center gap-1">
+                                {[1, 2, 3, 4, 5].map((index, _) => (
+                                    <Image src={star} alt="star" key={index} width={16} height={16}></Image>
+                                ))}
+                            </div>
+                            <h1 className=" text-sm">
+                                <b>4.9/5</b> on Chrome Web Store
+                            </h1>
+                        </div>
+                    </div>
+                    <div className=" absolute right-[24rem] w-[42rem]  hidden lg:block top-3 ">
+                        <Image src={arrow} alt="arrow" className=" w-full" />
+                    </div>
+                </div>
+            </div>
+            <div className=" w-full md:mt-28">
+                <Steps />
+            </div>
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+            <div className="flex flex-col gap-5 p-2 md:p-0 items-center w-full " id="how-it-works">
+                <h1 className=" text-center md:text-left text-2xl md:text-3xl text-primary font-semibold md:mt-12 tracking-wide">SYNCED WITH ALL YOUR FAVORITE TICKETING PLATFORMS...</h1>
+                <div className="flex gap-14 md:flex-row flex-col justify-center items-center mt-8 flex-wrap">
+                    <Image src={ticketMaster} alt="ticket-master" width={240} height={240} />
+                    <Image src={stubhub} alt="stub hub" width={120} height={120} />
+                    <Image src={seatGeek} alt="seat geek" width={100} height={100} />
+                    <Image src={liveNation} alt="live nation" width={200} height={200} />
+                    <Image src={ticketweb} alt="ticketeb" width={200} height={200} />
+                    <Image src={vividSeats} alt="vividSeats" width={200} height={200} />
+                </div>
+            </div>
+            <hr className=" bg-primary h-1 w-full mt-12" />
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+            <TestimonialsSlider />
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+            <hr className=" bg-primary h-1 w-full mt-6" />
+            <NeedHelp />
+        </section>
+    );
+};
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
-}
+export default page;
