@@ -40,7 +40,7 @@ const page = () => {
                     </div>
                 </div>
             </div>
-            <div className=" w-full md:mt-28">
+            <div className=" w-full">
                 <Steps />
             </div>
 
