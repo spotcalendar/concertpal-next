@@ -14,7 +14,7 @@ const page = () => {
                     <p className=" max-w-[70%]">
                         Find the cheapest tickets to see your favorite artists- with just one click! <br /> Compare, track, and get notified about the lowest prices with <span className=" text-primary">Concert</span>Pal today.
                     </p>
-                    <Image src={mobilearrow} alt="arrow" className=" absolute -top-16 rotate-12 w-28 right-0" />
+                    <Image src={mobilearrow} alt="arrow" className=" absolute -top-16 rotate-12 w-28 right-0 lg:hidden" />
                 </div>
                 <div className=" relative ">
                     <div className="flex justify-center items-center flex-col">
