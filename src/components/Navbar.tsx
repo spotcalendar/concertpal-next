@@ -1,17 +1,18 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import { logo, menu, arrowRightWhite } from "@/assets";
 import { NavItems } from "@/config/navbar";
 import Link from "next/link";
 import { X } from "lucide-react";
+import { Logo, MenuIcon } from "@/assets";
+import ArrowRightWhite from "@/assets/Arrow-right-white";
 const Navbar = () => {
     const [openNavbar, setOpenNavbar] = useState<boolean>(false);
     return (
         <nav className=" sticky top-0 backdrop-blur-sm bg-white z-[70]">
             <div className="flex relative p-4 justify-between items-center md:max-w-[1315px] md:m-auto">
                 <Link href={"/"}>
-                    <Image src={logo} height={150} width={150} alt="logo" priority></Image>
+                    <Logo width="150" height="30" />
                 </Link>
                 <ul className=" hidden lg:flex items-center gap-12 justify-between">
                     {NavItems.map((item, i) => (
@@ -25,15 +26,17 @@ const Navbar = () => {
                         Log In
                     </Link>
                     <Link href={"/install"} className=" rounded-full bg-primary text-white px-6 py-2 flex items-center gap-2">
-                        Install <Image src={arrowRightWhite} height={20} width={20} alt="arrow-right" />
+                        Install <ArrowRightWhite width="20" height="15" />
                     </Link>
                 </div>
-                <Image src={menu} alt="menu-icon" height={26} width={26} className=" lg:hidden" onClick={() => setOpenNavbar(!openNavbar)} />
+                <div className=" lg:hidden" onClick={() => setOpenNavbar(!openNavbar)}>
+                    <MenuIcon width="28" height="28" />
+                </div>
 
                 <div className={`fixed lg:hidden bg-white w-full h-screen left-0 right-0 duration-200 ${openNavbar ? "top-0" : "-top-[3000px]"}`}>
                     <div className="flex justify-between items-center p-3">
                         <Link href={"/"}>
-                            <Image src={logo} height={150} width={150} alt="logo" priority></Image>
+                            <Logo />
                         </Link>
                         <X size={35} onClick={() => setOpenNavbar(!openNavbar)} className=" text-primary" />
                     </div>
@@ -49,7 +52,7 @@ const Navbar = () => {
                             Log In
                         </Link>
                         <Link href={"/install"} className=" text-center justify-center  rounded-full bg-primary text-white px-6 py-2 flex items-center gap-2">
-                            Install <Image src={arrowRightWhite} height={20} width={20} alt="arrow-right" />
+                            Install <ArrowRightWhite width="20" height="15" />
                         </Link>
                     </ul>
                 </div>
