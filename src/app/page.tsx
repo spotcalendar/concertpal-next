@@ -9,12 +9,12 @@ const page = () => {
     return (
         <section className="flex flex-col w-full justify-center items-center min-h-screen mt-28">
             <div className="flex p-2 md:p-0 flex-col items-center md:gap-16 gap-8">
-                <h1 className="text-5xl font-bold tracking-normal">YOUR TICKET TO CONCERT SAVINGS!</h1>
-                <div className="md:text-center w-full  lg:flex lg:justify-center text-lg relative  lg:text-center text-left">
-                    <p className="max-w-[70%] lg:w-full ">
+                <h1 className="text-5xl font-bold tracking-normal md:text-center">YOUR TICKET TO CONCERT SAVINGS!</h1>
+                <div className="md:text-center w-full  md:flex md:justify-center text-lg relative  text-left">
+                    <p className="max-w-[70%] md:w-full ">
                         Find the cheapest tickets to see your favorite artists- with just one click! <br /> Compare, track, and get notified about the lowest prices with <span className=" text-primary">Concert</span>Pal today.
                     </p>
-                    <div className="absolute -top-16 rotate-12 w-28 right-0 lg:hidden">
+                    <div className="absolute -top-16 rotate-12 w-28 right-0 sm:hidden">
                         <Mobilearrow height="280" />
                     </div>
                 </div>
