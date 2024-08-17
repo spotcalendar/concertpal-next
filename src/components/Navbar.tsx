@@ -8,7 +8,7 @@ import { X } from "lucide-react";
 const Navbar = () => {
     const [openNavbar, setOpenNavbar] = useState<boolean>(false);
     return (
-        <nav className=" sticky top-0 backdrop-blur-sm z-[70]">
+        <nav className=" sticky top-0 backdrop-blur-sm bg-white z-[70]">
             <div className="flex relative p-4 justify-between items-center md:max-w-[1315px] md:m-auto">
                 <Link href={"/"}>
                     <Image src={logo} height={150} width={150} alt="logo" priority></Image>

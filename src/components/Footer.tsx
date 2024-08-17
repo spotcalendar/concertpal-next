@@ -10,46 +10,50 @@ const Footer = () => {
             <div className="flex md:justify-between md:flex-wrap p-4 md:p-0 md:flex-row flex-col md:items-center">
                 <div className="flex md:flex-row flex-col-reverse mt-12 md:mt-0 items-center gap-6 md:gap-12">
                     <div className="flex flex-col gap-12 justify-center items-center text-center">
+                        <Link href={"/install-extension"} className="flex md:hidden md:text-sm lg:text-lg bg-white p-4 rounded-full text-primary gap-3 font-bold items-center justify-center">
+                            Install Extension <Image src={arrowRightRed} alt="arrow-right" />{" "}
+                        </Link>
                         <h1 className=" font-bold md:text-4xl text-2xl">SAVE ON CONCERTS!</h1>
-                        <div className="flex gap-2 flex-wrap items-center">
+                        <div className="flex items-center gap-3">
                             <Image src={logowhite} alt="concerpal-logo" />
-                            <span className=" text-sm">Copyright © 2024 Concertpal. All rights reserved.</span>
+                            <span className=" text-[9px] md:text-sm">Copyright © 2024 Concertpal. All rights reserved.</span>
                         </div>
                     </div>
-                    <Link href={"/install-extension"} className="flex md:text-sm lg:text-lg bg-white p-4 rounded-full text-primary gap-3 font-bold items-center justify-center">
-                        Install Extension <Image src={arrowRightRed} alt="arrow-right" />{" "}
-                    </Link>
                 </div>
-
-                <div className="flex flex-col items-left mt-9 lg:mt-0">
-                    <h2>QUICK LINKS</h2>
-                    <ul className="flex flex-col gap-4 mt-4 font-light">
-                        {NavItems.map((item, _) => (
-                            <Link href={item.link} key={item.link}>
-                                {item.name}
-                            </Link>
-                        ))}
-                    </ul>
-                </div>
-                <div className="flex flex-col items-left mt-9 lg:mt-0">
-                    <h2>LEGAL</h2>
-                    <ul className="flex flex-col gap-4 mt-4 font-light">
-                        {Legal.map((item, _) => (
-                            <Link href={item.link} key={item.name}>
-                                {item.name}
-                            </Link>
-                        ))}
-                    </ul>
-                </div>
-                <div className="flex flex-col items-left mt-9 lg:mt-0">
-                    <h2>SOCIALS</h2>
-                    <ul className="flex flex-col gap-4 mt-4 font-light">
-                        {Socials.map((item, _) => (
-                            <Link href={item.link} key={item.name} target="_blank">
-                                {item.name}
-                            </Link>
-                        ))}
-                    </ul>
+                <Link href={"/install-extension"} className=" hidden md:flex md:text-sm lg:text-lg bg-white p-4 rounded-full text-primary gap-3 font-bold items-center justify-center">
+                    Install Extension <Image src={arrowRightRed} alt="arrow-right" />{" "}
+                </Link>
+                <div className="grid lg:grid-cols-3 gap-7 md:gap-12 grid-cols-2 ">
+                    <div className="flex flex-col items-left mt-9 lg:mt-0">
+                        <h2>QUICK LINKS</h2>
+                        <ul className="flex flex-col gap-4 mt-4 font-light">
+                            {NavItems.map((item, _) => (
+                                <Link href={item.link} key={item.link}>
+                                    {item.name}
+                                </Link>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="flex flex-col items-left mt-9 lg:mt-0">
+                        <h2>LEGAL</h2>
+                        <ul className="flex flex-col gap-4 mt-4 font-light">
+                            {Legal.map((item, _) => (
+                                <Link href={item.link} key={item.name}>
+                                    {item.name}
+                                </Link>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="flex flex-col items-left mt-9 lg:mt-0">
+                        <h2>SOCIALS</h2>
+                        <ul className="flex flex-col gap-4 mt-4 font-light">
+                            {Socials.map((item, _) => (
+                                <Link href={item.link} key={item.name} target="_blank">
+                                    {item.name}
+                                </Link>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </footer>
