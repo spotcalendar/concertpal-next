@@ -19,7 +19,7 @@ const NeedHelp = () => {
                         <ArrowRightRed width="20" height="21" />
                     </div>
                 </div>
-                {!isSendMessage && <span className="text-primary">Sent</span>}
+                {isSendMessage && <span className="text-primary">Sent</span>}
             </div>
         </div>
     );
