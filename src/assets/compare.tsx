@@ -1,8 +1,8 @@
 import React from "react";
 
-const Compare = () => {
+const Compare = ({ classname = "" }) => {
     return (
-        <svg width="1257" height="786" viewBox="0 0 1257 786" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg className={classname} viewBox="0 0 1257 786" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g filter="url(#filter0_f_250_317)">
                 <rect x="4" y="4" width="1248.26" height="777.33" rx="10.56" fill="url(#pattern0_250_317)" />
             </g>
