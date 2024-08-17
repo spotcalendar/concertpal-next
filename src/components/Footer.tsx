@@ -25,7 +25,7 @@ const Footer = () => {
                 </Link>
                 <div className="grid lg:grid-cols-3 gap-7 md:gap-12 grid-cols-2 ">
                     <div className="flex flex-col items-left mt-9 lg:mt-0">
-                        <h2>QUICK LINKS</h2>
+                        <h2>QUICK LINKS:</h2>
                         <ul className="flex flex-col gap-4 mt-4 font-light">
                             {NavItems.map((item, _) => (
                                 <Link href={item.link} key={item.link}>
@@ -35,7 +35,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col items-left mt-9 lg:mt-0">
-                        <h2>LEGAL</h2>
+                        <h2>LEGAL:</h2>
                         <ul className="flex flex-col gap-4 mt-4 font-light">
                             {Legal.map((item, _) => (
                                 <Link href={item.link} key={item.name}>
@@ -45,7 +45,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col items-left mt-9 lg:mt-0">
-                        <h2>SOCIALS</h2>
+                        <h2>SOCIALS:</h2>
                         <ul className="flex flex-col gap-4 mt-4 font-light">
                             {Socials.map((item, _) => (
                                 <Link href={item.link} key={item.name} target="_blank">

@@ -26,7 +26,7 @@ const Steps = () => {
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
                                 <div className=" p-12  w-full flex text-center justify-center items-center flex-col">
                                     <span className="mb-4  md:mt-12 w-full  font-normal text-black">
-                                        Save time as we compare prices across all the top ticketing platforms for you! Find the <span className=" text-primary">Best Price</span> in seconds.
+                                        Save time as we compare prices across top ticketing platforms for you. Find the <span className=" text-primary">best price</span> in seconds.
                                     </span>
                                     <div className="shadow-[0_20px_100px_-15px_rgba(244,63,94,.6)] mt-5">
                                         <Compare classname=" w-[23rem] md:w-[600px] lg:w-[700px] xl:w-[1000px]" />

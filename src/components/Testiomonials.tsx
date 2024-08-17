@@ -8,7 +8,7 @@ import { testimonials } from "@/config/testimonial";
 const TestimonialsSlider = () => {
     return (
         <div className="flex flex-col items-center justify-center py-12 bg-white" id="testimonials">
-            <h2 className="text-primary text-3xl font-bold mb-8">LOVED BY...</h2>
+            <h2 className="text-primary text-3xl font-bold mb-8">Loved by:</h2>
             <Swiper
                 spaceBetween={50}
                 slidesPerView={1}
