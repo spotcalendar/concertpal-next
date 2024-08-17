@@ -30,7 +30,7 @@ const Navbar = () => {
                 </div>
                 <Image src={menu} alt="menu-icon" height={26} width={26} className=" lg:hidden" onClick={() => setOpenNavbar(!openNavbar)} />
 
-                <div className={`fixed lg:hidden bg-white w-full h-screen left-0 right-0 duration-200 ${openNavbar ? "-top-[3000px]" : "top-0"}`}>
+                <div className={`fixed lg:hidden bg-white w-full h-screen left-0 right-0 duration-200 ${openNavbar ? "top-0" : "-top-[3000px]"}`}>
                     <div className="flex justify-between items-center p-3">
                         <Link href={"/"}>
                             <Image src={logo} height={150} width={150} alt="logo" priority></Image>
