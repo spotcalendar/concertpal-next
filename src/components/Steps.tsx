@@ -38,9 +38,9 @@ const Steps = () => {
                         <TabsContent value="locale-info" className="flex flex-col text-gray-300">
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
                                 <div className=" w-full flex text-center justify-center items-center flex-col">
-                                    <span className="mb-4  md:mt-20 w-full  font-normal text-black">Track tickets price history to buy at the lowest price possible. Split screen to see a side-by-side comparison too!</span>
+                                    <span className="p-12 mb-4  md:mt-20 w-full  font-normal text-black">Track tickets price history to buy at the lowest price possible. Split screen to see a side-by-side comparison too!</span>
                                     <div className="shadow-[0_20px_100px_-15px_rgba(244,63,94,.6)] mt-6">
-                                        <Compare classname=" w-[23rem] md:w-[600px] lg:w-[700px] xl:w-[1000px]" />
+                                        <Image src="/step2.png" width={1000} alt="step 2" height={500} />
                                     </div>
                                 </div>
                             </motion.div>
@@ -49,9 +49,9 @@ const Steps = () => {
                         <TabsContent value="connect-google" className="flex flex-col text-gray-300">
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
                                 <div className=" w-full flex text-center justify-center items-center flex-col">
-                                    <span className="mb-4  md:mt-12 w-full  font-normal text-black">Get notified when prices decrease. Always stay on top of when the lowest prices are!</span>
+                                    <span className="p-12 mb-4  md:mt-12 w-full  font-normal text-black">Get notified when prices decrease. Always stay on top of when the lowest prices are!</span>
                                     <div className="shadow-[0_20px_100px_-15px_rgba(244,63,94,.6)] mt-6">
-                                        <Compare classname=" w-[23rem] md:w-[600px] lg:w-[700px] xl:w-[1000px]" />
+                                        <Image src="/step4.png" width={1000} alt="step 2" height={500} />
                                     </div>
                                 </div>
                             </motion.div>
