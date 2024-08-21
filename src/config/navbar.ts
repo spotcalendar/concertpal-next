@@ -1,15 +1,15 @@
 export const NavItems = [
     {
         name: "How it works",
-        link: "#how-it-works",
+        link: "/#how-it-works",
     },
     {
         name: "Testimonials",
-        link: "#testimonials",
+        link: "/#testimonials",
     },
     {
         name: "Get help",
-        link: "#get-help",
+        link: "/#get-help",
     },
 ];
 

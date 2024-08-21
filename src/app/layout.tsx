@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
     title: "Concertpal.io - Never miss your favorite artists' concerts again.",
     description: "Never miss your favorite artists' concerts again.",
-    openGraph: { images: [{ url: "https://concertpal.io/og-image.png" }] },
+    openGraph: { images: [{ url: "https://pbs.twimg.com/profile_banners/1809055783319203840/1724206113/1500x500" }] },
 };
 
 export default function RootLayout({

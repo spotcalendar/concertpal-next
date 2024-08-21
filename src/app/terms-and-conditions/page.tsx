@@ -1,9 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
-import Head from "next/head";
 import Image from "next/image";
 import logo from "../../../public/logo.svg";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Terms and Conditions - Concertpal.io",
+    description: "Read the Terms and Conditions for ConcertPal LLC. By using our Chrome Extension or Website, you agree to be bound by our policies regarding API usage, third-party vendor interactions, and intellectual property. Stay informed about your rights and obligations while enjoying seamless access to concert information and ticketing services.",
+};
 
 const TermsAndConditions = () => {
     return (
@@ -12,9 +17,6 @@ const TermsAndConditions = () => {
                 <div className="mb-12 flex w-full items-center justify-center">
                     <Image src={logo} alt="ConcertPal Logo" width={100} height={100} />
                 </div>
-                <Head>
-                    <title>Terms and Conditions</title>
-                </Head>
                 <h1 className="mb-4 text-3xl font-bold">Terms and Conditions for ConcertPal LLC</h1>
                 <p className="mb-2 text-gray-600">Last Updated: 8/8/2024</p>
                 <p className="mb-4">Welcome to the ConcertPal Chrome Extension ("the Extension") and website ("the Website"). By accessing or using the Extension, you agree to be bound by these Terms and Conditions. Please read them carefully.</p>

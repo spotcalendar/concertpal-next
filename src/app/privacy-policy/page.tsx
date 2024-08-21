@@ -1,7 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import logo from "../../../public/logo.svg";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Privacy - Concertpal.io",
+    description: "Explore the Privacy Policy of ConcertPal LLC. By using our Chrome Extension or Website, you agree to adhere to our policies regarding API usage, third-party vendor interactions, and intellectual property. Stay informed about your rights and obligations while enjoying seamless access to concert information and ticketing services.",
+};
 const PrivacyPolicy = () => {
     return (
         <div className="flex flex-col items-center justify-center bg-white p-8 font-sans text-black">
