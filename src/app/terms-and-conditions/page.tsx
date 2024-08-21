@@ -33,7 +33,7 @@ const TermsAndConditions = () => {
                 <h2 className="mb-2 text-2xl font-semibold">4. Privacy Policy</h2>
                 <p className="mb-4">
                     Your privacy is important to us. Please review our{" "}
-                    <Link href="/privacy" className="text-blue-500 underline">
+                    <Link href="/privacy-policy" className="text-blue-500 underline">
                         <span className="cursor-pointer text-blue-500 underline">Privacy Policy</span>
                     </Link>
                     , which explains how we collect, use, and protect your information.
