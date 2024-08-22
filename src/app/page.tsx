@@ -20,7 +20,7 @@ const page = () => {
                 </div>
                 <div className=" relative ">
                     <div className="flex justify-center items-center flex-col">
-                        <Link href="/add-to-chrome" className=" bg-primary text-white p-4 rounded-full px-14 flex items-center gap-3">
+                        <Link href="https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja" className=" bg-primary text-white p-4 rounded-full px-14 flex items-center gap-3">
                             <Chrome />
                             Add to Chrome - It&apos;s Free!
                         </Link>
