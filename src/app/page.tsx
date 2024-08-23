@@ -20,7 +20,7 @@ const page = () => {
                 </div>
                 <div className=" relative ">
                     <div className="flex justify-center items-center flex-col">
-                        <Link href="https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja" className=" bg-primary text-white p-4 rounded-full px-14 flex items-center gap-3">
+                        <Link href="https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja" className=" bg-primary font-semibold text-white p-4 rounded-full px-14 flex items-center gap-3">
                             <Chrome />
                             Add to Chrome - It&apos;s Free!
                         </Link>
@@ -30,7 +30,7 @@ const page = () => {
                                     <Star key={index} />
                                 ))}
                             </div>
-                            <h1 className=" text-sm">
+                            <h1 className=" text-sm ">
                                 <b>4.9/5</b> on Chrome Web Store
                             </h1>
                         </div>
@@ -40,12 +40,12 @@ const page = () => {
                     </div>
                 </div>
             </div>
-            <div className=" w-full">
+            <div className=" w-full" id="how-it-works">
                 <Steps />
             </div>
 
-            <div className="flex flex-col gap-5 p-2 md:p-0 items-center w-full " id="how-it-works">
-                <h1 className=" text-center md:text-left text-2xl md:text-3xl text-primary font-semibold md:mt-12 tracking-wide">Synced with all your favorite ticketing platforms:</h1>
+            <div className="flex flex-col gap-5 p-2 md:p-0 items-center w-full ">
+                <h1 className=" text-center md:text-left text-2xl md:text-3xl text-primary font-semibold md:mt-12 tracking-wide">Synced with all your favorite ticketing platforms.</h1>
                 <div className="flex gap-14 md:flex-row flex-col justify-center items-center mt-8 flex-wrap">
                     <Ticketmaster />
                     <Stubhub />

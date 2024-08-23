@@ -1,34 +1,14 @@
 export const testimonials = [
     {
-        quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        author: "Jane Doe",
+        quote: "Amazing. Can't believe this wasn't made sooner!",
+        author: "Rithwik Pattikonda",
     },
     {
-        quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        author: "Jane Doe",
+        quote: "Love this tool! Concertpal saves me a ton of time and money booking tickets",
+        author: "Jessica Smith",
     },
     {
-        quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        author: "Jane Doe",
-    },
-    {
-        quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        author: "Jane Doe",
-    },
-    {
-        quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        author: "Jane Doe",
-    },
-    {
-        quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        author: "Jane Doe",
-    },
-    {
-        quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        author: "Jane Doe",
-    },
-    {
-        quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        author: "Jane Doe",
+        quote: "Gamechanger! Saved me $45, 10/10 recommend",
+        author: "Jaideep Patil",
     },
 ];

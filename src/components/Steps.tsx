@@ -26,7 +26,7 @@ const Steps = () => {
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
                                 <div className=" p-12  w-full flex text-center justify-center items-center flex-col">
                                     <span className="mb-4  md:mt-12 w-full  font-normal text-black">
-                                        Save time as we compare prices across top ticketing platforms for you. Find the <span className=" text-primary">best price</span> in seconds.
+                                        Save time as we compare prices across top ticketing platforms for you. Find the <b className=" text-primary">best price</b> in seconds.
                                     </span>
                                     <div className="shadow-[0_20px_100px_-15px_rgba(244,63,94,.6)] mt-5">
                                         <Compare classname=" w-[23rem] md:w-[600px] lg:w-[700px] xl:w-[1000px]" />
@@ -68,7 +68,7 @@ const Steps = () => {
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
                                 <Logo />
 
-                                <span>Finally, ConcertCal will automatically add all the events of your top artists to your Google Calendar. Stay organized and never miss a performance, with your concert schedule always up-to-date and at your fingertips.</span>
+                                <span>Get notified when prices decrease. Always stay on top of when the lowest prices appear</span>
                                 <motion.img src="/Step5.png" className="md:mt-10 rounded-2xl" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.4 }} />
                             </motion.div>
                         </TabsContent>

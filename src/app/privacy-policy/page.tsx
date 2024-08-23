@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import logo from "../../../public/logo.svg";
 import { Metadata } from "next";
+import { Logo } from "@/assets";
 
 export const metadata: Metadata = {
     title: "Privacy - Concertpal.io",
@@ -12,7 +13,7 @@ const PrivacyPolicy = () => {
         <div className="flex flex-col items-center justify-center bg-white p-8 font-sans text-black">
             <div className="max-w-[1100px]">
                 <div className="mb-12 flex w-full items-center justify-center">
-                    <Image src={logo} alt="ConcertPal Logo" width={100} height={100} />
+                    <Logo width="220px" height="80px" />
                 </div>
                 <h1 className="mb-4 text-3xl font-bold">Privacy Notice</h1>
                 <p className="mb-4 text-sm">Last updated August 8, 2024</p>

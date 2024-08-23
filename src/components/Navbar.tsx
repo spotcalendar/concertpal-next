@@ -12,7 +12,7 @@ const Navbar = () => {
         <nav className=" sticky top-0 backdrop-blur-sm bg-white z-[70]">
             <div className="flex relative p-4 justify-between items-center md:max-w-[1315px] md:m-auto">
                 <Link href={"/"}>
-                    <Logo width="150" height="30" />
+                    <Logo width="180px" height="50px" />
                 </Link>
                 <ul className=" hidden lg:flex items-center gap-12 justify-between">
                     {NavItems.map((item, i) => (
