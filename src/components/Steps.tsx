@@ -24,8 +24,8 @@ const Steps = () => {
                     <div className="min-h-[500px] w-full max-w-[1200px] md:min-h-[600px]">
                         <TabsContent value="spotify-login" className="flex flex-col text-gray-300 ">
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
-                                <div className=" p-12  w-full flex text-center justify-center items-center flex-col">
-                                    <span className="mb-4  md:mt-12 w-full  font-normal text-black">
+                                <div className=" md:p-12 mt-12 md:mt-0  w-full flex text-center justify-center items-center flex-col">
+                                    <span className=" w-full  font-normal text-black">
                                         Save time as we compare prices across top ticketing platforms for you. Find the <b className=" text-primary">best price</b> in seconds.
                                     </span>
                                     <div className="shadow-[0_20px_100px_-15px_rgba(244,63,94,.6)] mt-5">
@@ -37,9 +37,9 @@ const Steps = () => {
 
                         <TabsContent value="locale-info" className="flex flex-col text-gray-300">
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
-                                <div className=" w-full flex text-center justify-center items-center flex-col">
-                                    <span className="p-12 mb-4  md:mt-20 w-full  font-normal text-black">Track tickets price history to buy at the lowest price possible. Split screen to see a side-by-side comparison too!</span>
-                                    <div className="shadow-[0_20px_100px_-15px_rgba(244,63,94,.6)] mt-6">
+                                <div className="md:p-12 w-full  mt-7  md:mt-0 flex text-center justify-center items-center flex-col">
+                                    <span className=" w-full  font-normal text-black">Track tickets price history to buy at the lowest price possible. Split screen to see a side-by-side comparison too!</span>
+                                    <div className="shadow-[0_20px_100px_-15px_rgba(244,63,94,.6)] mt-5 ">
                                         <Image src="/step2.png" width={1000} alt="step 2" height={500} />
                                     </div>
                                 </div>
@@ -48,14 +48,25 @@ const Steps = () => {
 
                         <TabsContent value="connect-google" className="flex flex-col text-gray-300">
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
-                                <div className=" w-full flex text-center justify-center items-center flex-col">
-                                    <span className="p-12 mb-4  md:mt-12 w-full  font-normal text-black">Get notified when prices decrease. Always stay on top of when the lowest prices are!</span>
-                                    <div className="shadow-[0_20px_100px_-15px_rgba(244,63,94,.6)] mt-6">
+                                <div className="md:p-12 w-full  mt-7  md:mt-0 flex text-center justify-center items-center flex-col">
+                                    <span className=" w-full  font-normal text-black">Get notified when prices decrease. Always stay on top of when the lowest prices are!</span>
+                                    <div className="shadow-[0_20px_100px_-15px_rgba(244,63,94,.6)] mt-5 ">
                                         <Image src="/step4.png" width={1000} alt="step 2" height={500} />
                                     </div>
                                 </div>
                             </motion.div>
                         </TabsContent>
+
+                        {/* <TabsContent value="connect-google" className="flex flex-col text-gray-300">
+                            <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
+                                <div className=" w-full flex text-center justify-center items-center flex-col">
+                                    <span className="md:p-12  mt-7 md:mt-0  w-full font-normal text-black">Get notified when prices decrease. Always stay on top of when the lowest prices are!</span>
+                                    <div className="shadow-[0_20px_100px_-15px_rgba(244,63,94,.6)] mt-5 md:mt-0">
+                                        <Image src="/step4.png" width={1000} alt="step 2" height={500} />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </TabsContent> */}
 
                         <TabsContent value="event-fetch" className="flex flex-col text-gray-300">
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">

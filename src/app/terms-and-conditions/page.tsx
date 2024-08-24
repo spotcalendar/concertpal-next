@@ -1,10 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
-import Image from "next/image";
-import logo from "../../../public/logo.svg";
 import Link from "next/link";
 import { Metadata } from "next";
-import { Logo } from "@/assets";
+import { PageLogo } from "@/assets";
 
 export const metadata: Metadata = {
     title: "Terms and Conditions - Concertpal.io",
@@ -16,7 +14,7 @@ const TermsAndConditions = () => {
         <div className="flex flex-col items-center justify-center bg-white p-8 font-sans text-black">
             <div className="max-w-[1100px]">
                 <div className="mb-12 flex w-full items-center justify-center">
-                    <Logo width="220px" height="80px" />
+                    <PageLogo width="260px" height="100px" />
                 </div>
                 <h1 className="mb-4 text-3xl font-bold">Terms and Conditions for ConcertPal LLC</h1>
                 <p className="mb-2 text-gray-600">Last Updated: 8/8/2024</p>

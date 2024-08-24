@@ -5,6 +5,7 @@ import Steps from "@/components/Steps";
 import TestimonialsSlider from "@/components/Testiomonials";
 import NeedHelp from "@/components/NeedHelp";
 import Chrome from "@/assets/chrome";
+import InformationIcon from "@/assets/information_icon";
 const page = () => {
     return (
         <section className="flex flex-col w-full justify-center items-center min-h-screen mt-28">
@@ -12,7 +13,7 @@ const page = () => {
                 <h1 className="text-5xl font-bold tracking-normal md:text-center">Your Ticket to Concert Savings.</h1>
                 <div className="md:text-center w-full  md:flex md:justify-center text-lg relative  text-left">
                     <p className="max-w-[70%] md:w-full ">
-                        Find the cheapest tickets to see your favorite artists- with just one click! <br /> Compare, track, and get notified about the lowest prices with <span className=" text-primary">Concert</span>Pal today.
+                        Find the cheapest tickets to see your favorite artists - with just one click! <br /> Compare, track, and get notified about the lowest prices with <span className=" text-primary">Concert</span>Pal today.
                     </p>
                     <div className="absolute -top-16 rotate-12 w-28 right-0 sm:hidden">
                         <Mobilearrow height="280" />
@@ -20,7 +21,7 @@ const page = () => {
                 </div>
                 <div className=" relative ">
                     <div className="flex justify-center items-center flex-col">
-                        <Link href="https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja" className=" bg-primary font-semibold text-white p-4 rounded-full px-14 flex items-center gap-3">
+                        <Link href="https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja" className=" bg-primary font-semibold text-white p-4 rounded-full px-7 text-xl flex items-center gap-3">
                             <Chrome />
                             Add to Chrome - It&apos;s Free!
                         </Link>
@@ -34,9 +35,13 @@ const page = () => {
                                 <b>4.9/5</b> on Chrome Web Store
                             </h1>
                         </div>
+                        <div className=" mt-3 flex items-center gap-2">
+                            <InformationIcon />
+                            Committed to your privacy
+                        </div>
                     </div>
                     <div className=" absolute right-[24rem] w-[42rem]  hidden lg:block top-0 ">
-                        <Arrow width="650" height="300" />
+                        <Arrow width="720" height="280" />
                     </div>
                 </div>
             </div>
@@ -45,7 +50,7 @@ const page = () => {
             </div>
 
             <div className="flex flex-col gap-5 p-2 md:p-0 items-center w-full ">
-                <h1 className=" text-center md:text-left text-2xl md:text-3xl text-primary font-semibold md:mt-12 tracking-wide">Synced with all your favorite ticketing platforms.</h1>
+                <h1 className=" text-center md:text-left text-2xl md:text-3xl text-primary font-semibold md:mt-0 tracking-wide">Synced with all your favorite ticketing platforms.</h1>
                 <div className="flex gap-14 md:flex-row flex-col justify-center items-center mt-8 flex-wrap">
                     <Ticketmaster />
                     <Stubhub />

@@ -18,4 +18,5 @@ import track from "./track";
 import notify from "./notify";
 import LogoWhite from "./logo-white";
 import Mobilearrow from "./mobilearrow";
-export { arrowRightWhite, Mobilearrow, LogoWhite, ArrowRightRed, Compare, track, notify, Arrow, chrome, homeScreensho, informationLogo, LiveNation, Logo, MenuIcon, SeatGeek, Star, Stubhub, Ticketmaster, Ticketweb, VividSeats };
+import PageLogo from "./page-logo";
+export { arrowRightWhite, Mobilearrow, LogoWhite, ArrowRightRed, Compare, track, notify, Arrow, chrome, homeScreensho, informationLogo, LiveNation, Logo, MenuIcon, SeatGeek, Star, Stubhub, Ticketmaster, Ticketweb, VividSeats, PageLogo };
