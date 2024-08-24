@@ -38,7 +38,15 @@ const NeedHelp = () => {
             <div className="flex items-center md:flex-row gap-4 w-full justify-center flex-col-reverse">
                 <div className="border-2 border-primary w-full rounded-lg p-2 flex gap-3 justify-between items-center">
                     <input value={message} onChange={(e) => setMessage(e.target.value)} type="text" placeholder={isSendMessage ? "Thank You" : "Describe Your Issue"} className=" w-full placeholder:text-primary focus:outline-none focus:border-none text-primary" />
-                    <div onClick={handleSendMessage}>{isSendingMessage ? <ClipLoader color="#EB1F50" size={20} /> : <ArrowRightRed width="20" height="21" />}</div>
+                    <div onClick={handleSendMessage}>
+                        {isSendingMessage ? (
+                            <ClipLoader color="#EB1F50" size={20} />
+                        ) : (
+                            <div className=" cursor-pointer">
+                                <ArrowRightRed width="20" height="21" />
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
