@@ -11,11 +11,11 @@ export const POST = async (req: NextRequest) => {
         }
 
         const transporter = nodemailer.createTransport({
-            host: "smtp.ethereal.email",
+            host: process.env.SMTP_HOST,
             port: 587,
             auth: {
-                user: "erich17@ethereal.email",
-                pass: "dXVxxAawPWnuvCGsRN",
+                user: process.env.EMAIL_ID,
+                pass: process.env.EMAIL_APP_PASSWORD,
             },
         });
 
