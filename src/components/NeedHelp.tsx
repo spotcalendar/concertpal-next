@@ -10,10 +10,11 @@ const NeedHelp = () => {
     const [isSendingMessage, setIsSendingMessage] = useState<boolean>(false);
     const [message, setMessage] = useState<string>("");
     const handleSendMessage = async () => {
-        setIsSendingMessage(true);
         if (message.length <= 0) {
             Toast.ErrorShowToast("Issue should be greater than 1 character");
+            return;
         }
+        setIsSendingMessage(true);
         try {
             const req = await axios.post("/api/contact-us", { message: message });
             const res = req.data;
