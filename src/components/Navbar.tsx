@@ -36,7 +36,7 @@ const Navbar = () => {
                 <div className={`fixed lg:hidden bg-white w-full h-screen left-0 right-0 duration-200 ${openNavbar ? "top-0" : "-top-[3000px]"}`}>
                     <div className="flex justify-between items-center p-3">
                         <Link href={"/"}>
-                            <Logo />
+                            <Logo width="180px" height="50px" />
                         </Link>
                         <X size={35} onClick={() => setOpenNavbar(!openNavbar)} className=" text-primary" />
                     </div>
