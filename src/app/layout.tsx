@@ -21,10 +21,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${inter.className} flex flex-col  min-h-screen max-w-[2500px] m-auto`}>
+            <body className={`${inter.className} flex flex-col  min-h-screen max-w-[2500px] m-auto`} suppressHydrationWarning>
                 <Navbar />
                 <ScrollToTop />
-                <main className=" overflow-x-hidden">
+                <main className=" overflow-x-hidden" suppressHydrationWarning>
                     <Toaster />
                     {children}
                 </main>

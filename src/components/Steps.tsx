@@ -10,13 +10,13 @@ const Steps = () => {
             <motion.div className="z-50 flex w-full  items-center justify-center p-4 px-3 pt-10 font-base text-white" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5 }}>
                 <Tabs defaultValue="spotify-login" className="flex w-full max-w-[1150px] flex-col items-center py-8">
                     <TabsList className=" rounded-full border-2 border-primary py-4 md:py-6 bg-transparent ">
-                        <TabsTrigger className="font-medium text-xs md:text-lg  uppercase px-4 md:px-5  rounded-full text-primary" value="spotify-login">
+                        <TabsTrigger className="font-medium hover:border hover:border-primary/70 duration-100 ease-in-out  text-xs md:text-lg  uppercase px-4 md:px-5  rounded-full text-primary" value="spotify-login">
                             Compare
                         </TabsTrigger>
-                        <TabsTrigger className="font-medium text-xs md:text-lg px-4 md:px-5 uppercase rounded-full text-primary" value="locale-info">
+                        <TabsTrigger className="font-medium hover:border hover:border-primary/70 duration-100 ease-in-out  text-xs md:text-lg px-4 md:px-5 uppercase rounded-full text-primary" value="locale-info">
                             Track
                         </TabsTrigger>
-                        <TabsTrigger className="font-medium text-xs md:text-lg px-4 md:px-5  uppercase rounded-full text-primary" value="connect-google">
+                        <TabsTrigger className="font-medium hover:border hover:border-primary/70 duration-100 ease-in-out  text-xs md:text-lg px-4 md:px-5  uppercase rounded-full text-primary" value="connect-google">
                             {" "}
                             Notify
                         </TabsTrigger>
