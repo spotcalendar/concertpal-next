@@ -7,7 +7,7 @@ export const POST = async (req: NextRequest) => {
         const { message } = reqBody;
         console.log(message.length);
         if (message.length <= 0) {
-            return NextResponse.json({ error: "Invalid message length", success: false }, { status: 400 });
+            return NextResponse.json({ error: "Issue should be greater than 1 character", success: false }, { status: 400 });
         }
 
         const transporter = nodemailer.createTransport({

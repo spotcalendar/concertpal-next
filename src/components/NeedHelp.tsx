@@ -17,13 +17,13 @@ const NeedHelp = () => {
             console.log(res);
             setIsSendMessage(true);
             setMessage("");
-            Toast.SuccessshowToast(res?.response?.data?.message || "Email sent successfully!");
+            Toast.SuccessshowToast(res?.response?.data?.message || "Issue received!");
             setTimeout(() => {
                 setIsSendMessage(false);
             }, 3000);
         } catch (error: any) {
             console.error("Error sending email:", error);
-            Toast.ErrorShowToast(error?.response?.data?.error || "Error sending email");
+            Toast.ErrorShowToast(error?.response?.data?.error || "Error sending issue!");
         } finally {
             setIsSendingMessage(false);
         }

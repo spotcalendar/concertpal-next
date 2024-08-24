@@ -6,14 +6,14 @@ const Toast = {
     SuccessshowToast: (message: string) => {
         toast.success(message, {
             style: {
-                border: "1px solid #EB1F50",
+                border: "1px solid #ffff",
                 padding: "16px",
-                color: "#EB1F50",
-                backgroundColor: "#ffff",
+                color: "#ffff",
+                backgroundColor: "#28a745",
             },
             iconTheme: {
-                primary: "#EB1F50",
-                secondary: "#ffff",
+                primary: "#ffff",
+                secondary: "#28a745",
             },
         });
     },
