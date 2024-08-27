@@ -10,11 +10,11 @@ const Navbar = () => {
     const [openNavbar, setOpenNavbar] = useState<boolean>(false);
     return (
         <nav className=" sticky top-0 backdrop-blur-sm bg-white z-[70]">
-            <div className="flex relative p-4 justify-between items-center md:max-w-[1315px] md:m-auto">
+            <div className="flex relative p-4 justify-between items-center md:max-w-[1440px] md:m-auto">
                 <Link href={"/"}>
                     <Logo width="180px" height="50px" />
                 </Link>
-                <ul className=" hidden lg:flex items-center gap-12 justify-between">
+                <ul className=" hidden lg:flex items-center gap-12 justify-between lg:mr-14">
                     {NavItems.map((item, i) => (
                         <Link href={item.link} key={i} className=" uppercase text-primary">
                             {item.name}
@@ -22,9 +22,9 @@ const Navbar = () => {
                     ))}
                 </ul>
                 <div className="hidden lg:flex gap-7 items-center">
-                    <Link href={"/login"} className=" border border-primary text-primary rounded-full text-center px-6 py-2">
+                    {/* <Link href={"/login"} className=" border border-primary text-primary rounded-full text-center px-6 py-2">
                         Log In
-                    </Link>
+                    </Link> */}
                     <Link href={"https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja"} target="_blank" className=" rounded-full bg-primary text-white px-6 py-2 flex items-center gap-2">
                         Install <ArrowRightWhite width="20" height="15" />
                     </Link>
