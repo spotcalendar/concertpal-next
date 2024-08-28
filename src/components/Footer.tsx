@@ -18,7 +18,7 @@ const Footer = () => {
                                 Install Extension <ArrowRightRed width="20" height="21" />
                             </Link>
                             <h1 className=" font-bold lg:text-4xl text-2xl md:text-4xl">SAVE ON CONCERTS!</h1>
-                            <div className="flex item-center flex-wrap gap-3 md:gap-1">
+                            <div className="flex items-center flex-wrap gap-3 md:gap-1">
                                 <LogoWhite width="120" height="30" />
                                 <Link href={"https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja"} className=" hidden md:text-sm lg:text-lg bg-white p-4 rounded-full text-primary gap-3 font-bold w-52 items-center justify-center">
                                     Install Extension <ArrowRightRed width="20" height="21" />
