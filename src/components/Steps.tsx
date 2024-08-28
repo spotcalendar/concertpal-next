@@ -10,13 +10,13 @@ const Steps = () => {
             <motion.div className="z-50 flex w-full  items-center justify-center p-4 px-3 pt-10 font-base text-white" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5 }}>
                 <Tabs defaultValue="spotify-login" className="flex w-full max-w-[1150px] flex-col items-center py-8">
                     <TabsList className=" rounded-full border-2 border-primary py-4 md:py-6 bg-transparent ">
-                        <TabsTrigger className="font-medium hover:border hover:border-primary/70 duration-100 ease-in-out  text-xs md:text-lg  uppercase px-4 md:px-5  rounded-full text-primary" value="spotify-login">
+                        <TabsTrigger className="font-medium  duration-100 ease-in-out  text-xs md:text-lg  uppercase px-4 md:px-5  rounded-full text-primary" value="spotify-login">
                             Compare
                         </TabsTrigger>
-                        <TabsTrigger className="font-medium hover:border hover:border-primary/70 duration-100 ease-in-out  text-xs md:text-lg px-4 md:px-5 uppercase rounded-full text-primary" value="locale-info">
+                        <TabsTrigger className="font-medium   duration-100 ease-in-out  text-xs md:text-lg px-4 md:px-5 uppercase rounded-full text-primary" value="locale-info">
                             Track
                         </TabsTrigger>
-                        <TabsTrigger className="font-medium hover:border hover:border-primary/70 duration-100 ease-in-out  text-xs md:text-lg px-4 md:px-5  uppercase rounded-full text-primary" value="connect-google">
+                        <TabsTrigger className="font-medium duration-100 ease-in-out  text-xs md:text-lg px-4 md:px-5  uppercase rounded-full text-primary" value="connect-google">
                             {" "}
                             Notify
                         </TabsTrigger>
@@ -40,7 +40,7 @@ const Steps = () => {
                                 <div className="md:p-12 w-full  mt-7  md:mt-0 flex text-center justify-center items-center flex-col">
                                     <span className=" w-full  font-normal text-black">Track tickets price history to buy at the lowest price possible. Split screen to see a side-by-side comparison too!</span>
                                     <div className="shadow-[0_20px_100px_-15px_rgba(244,63,94,.6)] mt-5 ">
-                                        <Image src="/step2.png" width={1000} alt="step 2" height={500} />
+                                        <Image src="/track.png" width={1000} alt="step 2" height={500} />
                                     </div>
                                 </div>
                             </motion.div>
@@ -50,8 +50,8 @@ const Steps = () => {
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
                                 <div className="md:p-12 w-full  mt-7  md:mt-0 flex text-center justify-center items-center flex-col">
                                     <span className=" w-full  font-normal text-black">Get notified when prices decrease. Always stay on top of when the lowest prices are!</span>
-                                    <div className="shadow-[0_20px_100px_-15px_rgba(244,63,94,.6)] mt-5 ">
-                                        <Image src="/step4.png" width={1000} alt="step 2" height={500} />
+                                    <div className="shadow-[0_20px_100px_-15px_rgba(244,63,94,.6)] mt-5 rounded-2xl">
+                                        <Image src="/noti.png" width={1000} alt="step 2" height={500} className="rounded-lg" />
                                     </div>
                                 </div>
                             </motion.div>
