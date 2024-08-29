@@ -38,7 +38,7 @@ const Footer = () => {
                 <Link href={"https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja"} className=" hidden xl:flex md:text-sm lg:text-lg bg-white p-4 rounded-full text-primary gap-3 font-bold items-center justify-center">
                     Install Extension <ArrowRightRed width="20" height="21" />
                 </Link>
-                <div className="grid md:grid-cols-3 grid-cols-2 gap-3 ">
+                <div className="grid md:grid-cols-3 grid-cols-2 md:gap-4 ">
                     <div className="flex flex-col items-left mt-9 lg:mt-0">
                         <h2>QUICK LINKS</h2>
                         <ul className="flex flex-col gap-4 mt-4 font-light">
