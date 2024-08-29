@@ -7,13 +7,13 @@ import React from "react";
 const Footer = () => {
     return (
         <footer className=" bg-primary mt-12 md:p-8 w-full   text-white ">
-            <div className="flex md:justify-between   md:max-w-[1315px] md:m-auto p-4 md:p-0 md:flex-row flex-col md:items-center">
+            <div className="flex md:justify-between   md:max-w-[1315px] md:m-auto p-4 md:p-0 md:flex-row flex-col md:items-center ">
                 <div className="flex md:flex-row flex-wrap flex-col-reverse mt-12 md:mt-0 items-center gap-6 xl:gap-12 md:gap-6">
                     <div className="flex flex-col gap-4 justify-center items-center text-center">
                         <Link href={"https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja"} className="flex md:hidden md:text-sm lg:text-lg bg-white p-4 rounded-full text-primary gap-3 font-bold items-center justify-center">
                             Install Extension <ArrowRightRed width="20" height="18" />{" "}
                         </Link>
-                        <div className="flex flex-col gap-12  w-full justify-center items-center">
+                        <div className="flex flex-col gap-3  w-full justify-center items-center">
                             <Link href={"https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja"} className=" hidden md:flex xl:hidden md:w-72 md:text-lg lg:w-96  xl:text-sm bg-white p-4 rounded-full text-primary gap-3 font-bold items-center justify-center">
                                 Install Extension <ArrowRightRed width="20" height="21" />
                             </Link>
@@ -35,10 +35,10 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <Link href={"https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja"} className=" hidden xl:flex md:text-sm lg:text-lg bg-white p-4 rounded-full text-primary gap-3 font-bold items-center justify-center">
+                <Link href={"https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja"} className="ml-[8rem] hidden xl:flex md:text-sm lg:text-lg bg-white p-4 rounded-full text-primary gap-3 font-bold items-center justify-center">
                     Install Extension <ArrowRightRed width="20" height="21" />
                 </Link>
-                <div className="grid md:grid-cols-3 grid-cols-2 md:gap-4 ">
+                <div className="grid md:grid-cols-3 grid-cols-2 md:gap-4  ">
                     <div className="flex flex-col items-left mt-9 lg:mt-0">
                         <h2>QUICK LINKS</h2>
                         <ul className="flex flex-col gap-4 mt-4 font-light">
@@ -50,20 +50,20 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col items-left mt-9 lg:mt-0">
-                        <h2>LEGAL</h2>
+                        <h2>SOCIALS</h2>
                         <ul className="flex flex-col gap-4 mt-4 font-light">
-                            {Legal.map((item, _) => (
-                                <Link href={item.link} key={item.name}>
+                            {Socials.map((item, _) => (
+                                <Link href={item.link} key={item.name} target="_blank">
                                     {item.name}
                                 </Link>
                             ))}
                         </ul>
                     </div>
                     <div className="flex flex-col items-left mt-9 lg:mt-0">
-                        <h2>SOCIALS</h2>
+                        <h2>LEGAL</h2>
                         <ul className="flex flex-col gap-4 mt-4 font-light">
-                            {Socials.map((item, _) => (
-                                <Link href={item.link} key={item.name} target="_blank">
+                            {Legal.map((item, _) => (
+                                <Link href={item.link} key={item.name}>
                                     {item.name}
                                 </Link>
                             ))}
