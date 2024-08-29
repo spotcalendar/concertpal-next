@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <footer className=" bg-primary mt-12 md:p-8 w-full   text-white ">
             <div className="flex md:justify-between   md:max-w-[1315px] md:m-auto p-4 md:p-0 md:flex-row flex-col md:items-center">
-                <div className="flex md:flex-row flex-wrap flex-col-reverse mt-12 md:mt-0 items-center gap-6 md:gap-12">
+                <div className="flex md:flex-row flex-wrap flex-col-reverse mt-12 md:mt-0 items-center gap-6 xl:gap-12 md:gap-6">
                     <div className="flex flex-col gap-4 justify-center items-center text-center">
                         <Link href={"https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja"} className="flex md:hidden md:text-sm lg:text-lg bg-white p-4 rounded-full text-primary gap-3 font-bold items-center justify-center">
                             Install Extension <ArrowRightRed width="20" height="18" />{" "}
@@ -38,7 +38,7 @@ const Footer = () => {
                 <Link href={"https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja"} className=" hidden xl:flex md:text-sm lg:text-lg bg-white p-4 rounded-full text-primary gap-3 font-bold items-center justify-center">
                     Install Extension <ArrowRightRed width="20" height="21" />
                 </Link>
-                <div className="grid xl:grid-cols-3 gap-7 grid-cols-2 ">
+                <div className="grid md:grid-cols-3 grid-cols-2 gap-3 ">
                     <div className="flex flex-col items-left mt-9 lg:mt-0">
                         <h2>QUICK LINKS</h2>
                         <ul className="flex flex-col gap-4 mt-4 font-light">
