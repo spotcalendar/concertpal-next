@@ -40,7 +40,7 @@ const page = () => {
                             Committed to your privacy
                         </div>
                     </div>
-                    <div id="how-it-works" className=" absolute right-[24rem] w-[42rem]  hidden lg:block top-0 ">
+                    <div className=" absolute right-[24rem] w-[42rem]  hidden lg:block top-0 ">
                         <Arrow width="720" height="280" />
                     </div>
                 </div>
