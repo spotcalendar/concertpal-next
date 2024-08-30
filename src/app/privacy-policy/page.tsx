@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 const PrivacyPolicy = () => {
     return (
-        <div className="flex flex-col items-center justify-center bg-white p-8 font-sans text-black">
+        <div className="flex flex-col items-center justify-center bg-white p-8 font-sans text-black" suppressHydrationWarning>
             <div className="max-w-[1100px]">
                 <div className="mb-12 flex w-full items-center justify-center">
                     <PageLogo width="260px" height="100px" />

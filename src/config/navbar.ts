@@ -1,3 +1,5 @@
+import { Instagram, Twitter, Youtube } from "lucide-react";
+
 export const NavItems = [
     {
         name: "How it works",
@@ -28,13 +30,16 @@ export const Socials = [
     {
         name: "Twitter",
         link: "https://x.com/ConcertPalio",
+        icon: Twitter,
     },
     {
         name: "Instagram",
         link: "#",
+        icon: Instagram,
     },
     {
         name: "Youtube",
         link: "#",
+        icon: Youtube,
     },
 ];

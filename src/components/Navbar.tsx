@@ -33,7 +33,7 @@ const Navbar = () => {
                     <MenuIcon width="28" height="28" />
                 </div>
 
-                <div className={`fixed lg:hidden bg-white w-full h-screen left-0 right-0 duration-200 ${openNavbar ? "top-0" : "-top-[3000px]"}`}>
+                <div className={`fixed lg:hidden bg-white w-full h-screen left-0 right-0 ease-in-out duration-300 ${openNavbar ? "top-0" : "-top-[3000px]"}`}>
                     <div className="flex justify-between items-center p-3">
                         <Link href={"/"}>
                             <Logo width="180px" height="50px" />
@@ -47,10 +47,6 @@ const Navbar = () => {
                                 {item.name}
                             </Link>
                         ))}
-
-                        <Link href={"/login"} className=" border border-primary text-primary rounded-full text-center px-6 py-2">
-                            Log In
-                        </Link>
                         <Link href={"https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja"} target="_blank" className=" text-center justify-center  rounded-full bg-primary text-white px-6 py-2 flex items-center gap-2">
                             Install <ArrowRightWhite width="20" height="15" />
                         </Link>

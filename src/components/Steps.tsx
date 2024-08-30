@@ -7,7 +7,7 @@ import { Logo, Compare } from "@/assets";
 const Steps = () => {
     return (
         <AnimatePresence>
-            <motion.div className="z-50 flex w-full  items-center justify-center p-4 px-3 pt-10 font-base text-white" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5 }}>
+            <motion.div id="how-it-works" className="z-50 flex w-full  items-center justify-center p-4 px-3 pt-10 font-base text-white" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5 }}>
                 <Tabs defaultValue="spotify-login" className="flex w-full max-w-[1150px] flex-col items-center py-8">
                     <TabsList className=" rounded-full border-2 border-primary py-4 md:py-6 bg-transparent ">
                         <TabsTrigger className="font-medium  duration-100 ease-in-out  text-xs md:text-lg  uppercase px-4 md:px-5  rounded-full text-primary" value="spotify-login">
