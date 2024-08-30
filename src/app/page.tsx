@@ -67,12 +67,12 @@ const page = () => {
             <hr className=" bg-primary h-1 w-full mt-6" />
             <NeedHelp />
             <div className="flex md:mb-8  w-full p-4 flex-wrap md:max-w-[1440px] md:m-auto justify-between items-center gap-4 md:gap-0">
-                <div className="flex flex-col gap-2 font-bold ">
-                    <h1 className="md:text-xl text-xl md:mt-10">Ready to start saving?</h1>
+                <div className="flex flex-col gap-2 font-bold lg:mt-14 ">
+                    <h1 className="md:text-xl text-xl lg:mt-5">Ready to start saving?</h1>
                     <h1 className=" text-2xl md:text-3xl text-primary">Add ConcertPal to Chrome.</h1>
                 </div>
 
-                <a href="https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja" target="_blank" className="md:mt-10 p-3 px-7 bg-primary text-md rounded-md text-white font-semibold">
+                <a href="https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja" target="_blank" className="lg:mt-10 p-3 px-7 bg-primary text-md rounded-md text-white font-semibold">
                     Get Started
                 </a>
             </div>

@@ -5,7 +5,7 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <footer className=" bg-primary w-full md:mt-12  gap-4 text-white">
+        <footer className=" bg-primary w-full lg:mt-8  gap-4 text-white">
             <div className="  md:max-w-[1440px] md:ml-auto flex flex-col gap-4 md:mr-auto p-3">
                 <div className="flex font-bold text-lg items-center">
                     <LogoWhite width="50" height="40" />
