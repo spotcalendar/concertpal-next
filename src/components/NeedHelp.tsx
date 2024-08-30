@@ -33,7 +33,7 @@ const NeedHelp = () => {
         }
     };
     return (
-        <div className=" mt-12 flex  flex-col md:gap-8 gap-4 w-full md:px-12 px-4 m-auto lg:w-[69%] lg:m-auto" id="get-help">
+        <div className=" mt-12 mb-20 flex  flex-col md:gap-8 gap-4 w-full md:px-12 px-4 m-auto lg:w-[69%] lg:m-auto" id="get-help">
             <h1 className="text-primary text-3xl font-bold mb-8 text-center md:mt-12">Need help?</h1>
             <span className=" text-lg font-medium">Tell us more and we’ll try to find the best solution for you:</span>
             <div className="flex items-center md:flex-row gap-4 w-full justify-center flex-col-reverse">

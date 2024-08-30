@@ -9,8 +9,8 @@ import { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Concertpal.io - Never miss your favorite artists' concerts again.",
-    description: "Never miss your favorite artists' concerts again.",
+    title: "Concertpal.io - Never miss your favorite artist's concerts again.",
+    description: "Never miss your favorite artist's concerts again.",
     openGraph: { images: [{ url: "https://pbs.twimg.com/profile_banners/1809055783319203840/1724206113/1500x500" }] },
 };
 
