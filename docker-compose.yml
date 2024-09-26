@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  nextjs:
+    image: vineetagarwal2004/concertpal-website
+    container_name: blog
+
+    ports:
+      - "3005:3000"
+
+    restart: always 
+    environment:
+      - NODE_ENV=production 
+
