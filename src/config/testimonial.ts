@@ -1,5 +1,9 @@
 export const testimonials = [
     {
+        quote: "Finds me cheap tickets super quick!",
+        author: "Neil V Dabholkar",
+    },
+    {
         quote: "Amazing. Can't believe this wasn't made sooner!",
         author: "Rithwik Pattikonda",
     },
@@ -10,5 +14,21 @@ export const testimonials = [
     {
         quote: "Gamechanger! Saved me $45, 10/10 recommend",
         author: "Jaideep Patil",
+    },
+    {
+        quote: "Nice app, really useful and saves me money.",
+        author: "Joe Bartusek",
+    },
+    {
+        quote: "Used it on a ice spice concert and saved 30 dollars worked great!",
+        author: "Shan Rizvi",
+    },
+    {
+        quote: "Finally something that actually works for comparing / tracking tickets across sites. Made my life so much easier",
+        author: "Holly Cunningham",
+    },
+    {
+        quote: "Such a beautiful and useful extension. It has helped me a lot while comparing prices across different ticketing platforms. No more hassle while finding the cheapest price",
+        author: "Swetanshu Singh",
     },
 ];

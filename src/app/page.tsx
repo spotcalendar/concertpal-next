@@ -32,7 +32,7 @@ const page = () => {
                                 ))}
                             </div>
                             <h1 className=" text-sm ">
-                                <b>4.9/5</b> on Chrome Web Store
+                                <b>5/5</b> on Chrome Web Store
                             </h1>
                         </div>
                         <div className=" mt-3 flex items-center gap-2">
