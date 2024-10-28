@@ -3,7 +3,7 @@ version: '3.8'
 services:
   nextjs:
     image: vineetagarwal2004/concertpal-website
-    container_name: blog
+    container_name: concertpal
 
     ports:
       - "3005:3000"

@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
                     <Toaster />
                     {children}
                 </main>
+                <Script defer src="https://cloud.umami.is/script.js" data-website-id="7e52c10d-bf54-4078-88e9-529fce4a4981"></Script>
                 <Footer />
             </body>
         </html>
