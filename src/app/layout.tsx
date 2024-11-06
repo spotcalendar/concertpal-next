@@ -7,7 +7,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 
-const roboto = Roboto({ subsets: ["latin"], weight: ["400", "700"], style: "normal" });
+const roboto = Roboto({ subsets: ["latin"], weight: ["100", "300", "400", "500", "700", "900"], style: "normal" });
 
 export const metadata: Metadata = {
     title: "Concertpal.io - Never miss your favorite artist's concerts again.",
