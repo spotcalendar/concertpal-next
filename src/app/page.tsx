@@ -3,55 +3,67 @@ import { Star, Mobilearrow, Ticketmaster, Stubhub, SeatGeek, LiveNation, Ticketw
 import Link from "next/link";
 import Steps from "@/components/Steps";
 import TestimonialsSlider from "@/components/Testiomonials";
-import NeedHelp from "@/components/NeedHelp";
 import Chrome from "@/assets/chrome";
 import InformationIcon from "@/assets/information_icon";
-const page = () => {
+import { Vector1, Vector2 } from "@/assets/hero-vector";
+import { Check, CheckCircle } from "lucide-react";
+
+const Page = () => {
+    const messages = ["Saves money", "Saves time", "Find better deals"];
     return (
-        <section className="flex flex-col w-full justify-center items-center min-h-screen relative mt-28">
-            <div className="flex p-2 md:p-0 flex-col items-center md:gap-16 gap-8">
-                <h1 className="text-5xl font-bold tracking-normal md:text-center">YOUR TICKET TO CONCERT SAVINGS!</h1>
-                <div className="md:text-center w-full  md:flex md:justify-center text-lg   text-left">
-                    <p className="max-w-[72%] md:w-full font-semibold text-gray-900">
-                        Find the cheapest tickets to see your favorite artists - with just one click! Compare, track, and get notified about the lowest prices with <span className=" text-primary">Concert</span>Pal today.
-                    </p>
-                    <div className="absolute top-24 rotate-12 w-78 right-0 sm:hidden">
-                        <Mobilearrow height="280" />
-                    </div>
+        <section className="flex flex-col w-full justify-center items-center min-h-screen relative pt-10 md:pt-28 bg-gradient-to-b from-primary-foreground/10 via-transparent to-transparent">
+            <div className="flex flex-col items-center gap-8 md:gap-10 p-2 md:p-0">
+                <div className="flex justify-center items-center gap-4 flex-wrap">
+                    {messages.map((message, index) => (
+                        <h1 key={index} className="text-sm flex justify-center items-center  gap-2 bg-primary-foreground text-white font-bold tracking-normal text-center px-3 py-2 rounded-full">
+                            <CheckCircle size={12} /> {message}
+                        </h1>
+                    ))}
                 </div>
-                <div className=" relative ">
-                    <div className="flex justify-center items-center flex-col">
-                        <Link href="https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja" className=" bg-primary font-semibold text-white p-4 rounded-full px-7 text-xl flex items-center gap-3">
+
+                <h1 className="text-4xl md:text-5xl relative font-bold tracking-normal text-primary-foreground text-center">
+                    <Vector1 className="hidden md:inline-block absolute left-[-1.3em] top-[5px]" />
+                    YOUR TICKET TO CONCERT SAVINGS!
+                    <Vector2 className="hidden md:inline-block absolute  top-[-1em] right-[-1em]" />
+                </h1>
+                <div className="w-full text-md md:text-lg text-gray-900 md:text-center text-left font-semibold text-primary-foreground md:flex md:justify-center">
+                    <p className="md:max-w-[67%] w-full text-center">
+                        Find the cheapest tickets to see your favorite artists - with just one click! Compare, track, and get notified about the lowest prices with <span className="text-primary">ConcertPal</span> today.
+                    </p>
+                </div>
+                <div className="relative">
+                    <div className="flex flex-col items-center">
+                        <Link href="https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja" className="bg-primary text-white font-semibold text-xl p-4 rounded-xl px-7 flex items-center gap-3">
                             <Chrome />
                             Add to Chrome - It&apos;s Free!
                         </Link>
-                        <div className="flex gap-6 justify-center items-center w-full mt-2">
+                        <div className="flex gap-6 items-center justify-center w-full mt-2">
                             <div className="flex items-center gap-1">
-                                {[1, 2, 3, 4, 5].map((index, _) => (
+                                {[1, 2, 3, 4, 5].map((index) => (
                                     <Star key={index} />
                                 ))}
                             </div>
-                            <h1 className=" text-sm ">
+                            <h1 className="text-sm">
                                 <b>5/5</b> on Chrome Web Store
                             </h1>
                         </div>
-                        <div className=" mt-3 flex items-center gap-2">
+                        <div className="flex items-center gap-2 mt-3">
                             <InformationIcon />
                             Committed to your privacy
                         </div>
                     </div>
-                    <div className=" absolute right-[24rem] w-[42rem]  hidden lg:block top-0 ">
-                        <Arrow width="720" height="280" />
-                    </div>
                 </div>
             </div>
-            <div className=" w-full">
+
+            <div className="w-full">
                 <Steps />
             </div>
 
-            <div className="flex flex-col gap-5 p-2 md:p-0 items-center w-full ">
-                <h1 className=" text-center md:text-left text-2xl md:text-3xl text-primary font-semibold md:mt-0 tracking-wide">Synced with all your favorite ticketing platforms.</h1>
-                <div className="flex gap-14 md:flex-row flex-col justify-center items-center mt-8 flex-wrap">
+            <div className="flex flex-col items-center gap-5 w-full p-2 md:p-0">
+                <h1 className="text-4xl md:text-5xl font-semibold text-center md:max-w-[40%] mb-4 tracking-wide text-black/80">
+                    Synced with all your <span className="text-primary">favorite ticketing</span> platforms.
+                </h1>
+                <div className="flex flex-wrap gap-14 justify-center items-center mt-8">
                     <Ticketmaster />
                     <Stubhub />
                     <SeatGeek />
@@ -60,24 +72,32 @@ const page = () => {
                     <VividSeats />
                 </div>
             </div>
-            <hr className=" bg-primary h-1 w-full mt-12" />
 
             <TestimonialsSlider />
 
-            <hr className=" bg-primary h-1 w-full mt-6" />
-            <NeedHelp />
-            <div className="flex md:mb-8  w-full p-4 flex-wrap md:max-w-[1440px] md:m-auto justify-between items-center gap-4 md:gap-0">
-                <div className="flex flex-col gap-2 font-bold lg:mt-14 ">
-                    <h1 className="md:text-xl text-xl lg:mt-5">Ready to start saving?</h1>
-                    <h1 className=" text-2xl md:text-3xl text-primary">Add ConcertPal to Chrome.</h1>
+            <div
+                className="h-full w-[1400px]  mt-8 rounded-lg hidden md:inline-block"
+                style={{
+                    backgroundImage: "url(/image.png)",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }}
+            >
+                <div className="flex   justify-between items-center h-full px-10 py-16 text-white">
+                    <div>
+                        <h2 className="text-2xl font-medium mb-4">Ready to start saving?</h2>
+                        <p className="text-5xl mb-6 font-semibold">Add ConcertPal to Chrome now!</p>
+                    </div>
+                    <div>
+                        <Link href="https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja" className="bg-white text-primary font-semibold p-3 rounded-xl px-6 text-lg">
+                            Get Started
+                        </Link>
+                    </div>
                 </div>
-
-                <a href="https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja" target="_blank" className="lg:mt-10 p-3 px-7 bg-primary text-md rounded-md text-white font-semibold">
-                    Get Started
-                </a>
             </div>
         </section>
     );
 };
 
-export default page;
+export default Page;

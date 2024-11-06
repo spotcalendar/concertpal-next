@@ -7,7 +7,7 @@ import { testimonials } from "@/config/testimonial";
 
 const TestimonialsSlider = () => {
     return (
-        <div className="flex flex-col items-center justify-center py-12 bg-white" id="testimonials">
+        <div className="flex flex-col items-center justify-center py-12 bg-white mt-32" id="testimonials">
             <h2 className="text-primary text-3xl font-bold mb-8">Users love us!</h2>
             <Swiper
                 spaceBetween={50}
@@ -43,7 +43,7 @@ const TestimonialsSlider = () => {
                 }}
             >
                 {testimonials.map((testimonial, index) => (
-                    <SwiperSlide key={index} className="px-6 md:px-0">
+                    <SwiperSlide key={index} className="px-6 md:px-0 min-h-[200px] min-w-[300px] bg-white shadow-lg">
                         <div className="text-center px-6">
                             <p className="text-lg">{`“${testimonial.quote}”`}</p>
                             <h3 className="mt-4 text-black font-medium">{testimonial.author}</h3>
