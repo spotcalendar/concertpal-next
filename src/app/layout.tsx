@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,7 +7,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 
-const roboto = Roboto({ subsets: ["latin"], weight: ["100", "300", "400", "500", "700", "900"], style: "normal" });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Concertpal.io - Never miss your favorite artist's concerts again.",
@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${roboto.className} flex flex-col  min-h-screen max-w-[2500px] m-auto`} suppressHydrationWarning>
+            <body className={`${inter.className} flex flex-col  min-h-screen max-w-[2500px] m-auto`} suppressHydrationWarning>
                 <Navbar />
                 <ScrollToTop />
                 <main className=" overflow-x-hidden" suppressHydrationWarning>

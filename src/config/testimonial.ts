@@ -28,7 +28,7 @@ export const testimonials = [
         author: "Holly Cunningham",
     },
     {
-        quote: "Such a beautiful and useful extension. It has helped me a lot while comparing prices across different ticketing platforms. No more hassle while finding the cheapest price",
+        quote: "Such a beautiful and useful extension. No more hassle while finding the cheapest price",
         author: "Swetanshu Singh",
     },
 ];
