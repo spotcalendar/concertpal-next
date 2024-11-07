@@ -23,7 +23,7 @@ export default function Component() {
     ];
 
     return (
-        <footer className="w-full bg-black text-white py-12 mt-32">
+        <footer className="w-full bg-[#26af64ea] text-white py-12 mt-32">
             <div className="container px-4 md:px-6">
                 <div className="grid gap-8 lg:grid-cols-4">
                     <div className="space-y-4">
@@ -67,7 +67,10 @@ export default function Component() {
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Need help?</h3>
                         <div className="space-y-4">
-                            <Input type="email" placeholder="Input email address" className="bg-white/10 border-white/20 text-white placeholder:text-gray-400" />
+                            <div className="flex">
+                                <Input type="email" placeholder="Input email address" className=" border-white/20 rounded-tl-md rounded-br-none rounded-tr-none  rounded-tb-md text-white placeholder:text-gray-400" />
+                                <button className="bg-[#085E40] px-2 py-2 text-sm rounded-br-md rounded-tr-md">Send</button>
+                            </div>
                         </div>
                     </div>
                 </div>
