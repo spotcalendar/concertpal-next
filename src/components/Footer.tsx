@@ -1,13 +1,22 @@
+"use client";
+import { useState } from "react";
 import { Logo } from "@/assets";
 import { Input } from "./ui/input";
-import { Facebook, Instagram, Linkedin, MessageSquare } from "lucide-react";
+import axios from "axios";
+import { AlertTriangle, Facebook, Instagram, Linkedin, Loader, MessageSquare, Twitter } from "lucide-react";
 import Link from "next/link";
+import Toast from "@/utils/toast";
 
 export default function Component() {
+    const [isSent, setIsSent] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [email, setEmail] = useState("");
+    const [errorMessage, setErrorMessage] = useState(""); // State for error message
+
     const quickLinks = [
-        { name: "How it works", link: "/how-it-works" },
+        { name: "How it works", link: "#" },
         { name: "Testimonials", link: "#testimonials" },
-        { name: "Get help", link: "/help" },
+        { name: "Get help", link: "#" },
     ];
 
     const legalLinks = [
@@ -16,14 +25,60 @@ export default function Component() {
     ];
 
     const socials = [
-        { icon: Linkedin, link: "#" },
-        { icon: Instagram, link: "#" },
-        { icon: Facebook, link: "#" },
-        { icon: MessageSquare, link: "#" },
+        { icon: Linkedin, link: "https://www.linkedin.com/company/concertpal/" },
+        { icon: Twitter, link: "https://x.com/concertpalio" },
     ];
 
+    // Email validation function
+    const isValidEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const handleClick = async () => {
+        if (!isValidEmail(email)) {
+            setErrorMessage("Please enter a valid email address.");
+            return;
+        }
+
+        try {
+            setIsLoading(true);
+            setErrorMessage(""); // Clear any existing error message
+            const res = await axios.post("https://discord.com/api/webhooks/1304055845532733450/T06KT-9la54OcF2iyg8HaXrMR8VSyWQ1JPICNI5hVMRW5m7ugY_uOoUAQwF4-IhUS6Oe?wait=true", {
+                embeds: [
+                    {
+                        title: "New Help Request",
+                        description: `Email: ${email}`,
+                        color: 3066993, // Green color
+                        timestamp: new Date().toISOString(),
+                        footer: {
+                            text: "ConcertPal Support",
+                        },
+                    },
+                ],
+            });
+            if (res.status === 200) {
+                setIsSent(true);
+                setEmail("");
+                Toast.SuccessshowToast("Email received successfully!");
+            }
+        } catch (err) {
+            console.error("Error sending webhook:", err);
+            setErrorMessage("Failed to send the message. Please try again.");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    // Handle Enter key press to trigger handleClick
+    const handleKeyDown = (event: any) => {
+        if (event.key === "Enter") {
+            handleClick();
+        }
+    };
+
     return (
-        <footer className="w-full bg-[#26af64ea] text-white py-12 mt-32">
+        <footer className="w-full bg-gray-950/90 text-white py-12 md:mt-32" id="footer">
             <div className="container px-4 md:px-6">
                 <div className="grid gap-8 lg:grid-cols-4">
                     <div className="space-y-4">
@@ -68,9 +123,23 @@ export default function Component() {
                         <h3 className="text-lg font-semibold mb-4">Need help?</h3>
                         <div className="space-y-4">
                             <div className="flex">
-                                <Input type="email" placeholder="Input email address" className=" border-white/20 rounded-tl-md rounded-br-none rounded-tr-none  rounded-tb-md text-white placeholder:text-gray-400" />
-                                <button className="bg-[#085E40] px-2 py-2 text-sm rounded-br-md rounded-tr-md">Send</button>
+                                <Input
+                                    type="email"
+                                    placeholder="Input email address"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    onKeyDown={handleKeyDown} // Listen for Enter key press
+                                    className="border-white/20 rounded-tl-md rounded-br-none border-none rounded-tr-none rounded-tb-md text-black placeholder:text-gray-400 outline-none ring-none"
+                                />
+                                <button onClick={handleClick} className="bg-[#085E40] px-2 py-2 text-sm rounded-br-md rounded-tr-md min-w-[60px] flex justify-center items-center">
+                                    {isLoading ? <Loader className="animate-spin" /> : isSent ? "Sent" : "Send"}
+                                </button>
                             </div>
+                            {errorMessage && (
+                                <p className="text-red-500 text-sm mt-2 flex justify-start items-center gap-1">
+                                    <AlertTriangle /> {errorMessage}
+                                </p>
+                            )}
                         </div>
                     </div>
                 </div>

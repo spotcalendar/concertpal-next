@@ -1,15 +1,16 @@
+"use client";
 import React from "react";
-import { Star, Mobilearrow, Ticketmaster, Stubhub, SeatGeek, LiveNation, Ticketweb, VividSeats, Arrow } from "@/assets";
+import { Star } from "@/assets";
 import Link from "next/link";
 import Steps from "@/components/Steps";
 import TestimonialsSlider from "@/components/Testiomonials";
 import Chrome from "@/assets/chrome";
 import InformationIcon from "@/assets/information_icon";
 import { Vector1, Vector2 } from "@/assets/hero-vector";
-import { Check, CheckCircle } from "lucide-react";
-
+import { supportedProviders } from "@/lib/constants";
+import Image from "next/image";
+import { motion } from "framer-motion";
 const Page = () => {
-    const messages = ["Saves money", "Saves time", "Find better deals"];
     return (
         <section className="flex flex-col w-full justify-center items-center min-h-screen relative pt-10 md:pt-28 bg-gradient-to-b from-primary-foreground/10 via-transparent to-transparent">
             <div className="flex flex-col items-center gap-8 md:gap-10 p-2 md:p-0">
@@ -47,22 +48,30 @@ const Page = () => {
                 </div>
             </div>
 
-            <div className="w-full">
+            <div className="w-full mb-10" id="steps">
                 <Steps />
             </div>
 
-            <div className="flex flex-col items-center gap-5 w-full p-2 md:p-0">
+            <div className="flex flex-col items-center gap-5 w-full md:p-0">
                 <h1 className="text-4xl md:text-5xl font-semibold text-center md:max-w-[40%] mb-4 tracking-wide text-black/80">
                     Synced with all your <span className="text-primary">favorite ticketing</span> platforms.
                 </h1>
-                <div className="flex flex-wrap gap-14 justify-center items-center mt-8">
-                    <Ticketmaster />
-                    <Stubhub />
-                    <SeatGeek />
-                    <LiveNation />
-                    <Ticketweb />
-                    <VividSeats />
-                </div>
+                <section className="w-full py-12 bg-background">
+                    <div className="container px-4 md:px-6">
+                        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
+                            {supportedProviders.map((provider, index) => (
+                                <motion.div key={provider.name} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="group relative cursor-pointer">
+                                    <Link href={provider.link}>
+                                        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                        <div className="relative w-[120px] h-[120px] md:w-[200px] md:h-[200px] bg-card rounded-full p-4 transition-transform duration-300 hover:scale-110">
+                                            <Image src={provider.image} alt={`${provider.name} logo`} width={300} height={300} className="w-full h-full object-contain rounded-full" />
+                                        </div>
+                                    </Link>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
             </div>
 
             <TestimonialsSlider />

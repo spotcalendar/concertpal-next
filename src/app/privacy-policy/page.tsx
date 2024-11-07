@@ -47,7 +47,7 @@ const PrivacyPolicy = () => {
                 <section className="mb-6">
                     <h2 className="mb-2 text-2xl font-semibold">3. Will Your Information Be Shared With Anyone?</h2>
                     <p className="mb-4">We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations.</p>
-                    <p className="mb-4">
+                    <div className="mb-4">
                         We may process or share data based on the following legal basis:
                         <ul className="ml-4 list-inside list-disc">
                             <li>
@@ -60,7 +60,7 @@ const PrivacyPolicy = () => {
                                 <strong>Vital Interests:</strong> We may disclose your information where we believe it is necessary to investigate, prevent, or take action regarding potential violations of our policies, suspected fraud, or situations involving potential threats to the safety of any person and illegal activities.
                             </li>
                         </ul>
-                    </p>
+                    </div>
                 </section>
 
                 <section className="mb-6">

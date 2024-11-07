@@ -24,8 +24,8 @@ const Steps = () => {
                         <TabsContent value="spotify-login" className="flex flex-col text-gray-300 ">
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
                                 <div className="mt-12 md:mt-0  w-full flex text-center justify-center items-center flex-col">
-                                    <div className="mt-5">
-                                        <Compare classname=" w-[23rem] md:w-[600px] lg:w-[700px] xl:w-[1000px]" />
+                                    <div className="mt-5 bg-white shadow-xl p-4 rounded-lg ">
+                                        <Image src={"https://dt8dif07ddviy.cloudfront.net/compare.png"} width={1000} alt="step 1" height={500} className="rounded-2xl" />
                                     </div>
                                 </div>
                             </motion.div>
@@ -34,8 +34,8 @@ const Steps = () => {
                         <TabsContent value="locale-info" className="flex flex-col text-gray-300">
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
                                 <div className=" w-full  mt-7  md:mt-0 flex text-center justify-center items-center flex-col">
-                                    <div className=" mt-5 ">
-                                        <Image src="/track.png" width={1000} alt="step 2" height={500} />
+                                    <div className="mt-5 bg-white shadow-xl p-4 rounded-lg ">
+                                        <Image src={"https://dt8dif07ddviy.cloudfront.net/track.png"} width={1000} alt="step 1" height={500} className="rounded-2xl" />
                                     </div>
                                 </div>
                             </motion.div>
@@ -44,8 +44,8 @@ const Steps = () => {
                         <TabsContent value="connect-google" className="flex flex-col text-gray-300">
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
                                 <div className=" w-full  mt-7  md:mt-0 flex text-center justify-center items-center flex-col">
-                                    <div className=" mt-5 rounded-2xl">
-                                        <Image src="/noti.png" width={1000} alt="step 2" height={500} className="rounded-lg" />
+                                    <div className="mt-5 bg-white shadow-xl p-4 rounded-lg ">
+                                        <Image src={"https://dt8dif07ddviy.cloudfront.net/track.png"} width={1000} alt="step 1" height={500} className="rounded-2xl" />
                                     </div>
                                 </div>
                             </motion.div>
