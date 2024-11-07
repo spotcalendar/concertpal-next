@@ -6,13 +6,13 @@ import Link from "next/link";
 export default function Component() {
     const quickLinks = [
         { name: "How it works", link: "/how-it-works" },
-        { name: "Testimonials", link: "/testimonials" },
+        { name: "Testimonials", link: "#testimonials" },
         { name: "Get help", link: "/help" },
     ];
 
     const legalLinks = [
-        { name: "Privacy Policy", link: "/privacy" },
-        { name: "Terms & Condition", link: "/terms" },
+        { name: "Privacy Policy", link: "/privacy-policy" },
+        { name: "Terms & Condition", link: "/terms-and-conditions" },
     ];
 
     const socials = [
@@ -23,7 +23,7 @@ export default function Component() {
     ];
 
     return (
-        <footer className="w-full bg-[#113411] text-white py-12 mt-32">
+        <footer className="w-full bg-black text-white py-12 mt-32">
             <div className="container px-4 md:px-6">
                 <div className="grid gap-8 lg:grid-cols-4">
                     <div className="space-y-4">

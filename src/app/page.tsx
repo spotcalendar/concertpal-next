@@ -13,14 +13,6 @@ const Page = () => {
     return (
         <section className="flex flex-col w-full justify-center items-center min-h-screen relative pt-10 md:pt-28 bg-gradient-to-b from-primary-foreground/10 via-transparent to-transparent">
             <div className="flex flex-col items-center gap-8 md:gap-10 p-2 md:p-0">
-                <div className="flex justify-center items-center gap-4 flex-wrap">
-                    {messages.map((message, index) => (
-                        <h1 key={index} className="text-sm flex justify-center items-center  gap-2 bg-primary-foreground text-white font-bold tracking-normal text-center px-3 py-2 rounded-full">
-                            <CheckCircle size={12} /> {message}
-                        </h1>
-                    ))}
-                </div>
-
                 <h1 className="text-4xl md:text-5xl relative font-bold tracking-normal text-primary-foreground text-center">
                     <Vector1 className="hidden md:inline-block absolute left-[-1.3em] top-[5px]" />
                     YOUR TICKET TO CONCERT SAVINGS!
