@@ -25,8 +25,8 @@ const Page = () => {
                     </p>
                 </div>
                 <div className="relative">
-                    <div className="flex flex-col items-center">
-                        <Link href="https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja" className="bg-primary text-white font-semibold text-xl p-4 rounded-xl px-7 flex items-center gap-3">
+                    <div className="flex flex-col items-center ">
+                        <Link href="https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja" className="bg-primary hover:scale-105 transition-all text-white font-semibold text-xl p-4 rounded-xl px-7 flex items-center gap-3">
                             <Chrome />
                             Add to Chrome - It&apos;s Free!
                         </Link>

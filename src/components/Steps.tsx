@@ -45,7 +45,7 @@ const Steps = () => {
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
                                 <div className=" w-full  mt-7  md:mt-0 flex text-center justify-center items-center flex-col">
                                     <div className="mt-5 bg-white shadow-xl p-4 rounded-lg ">
-                                        <Image src={"https://dt8dif07ddviy.cloudfront.net/track.png"} width={1000} alt="step 1" height={500} className="rounded-2xl" />
+                                        <Image src={"https://dt8dif07ddviy.cloudfront.net/noti.png"} width={1000} alt="step 1" height={500} className="rounded-2xl" />
                                     </div>
                                 </div>
                             </motion.div>

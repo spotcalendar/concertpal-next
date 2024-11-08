@@ -52,7 +52,7 @@ const TestimonialsSlider = () => {
                                             <Star key={i} className="w-5 h-5 fill-primary text-primary" />
                                         ))}
                                     </div>
-                                    <blockquote className="mb-6 text-muted-foreground flex-grow">"{testimonial.quote}"</blockquote>
+                                    <blockquote className="mb-6 text-muted-foreground flex-grow"> {testimonial.quote}</blockquote>
                                 </div>
 
                                 <div className="flex items-center gap-4 mt-auto">
