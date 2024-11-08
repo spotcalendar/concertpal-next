@@ -77,7 +77,7 @@ const Page = () => {
             <TestimonialsSlider />
 
             <div
-                className="h-full w-[1400px]  mt-8 rounded-lg hidden md:inline-block"
+                className="h-full w-[1100px]  mt-8 rounded-lg hidden md:inline-block"
                 style={{
                     backgroundImage: "url(/image.png)",
                     backgroundSize: "cover",
@@ -85,7 +85,7 @@ const Page = () => {
                     backgroundRepeat: "no-repeat",
                 }}
             >
-                <div className="flex   justify-between items-center h-full px-10 py-16 text-white">
+                <div className="flex   justify-between items-center h-full px-10 pt-20 pb-16 text-white">
                     <div>
                         <h2 className="text-2xl font-medium mb-4">Ready to start saving?</h2>
                         <p className="text-5xl mb-6 font-semibold">Add ConcertPal to Chrome now!</p>

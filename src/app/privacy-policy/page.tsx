@@ -1,6 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { PageLogo } from "@/assets";
+import { FullLogo } from "@/assets/logo";
 
 export const metadata: Metadata = {
     title: "Privacy - Concertpal.io",
@@ -11,7 +12,7 @@ const PrivacyPolicy = () => {
         <div className="flex flex-col items-center justify-center bg-white p-8 font-sans text-black" suppressHydrationWarning>
             <div className="max-w-[1100px]">
                 <div className="mb-12 flex w-full items-center justify-center">
-                    <PageLogo width="260px" height="100px" />
+                    <FullLogo width="180px" height="50px" />
                 </div>
                 <h1 className="mb-4 text-3xl font-bold">Privacy Notice</h1>
                 <p className="mb-4 text-sm">Last updated August 8, 2024</p>
