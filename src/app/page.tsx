@@ -16,12 +16,12 @@ const Page = () => {
             <div className="flex flex-col items-center gap-8 md:gap-10 p-2 md:p-0">
                 <h1 className="text-4xl md:text-5xl relative font-bold tracking-normal text-primary-foreground text-center">
                     <Vector1 className="hidden md:inline-block absolute left-[-1.3em] top-[5px]" />
-                    YOUR TICKET TO CONCERT SAVINGS!
+                    Your Ticket To Concert Savings.
                     <Vector2 className="hidden md:inline-block absolute  top-[-1em] right-[-1em]" />
                 </h1>
                 <div className="w-full text-md md:text-lg text-gray-900 md:text-center text-left font-semibold text-primary-foreground md:flex md:justify-center">
                     <p className="md:max-w-[67%] w-full text-center">
-                        Find the cheapest tickets to see your favorite artists - with just one click! Compare, track, and get notified about the lowest prices with <span className="text-primary">ConcertPal</span> today.
+                        Find the cheapest ticket to any show with a single click. <span className="text-primary">ConcertPal </span>is your automatic shopping assistant for concerts. Install for free to unlock discounts and save time while you shop.
                     </p>
                 </div>
                 <div className="relative">
@@ -30,13 +30,13 @@ const Page = () => {
                             <Chrome />
                             Add to Chrome - It&apos;s Free!
                         </Link>
-                        <div className="flex gap-6 items-center justify-center w-full mt-2">
-                            <div className="flex items-center gap-1">
+                        <div className="flex gap-2 items-center justify-center w-full mt-2">
+                            <div className="flex items-center">
                                 {[1, 2, 3, 4, 5].map((index) => (
                                     <Star key={index} />
                                 ))}
                             </div>
-                            <h1 className="text-sm">
+                            <h1 className="text-sm mt-[1px]">
                                 <b>5/5</b> on Chrome Web Store
                             </h1>
                         </div>
@@ -77,7 +77,7 @@ const Page = () => {
             <TestimonialsSlider />
 
             <div
-                className="h-full w-[1100px]  mt-8 rounded-lg hidden md:inline-block"
+                className="h-full w-[1100px]  mt-8 rounded-lg hidden lg:inline-block"
                 style={{
                     backgroundImage: "url(/image.png)",
                     backgroundSize: "cover",
