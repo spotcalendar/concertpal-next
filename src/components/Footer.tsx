@@ -43,19 +43,9 @@ export default function Component() {
 
         try {
             setIsLoading(true);
-            setErrorMessage(""); // Clear any existing error message
-            const res = await axios.post("https://extension.concertpal.io/help", {
-                embeds: [
-                    {
-                        title: "New Help Request",
-                        description: `Email: ${email}`,
-                        color: 3066993, // Green color
-                        timestamp: new Date().toISOString(),
-                        footer: {
-                            text: "ConcertPal Support",
-                        },
-                    },
-                ],
+            setErrorMessage("");
+            const res = await axios.post("https://extension.concertpal.io/assist/help", {
+                email,
             });
             if (res.status === 200) {
                 setIsSent(true);
