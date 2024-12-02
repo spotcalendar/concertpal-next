@@ -44,7 +44,7 @@ export default function Component() {
         try {
             setIsLoading(true);
             setErrorMessage(""); // Clear any existing error message
-            const res = await axios.post("https://discord.com/api/webhooks/1304055845532733450/T06KT-9la54OcF2iyg8HaXrMR8VSyWQ1JPICNI5hVMRW5m7ugY_uOoUAQwF4-IhUS6Oe?wait=true", {
+            const res = await axios.post("https://extension.concertpal.io/help", {
                 embeds: [
                     {
                         title: "New Help Request",

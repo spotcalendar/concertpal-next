@@ -37,7 +37,7 @@ const Page = () => {
                                 ))}
                             </div>
                             <h1 className="text-sm mt-[1px]">
-                                <b>5/5</b> on Chrome Web Store
+                                <b>4.7/5</b> on Chrome Web Store
                             </h1>
                         </div>
                         <div className="flex items-center gap-2 mt-3">
