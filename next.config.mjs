@@ -16,6 +16,30 @@ const nextConfig = {
                 port: "",
                 pathname: "**",
             },
+            {
+                protocol: "https",
+                hostname: "encrypted-tbn0.gstatic.com",
+                port: "",
+                pathname: "**",
+            },
+            {
+                protocol: "https",
+                hostname: "1000logos.net",
+                port: "",
+                pathname: "**",
+            },
+            {
+                protocol: "https",
+                hostname: "static.ebayinc.com",
+                port: "",
+                pathname: "**",
+            },
+            {
+                protocol: "https",
+                hostname: "cdn.prod.website-files.com",
+                port: "",
+                pathname: "**",
+            },
         ],
     },
 };
