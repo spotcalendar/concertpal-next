@@ -7,10 +7,10 @@ export const Card = ({ className }: { className?: string }) => {
                 <g clip-path="url(#clip0_1_605)">
                     <rect y="0.645508" width="1320" height="248" rx="20" fill="url(#paint0_linear_1_605)" />
                     <g opacity="0.1">
-                        <circle cx="530.5" cy="530.5" r="528" transform="matrix(-1 0 0 1 1821 -701.353)" stroke="white" stroke-width="5" />
-                        <path d="M845.594 -170.853C845.594 74.8574 1045.01 274.05 1291 274.05C1537 274.05 1736.41 74.8574 1736.41 -170.853C1736.41 -416.564 1537 -615.757 1291 -615.757C1045.01 -615.757 845.594 -416.564 845.594 -170.853Z" stroke="white" stroke-width="5" />
-                        <path d="M917.549 -170.852C917.549 35.6879 1084.76 203.116 1291.01 203.116C1497.26 203.116 1664.47 35.6879 1664.47 -170.852C1664.47 -377.392 1497.26 -544.819 1291.01 -544.819C1084.76 -544.819 917.549 -377.392 917.549 -170.852Z" stroke="white" stroke-width="5" />
-                        <circle cx="319.719" cy="319.719" r="317.219" transform="matrix(-1 0 0 1 1610.22 -489.56)" stroke="white" stroke-width="5" />
+                        <circle cx="530.5" cy="530.5" r="528" transform="matrix(-1 0 0 1 1821 -701.353)" stroke="white" strokeWidth="5" />
+                        <path d="M845.594 -170.853C845.594 74.8574 1045.01 274.05 1291 274.05C1537 274.05 1736.41 74.8574 1736.41 -170.853C1736.41 -416.564 1537 -615.757 1291 -615.757C1045.01 -615.757 845.594 -416.564 845.594 -170.853Z" stroke="white" strokeWidth="5" />
+                        <path d="M917.549 -170.852C917.549 35.6879 1084.76 203.116 1291.01 203.116C1497.26 203.116 1664.47 35.6879 1664.47 -170.852C1664.47 -377.392 1497.26 -544.819 1291.01 -544.819C1084.76 -544.819 917.549 -377.392 917.549 -170.852Z" stroke="white" strokeWidth="5" />
+                        <circle cx="319.719" cy="319.719" r="317.219" transform="matrix(-1 0 0 1 1610.22 -489.56)" stroke="white" strokeWidth="5" />
                     </g>
                 </g>
                 <path
@@ -29,8 +29,8 @@ export const Card = ({ className }: { className?: string }) => {
                     />
                 </g>
                 <defs>
-                    <filter id="filter0_d_1_605" x="1072" y="84.6455" width="208" height="104" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <filter id="filter0_d_1_605" x="1072" y="84.6455" width="208" height="104" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                         <feOffset dy="12" />
                         <feGaussianBlur stdDeviation="12" />

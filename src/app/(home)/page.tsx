@@ -63,7 +63,7 @@ const Page = () => {
                                 <motion.div key={provider.name} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="group relative cursor-pointer">
                                     <Link href={provider.link}>
                                         <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                        <div className="relative w-[120px] h-[120px] md:w-[200px] md:h-[200px] bg-card rounded-full p-4 transition-transform duration-300 hover:scale-110">
+                                        <div className="relative w-[120px] h-[120px] md:w-[200px] md:h-[200px] floodOpacitycard rounded-full p-4 transition-transform duration-300 hover:scale-110">
                                             <Image src={provider.image} alt={`${provider.name} logo`} width={300} height={300} className="w-full h-full object-contain rounded-full" />
                                         </div>
                                     </Link>
