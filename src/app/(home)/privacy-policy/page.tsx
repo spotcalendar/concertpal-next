@@ -34,15 +34,13 @@ const PrivacyPolicy = () => {
                 <section className="mb-6">
                     <h2 className="mb-2 text-2xl font-semibold">2. How Do We Use Your Information?</h2>
                     <p className="mb-4">We process your information for purposes based on legitimate business interests, the fulfillment of our contract with you, compliance with our legal obligations, and/or your consent.</p>
-                    <p className="mb-4">
-                        We use personal information collected via our Services for the purposes described below:
-                        <ul className="ml-4 list-inside list-disc">
-                            <li>To enforce our terms, conditions, and policies for business purposes, legal reasons, and contractual requirements.</li>
-                            <li>To respond to legal requests and prevent harm.</li>
-                            <li>To deliver services to the user.</li>
-                            <li>For other business purposes like data analysis, identifying usage trends, and improving our services.</li>
-                        </ul>
-                    </p>
+                    <p className="mb-4">We use personal information collected via our Services for the purposes described below:</p>
+                    <ul className="ml-4 list-inside list-disc">
+                        <li>To enforce our terms, conditions, and policies for business purposes, legal reasons, and contractual requirements.</li>
+                        <li>To respond to legal requests and prevent harm.</li>
+                        <li>To deliver services to the user.</li>
+                        <li>For other business purposes like data analysis, identifying usage trends, and improving our services.</li>
+                    </ul>
                 </section>
 
                 <section className="mb-6">
