@@ -27,16 +27,15 @@ export default function Carousel() {
                             <p className="font-semibold md:text-left sm:text-center sm:text-base">COMPARE TICKET PRICES</p>
                             <p className="text-emerald-700 font-semibold pb-2 sm:pb-3 md:text-left sm:text-center sm:text-base">Find the cheapest ticket across all ticketing sites for any seat or event.</p>
                             <div className="">
-                                <iframe className="md:w-full  md:aspect-[16/9] flex justify-center items-center mx-auto" src="https://www.youtube.com/embed/bhwbvFj46bM?si=nqlYzbMVieQDWXt8" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                                <iframe className="md:w-full md:aspect-[16/9] flex justify-center items-center mx-auto" src="https://www.youtube.com/embed/4oSLhUGGMwA?si=VQ3Ip5nMcnHpWiBJ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                             </div>
                         </div>
                         {/* Item 2 */}
                         <div className={`duration-700 ease-in-out ${activeSlide === 1 ? "block" : "hidden"}  `}>
                             <p className="font-semibold md:text-left sm:text-center sm:text-base"> TRACK TICKET PRICES</p>
                             <p className="text-emerald-700 font-semibold pb-2 sm:pb-3 md:text-left sm:text-center    sm:text-base">Get notified if prices drop and see how they change over time.</p>
-                            <div className="">
-                                <iframe className="md:w-full md:aspect-[16/9] flex justify-center items-center mx-auto" src="https://www.youtube.com/embed/4oSLhUGGMwA?si=VQ3Ip5nMcnHpWiBJ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                            </div>
+                            <div className=""></div>
+                            <iframe className="md:w-full  md:aspect-[16/9] flex justify-center items-center mx-auto" src="https://www.youtube.com/embed/bhwbvFj46bM?si=nqlYzbMVieQDWXt8" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                         </div>
 
                         {/* Navigation Arrows */}
