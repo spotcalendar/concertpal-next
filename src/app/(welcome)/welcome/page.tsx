@@ -2,7 +2,6 @@ import { ExtensionPrompt } from "@/components/ExtensionPrompt";
 import { FullLogo } from "@/assets/logo";
 import Link from "next/link";
 import Carousel from "@/components/Carousel";
-import Chrome from "@/assets/chrome";
 
 export default function Page() {
     return (
