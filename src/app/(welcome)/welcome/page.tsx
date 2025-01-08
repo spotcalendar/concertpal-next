@@ -13,7 +13,7 @@ export default function Page() {
                 </Link>
             </header>
             <div className="flex-1 bg-[#F4F5FF]">
-                <main className="h-full pt-12">
+                <main className="h-full md:pt-12 pt-0">
                     <Carousel />
                 </main>
             </div>
