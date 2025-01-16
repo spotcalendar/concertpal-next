@@ -44,7 +44,9 @@ export default function Component() {
         try {
             setIsLoading(true);
             setErrorMessage("");
-            const res = await axios.post("https://extension.concertpal.io/assist/help", {
+             const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+             const endpoint = `${BASE_URL}/assist/help`;
+            const res = await axios.post(endpoint, {
                 email,
             });
             if (res.status === 200) {
