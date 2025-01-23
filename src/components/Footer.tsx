@@ -21,7 +21,7 @@ export default function Component() {
 
     const legalLinks = [
         { name: "Privacy Policy", link: "/privacy-policy" },
-        { name: "Terms & Condition", link: "/terms-and-conditions" },
+        { name: "Terms & Conditions", link: "/terms-and-conditions" },
     ];
 
     const socials = [
