@@ -98,7 +98,7 @@ export default function Carousel() {
                                 <p className="text-emerald-700 font-bold pb-2 sm:pb-3 md:text-left sm:text-center sm:text-base">Find the cheapest ticket across all ticketing sites for any seat or event.</p>
                                 <div className="relative">
                                     <div className="absolute inset-0 z-10" />
-                                    <iframe className="w-full h-[400px] rounded-lg pointer-events-none" src="https://www.youtube-nocookie.com/embed/ikL5FPQVqmg?autoplay=1&controls=0&loop=1&playlist=ikL5FPQVqmg&mute=1" allowFullScreen></iframe>{" "}
+                                    <iframe className="w-full h-[400px] rounded-lg pointer-events-none" src="https://www.youtube-nocookie.com/embed/ikL5FPQVqmg?autoplay=1&controls=0&loop=1&playlist=ikL5FPQVqmg&mute=1&cc_load_policy=1" allowFullScreen></iframe>{" "}
                                 </div>
                             </div>
                             {/* Item 2 */}
@@ -128,7 +128,7 @@ export default function Carousel() {
                             See a real comparison <ExternalLink size={16} />
                         </button>
                     </Link>
-                    <Link href="https://www.youtube.com/watch?v=pdChLB0GKfw" className="w-full sm:w-auto">
+                    <Link href="https://www.youtube.com/watch?v=ikL5FPQVqmg" className="w-full sm:w-auto">
                         <button className="px-3 py-2 rounded-xl bg-white text-emerald-700 cursor-pointer border border-emerald-700 w-full sm:w-auto text-base">Step-by-Step Video Tutorial</button>
                     </Link>
                 </div>
@@ -143,87 +143,3 @@ export default function Carousel() {
         </div>
     );
 }
-
-
-
-
-// "use client";
-
-// import { useState, useRef, useEffect } from "react";
-// import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
-// import Link from "next/link";
-
-// export default function Carousel() {
-//     const [activeSlide, setActiveSlide] = useState(0);
-//     const totalSlides = 2;
-//     const carouselRef = useRef<HTMLDivElement>(null);
-//     const [startX, setStartX] = useState(0);
-//     const [isDragging, setIsDragging] = useState(false);
-//     const [dragDistance, setDragDistance] = useState(0);
-
-//     const handleNext = () => setActiveSlide((prev) => (prev + 1) % totalSlides);
-//     const handlePrev = () => setActiveSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-
-//     const handleDragStart = (clientX: number) => {
-//         setStartX(clientX);
-//         setIsDragging(true);
-//         setDragDistance(0);
-//     };
-
-//     const handleDragMove = (clientX: number) => {
-//         if (!isDragging) return;
-//         setDragDistance(startX - clientX);
-//     };
-
-//     const handleDragEnd = () => {
-//         if (!isDragging) return;
-//         setIsDragging(false);
-//         if (Math.abs(dragDistance) > 50) {
-//             dragDistance > 0 ? handleNext() : handlePrev();
-//         }
-//         setDragDistance(0);
-//     };
-
-//     useEffect(() => {
-//         const handleMouseUp = () => handleDragEnd();
-//         document.addEventListener("mouseup", handleMouseUp);
-//         document.addEventListener("mouseleave", handleMouseUp);
-//         return () => {
-//             document.removeEventListener("mouseup", handleMouseUp);
-//             document.removeEventListener("mouseleave", handleMouseUp);
-//         };
-//     }, [isDragging, dragDistance]);
-
-//     return (
-//         <div className="flex flex-col items-center gap-4 w-full px-4 sm:px-0">
-//             <div className="w-full max-w-4xl mx-auto pt-4 pb-6 rounded-lg md:bg-white md:border md:border-slate-400">
-//                 <div className="relative md:bg-white sm:px-20 pb-4 pt-3">
-//                     <div ref={carouselRef} className="relative overflow-hidden rounded-lg cursor-grab active:cursor-grabbing" onMouseDown={(e) => handleDragStart(e.clientX)} onMouseMove={(e) => handleDragMove(e.clientX)} onMouseUp={handleDragEnd} onMouseLeave={handleDragEnd}>
-//                         <div className="flex transition-transform ease-out duration-500" style={{ transform: `translateX(-${activeSlide * 100}%)` }}>
-//                             {["4oSLhUGGMwA", "bhwbvFj46bM"].map((videoId, index) => (
-//                                 <div key={index} className="flex-shrink-0 w-full">
-//                                     <p className="font-semibold text-center">{index === 0 ? "COMPARE TICKET PRICES" : "TRACK TICKET PRICES"}</p>
-//                                     <p className="text-emerald-700 font-bold pb-3 text-center">{index === 0 ? "Find the cheapest ticket across all ticketing sites." : "Get notified if prices drop and see changes over time."}</p>
-//                                     <iframe className="w-full h-[400px] rounded-lg pointer-events-none" src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&controls=0&loop=1&playlist=${videoId}&mute=1`} allowFullScreen></iframe>
-//                                 </div>
-//                             ))}
-//                         </div>
-//                     </div>
-//                     <div className="xl:invisible">
-//                         <button className="absolute left-4 top-1/2 -translate-y-1/2 bg-primary text-white rounded-full p-2 shadow-lg hover:bg-primary/90 invisible md:visible" onClick={handlePrev}>
-//                             <ChevronLeft className="w-6 h-6" />
-//                         </button>
-//                         <button className="absolute right-4 top-1/2 -translate-y-1/2 bg-primary text-white rounded-full p-2 shadow-lg hover:bg-primary/90 invisible md:visible" onClick={handleNext}>
-//                             <ChevronRight className="w-6 h-6" />
-//                         </button>
-//                     </div>
-//                 </div>
-//                 <div className="flex justify-center space-x-2 mt-4">
-//                     {[...Array(totalSlides)].map((_, index) => (
-//                         <button key={index} onClick={() => setActiveSlide(index)} className={`w-3 h-3 rounded-full ${activeSlide === index ? "bg-primary" : "bg-primary/30"}`}></button>
-//                     ))}
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
