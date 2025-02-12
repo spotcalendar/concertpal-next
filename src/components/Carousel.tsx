@@ -75,7 +75,7 @@ export default function Carousel() {
             document.removeEventListener("mouseup", handleMouseUp);
             document.removeEventListener("mouseleave", handleMouseUp);
         };
-    }, [isDragging, dragDistance]);
+    }, [isDragging, dragDistance, handleDragEnd]);
 
     const getSlideStyle = (index: number) => {
         const offset = (index - activeSlide) * 100 + (isDragging ? (-dragDistance / carouselRef.current!.offsetWidth) * 100 : 0);
