@@ -10,7 +10,9 @@ export const GoogleSignIn = () => {
         await signIn("google");
       }}
     >
-      <button type="submit">Signin with Google</button>
+      <button className="border border-gray-500 rounded-md p-2" type="submit">
+        Signin with Google
+      </button>
     </form>
   );
 };
@@ -21,7 +23,7 @@ export const ConnectSpotifyAcc = () => {
       action={async () => {
         "use server";
         let state = randomBytes(16).toString("hex");
-        let scope = "user-read-private user-read-email";
+        let scope = "user-read-private user-read-email user-library-read user-follow-read";
 
         const params = new URLSearchParams({
           response_type: "code",
@@ -34,7 +36,9 @@ export const ConnectSpotifyAcc = () => {
         redirect(`https://accounts.spotify.com/authorize?${params.toString()}`);
       }}
     >
-      <button className="border border-gray-500 rounded-md p-2" type="submit">Connect To Spotify</button>
+      <button className="border border-gray-500 rounded-md p-2" type="submit">
+        Connect To Spotify
+      </button>
     </form>
   );
 };

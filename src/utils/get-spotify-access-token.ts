@@ -22,7 +22,6 @@ const getSpotifyAccessToken = async () => {
   const isExpired = account.expires_at && Date.now() / 1000 >= account.expires_at;
 
   if (isExpired) {
-    console.log("Access Token Expired, fetching again...");
     const response = await fetch(`http://localhost:3000/api/refresh?email=${user.email}`);
     const data = await response.json();
 
