@@ -1,7 +1,7 @@
-import { getEventInfo } from "@/actions/seatgeek";
 import { getFollowedArtists, getSavedTracks } from "@/actions/spotify";
 import { prisma } from "@/lib/db";
-import { SpotifyArtistData } from "@/types";
+import { FinalArtistData, SpotifyArtistData } from "@/types";
+import { addArtistsForUser } from "@/utils/add-artists-for-user";
 import { fetchAndSaveEventsInfo } from "@/utils/fetch-and-save-event-info";
 import { fetchArtistImages } from "@/utils/fetch-artist-images";
 import { fetchArtistInfo } from "@/utils/fetch-artist-info";
@@ -17,65 +17,11 @@ type GetArtistData = {
   token: string;
 };
 
-type FinalArtistData = {
-  userIDs: string[];
-  artistId: string;
-  name: string;
-  image: string;
-};
-
 const agenda = new Agenda({
   db: {
     address: process.env.DATABASE_URL as string,
   },
 });
-
-const addArtistsForUser = async (userId: string, artistData: FinalArtistData[]) => {
-  try {
-    await prisma.artist.createMany({
-      data: artistData.map((artist) => ({
-        artistId: artist.artistId,
-        name: artist.name,
-        image: artist.image,
-      })),
-    });
-
-    const insertedArtists = await prisma.artist.findMany({
-      where: {
-        artistId: {
-          in: artistData.map((artist) => artist.artistId),
-        },
-      },
-      select: {
-        id: true,
-        artistId: true,
-      },
-    });
-
-    const artistIdMap = new Map(insertedArtists.map((a) => [a.artistId, a.id]));
-
-    const userArtistLinks = artistData
-      .map((artist) => {
-        const mongoArtistId = artistIdMap.get(artist.artistId);
-        if (!mongoArtistId) return null;
-        return {
-          userId,
-          artistId: mongoArtistId,
-        };
-      })
-      .filter(Boolean);
-
-    const finaData = userArtistLinks.filter((data) => data !== null);
-
-    if (finaData.length > 0) {
-      await prisma.userToArtist.createMany({
-        data: finaData,
-      });
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 agenda.define("get-artist-data", async (job: Job<GetArtistData>) => {
   console.log("Started fetching artist info from user's spotify");
@@ -159,7 +105,5 @@ agenda.define("get-artist-events", async (job: Job) => {
 (async function () {
   await agenda.start();
   console.log("Agenda worker started, listening for jobs...");
-  await agenda.now("get-artist-events", {});
+  // await agenda.now("get-artist-events", {});
 })();
-
-

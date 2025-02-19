@@ -22,6 +22,13 @@ export type EventData = {
   dateTime: Date;
 };
 
+export type FinalArtistData = {
+  userIDs: string[];
+  artistId: string;
+  name: string;
+  image: string;
+};
+
 declare module "next-auth" {
   interface User {}
 
