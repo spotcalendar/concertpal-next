@@ -11,28 +11,24 @@ const OnboardingSidebar = () => {
         <h3 className="text-[#06402B] text-2xl font-semibold">ConcertPal</h3>
       </span>
 
-      <div className="relative flex flex-col items-start gap-8">
-        <GoogleBorderLogo />
-        <Line top="44px" left="21px" />
-        <GoogleBorderLogo />
-        <Line top="123px" left="21px" />
-        <UserCircle />
+      <div className="flex gap-5">
 
-        {/* <span className="flex items-center gap-5">
+        <div className="relative flex flex-col items-start gap-8">
           <GoogleBorderLogo />
-          <p className="font-semibold text-lg">Login With Google</p>
-        </span>
-
-        <span className="flex items-center gap-5">
+          <Line top="44px" left="21px" />
           <GoogleBorderLogo />
-          <p className="font-semibold text-lg">Connect your Spotify</p>
-        </span>
-
-        <span className="flex items-center gap-5">
+          <Line top="123px" left="21px" />
           <UserCircle />
-          <p className="font-semibold text-lg">Add your details</p>
-        </span> */}
+        </div>
+
+        <div className="flex flex-col gap-12 justify-center items-start">
+          <p className="font-semibold text-lg">Login With Google</p>
+          <p className="font-semibold text-lg">Connect your Spotify</p>
+          <p className="font-semibold text-lg">Add your Details</p>
+        </div>
+
       </div>
+      
     </aside>
   );
 };
