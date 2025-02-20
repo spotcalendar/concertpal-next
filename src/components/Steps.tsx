@@ -38,7 +38,7 @@ const Steps = () => {
                         <TabsContent value="Track" className="flex flex-col text-gray-300">
                             <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col items-start justify-start gap-4 text-gray-300">
                                 <div className=" w-full  mt-7  md:mt-0 flex text-center justify-center items-center flex-col">
-                                    <p className="text-gray-700  font-medium text-center max-w-[900px] mt-0 leading-7">Toggle the switch, and ConcertPal will track your seat&apos;s price, monitor fluctuations across ticketing sites, and display historical price trends, ensuring you get the best deal available.</p>
+                                    <p className="text-gray-700 py-4 font-medium text-center max-w-[900px] leading-7">Toggle the switch, and ConcertPal will track your seat&apos;s price, monitor fluctuations across ticketing sites, and display historical price trends, ensuring you get the best deal available.</p>{" "}
                                     <div className="mt-5 bg-white shadow-xl p-4 rounded-lg ">
                                         <Image src={"https://dt8dif07ddviy.cloudfront.net/track.png"} width={1000} alt="step 1" height={500} className="rounded-2xl" />
                                     </div>
