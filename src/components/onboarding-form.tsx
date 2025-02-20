@@ -5,6 +5,10 @@ import GoogleLogo from "@/assets/google-logo";
 import SpotifyLogo from "@/assets/spotify-logo";
 import LogoCircle from "@/components/ui/logo-circle";
 import { Check } from "lucide-react";
+import GoogleLoginButton from "./google-login-button";
+import SpotifyConnectButton from "./spotify-connect-button";
+import MapMarker from "@/assets/map-marker";
+import AddressForm from "./address-form";
 
 type OnboardingFormProps = {
   variant: "google" | "spotify" | "user-details";
@@ -18,14 +22,20 @@ const OnboardingForm = ({ variant, title, description }: OnboardingFormProps) =>
       <div className="flex justify-end">
         {variant == "google" && <GoogleLoader />}
         {variant == "spotify" && <SpotifyLoader />}
+        {variant == "user-details" && <AddressLoader />}
       </div>
 
       <div className="flex-grow flex flex-col justify-center items-center gap-10">
         <div className="flex justify-center items-center gap-5">
-          <LogoCircle width="94" height="94" />
-          <AddIcon />
+          {variant != "user-details" && (
+            <>
+              <LogoCircle width="94" height="94" />
+              <AddIcon />
+            </>
+          )}
           {variant == "google" && <GoogleLogo />}
           {variant == "spotify" && <SpotifyLogo />}
+          {variant == "user-details" && <MapMarker />}
         </div>
 
         <div className="flex flex-col justify-center gap-2 text-center">
@@ -36,16 +46,18 @@ const OnboardingForm = ({ variant, title, description }: OnboardingFormProps) =>
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-3">
-          <p className="text-[#1A9882] text-lg font-semibold">What we'll do?</p>
-          {variant == "google" && <GooglePerms />}
-          {variant == "spotify" && <SpotifyPerms />}
-        </div>
+        {variant != "user-details" && (
+          <div className="flex flex-col items-center gap-3">
+            <p className="text-[#1A9882] text-lg font-semibold">What we'll do?</p>
+            {variant == "google" && <GooglePerms />}
+            {variant == "spotify" && <SpotifyPerms />}
+          </div>
+        )}
 
-        <button className="w-[330px] border border-[#D2D2D5] rounded-md flex justify-center items-center gap-2 p-3">
-          <GoogleLogo height="18" width="18" />
-          <p className="font-medium">Login with Google</p>
-        </button>
+        {variant == "user-details" && <AddressForm />}
+
+        {variant == "google" && <GoogleLoginButton />}
+        {variant == "spotify" && <SpotifyConnectButton />}
       </div>
     </section>
   );
@@ -159,5 +171,29 @@ const SpotifyPerms = () => {
         </p>
       </span>
     </div>
+  );
+};
+
+const AddressLoader = () => {
+  return (
+    <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle
+        cx="32.9077"
+        cy="32.949"
+        r="21.8505"
+        transform="rotate(114.516 32.9077 32.949)"
+        stroke="#E9E9EA"
+        stroke-width="5"
+      />
+      <mask id="path-2-inside-1_2047_1536" fill="white">
+        <path d="M12.1107 28.7227C10.4175 28.3786 8.74453 29.4738 8.62021 31.1971C8.28191 35.8868 9.3078 40.5989 11.6082 44.7506C14.4165 49.8192 18.9404 53.7201 24.3668 55.7526C29.7933 57.785 35.7666 57.8157 41.2137 55.8391C46.6608 53.8626 51.2244 50.0084 54.0848 44.969C56.9451 39.9295 57.9146 34.0353 56.819 28.3452C55.7235 22.6551 52.6347 17.5422 48.1077 13.9251C43.5807 10.3081 37.9121 8.42391 32.1206 8.61121C27.3767 8.76463 22.805 10.2996 18.9519 12.9944C17.5361 13.9846 17.4534 15.9825 18.6169 17.2599C19.7804 18.5372 21.7482 18.6022 23.2067 17.6759C25.9234 15.9504 29.0686 14.9702 32.3228 14.8649C36.6262 14.7258 40.8382 16.1258 44.202 18.8134C47.5658 21.5011 49.8609 25.3002 50.6749 29.5282C51.4889 33.7562 50.7686 38.1359 48.6432 41.8804C46.5179 45.6249 43.1268 48.4888 39.0794 49.9574C35.032 51.4261 30.5935 51.4033 26.5614 49.8931C22.5293 48.3829 19.1679 45.4843 17.0812 41.7181C15.5032 38.8701 14.7323 35.6672 14.821 32.4501C14.8686 30.7229 13.804 29.0668 12.1107 28.7227Z" />
+      </mask>
+      <path
+        d="M12.1107 28.7227C10.4175 28.3786 8.74453 29.4738 8.62021 31.1971C8.28191 35.8868 9.3078 40.5989 11.6082 44.7506C14.4165 49.8192 18.9404 53.7201 24.3668 55.7526C29.7933 57.785 35.7666 57.8157 41.2137 55.8391C46.6608 53.8626 51.2244 50.0084 54.0848 44.969C56.9451 39.9295 57.9146 34.0353 56.819 28.3452C55.7235 22.6551 52.6347 17.5422 48.1077 13.9251C43.5807 10.3081 37.9121 8.42391 32.1206 8.61121C27.3767 8.76463 22.805 10.2996 18.9519 12.9944C17.5361 13.9846 17.4534 15.9825 18.6169 17.2599C19.7804 18.5372 21.7482 18.6022 23.2067 17.6759C25.9234 15.9504 29.0686 14.9702 32.3228 14.8649C36.6262 14.7258 40.8382 16.1258 44.202 18.8134C47.5658 21.5011 49.8609 25.3002 50.6749 29.5282C51.4889 33.7562 50.7686 38.1359 48.6432 41.8804C46.5179 45.6249 43.1268 48.4888 39.0794 49.9574C35.032 51.4261 30.5935 51.4033 26.5614 49.8931C22.5293 48.3829 19.1679 45.4843 17.0812 41.7181C15.5032 38.8701 14.7323 35.6672 14.821 32.4501C14.8686 30.7229 13.804 29.0668 12.1107 28.7227Z"
+        stroke="#22CAAD"
+        stroke-width="10"
+        mask="url(#path-2-inside-1_2047_1536)"
+      />
+    </svg>
   );
 };
