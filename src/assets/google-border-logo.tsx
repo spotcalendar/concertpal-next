@@ -18,8 +18,8 @@ const GoogleBorderLogo = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="23.4055" cy="22.6899" r="21.5" fill="white" stroke="#E9E9EA" stroke-width="2" />
-      <g clip-path="url(#clip0_2047_1521)">
+      <circle cx="23.4055" cy="22.6899" r="21.5" fill="white" stroke="#E9E9EA" strokeWidth="2" />
+      <g clipPath="url(#clip0_2047_1521)">
         <path
           d="M39.3886 22.9987C39.3886 21.6467 39.2798 20.6601 39.0442 19.637H23.7242V25.7392H32.7167C32.5355 27.2557 31.5564 29.5395 29.3808 31.0741L29.3503 31.2784L34.1942 35.0599L34.5298 35.0937C37.6118 32.2252 39.3886 28.0047 39.3886 22.9987Z"
           fill="#4285F4"

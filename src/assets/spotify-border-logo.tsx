@@ -13,7 +13,7 @@ const SpotifyBorderLogo = ({ opacity = "1" }: SpotifyBorderLogoProps) => {
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
-      <circle cx="23.3374" cy="23.2954" r="21.5" fill="white" stroke="#E9E9EA" stroke-width="2" />
+      <circle cx="23.3374" cy="23.2954" r="21.5" fill="white" stroke="#E9E9EA" strokeWidth="2" />
       <rect
         x="5.72876"
         y="5.66797"

@@ -1,6 +1,6 @@
 "use server";
 
-import { auth } from "@/auth";
+import { auth, signIn, signOut } from "@/auth";
 import { prisma } from "@/lib/db";
 import { getGoogleAccessToken } from "@/utils/get-google-access-token";
 import { google } from "googleapis";
@@ -22,6 +22,40 @@ export const getUser = async () => {
     return user;
   } catch (error) {
     return null;
+  }
+};
+
+// export const googleLogin = async () => {
+//   try {
+//     const res = await signIn("google", {
+//       redirect: false,
+//     });
+
+//     console.log("Google Sign Response", res)
+
+//     return { status: "success" };
+//   } catch (error) {
+//     console.log("Google login error", error);
+//     return { status: "error" };
+//   }
+// };
+
+export const googleLogin = async () => {
+  await signIn("google", {
+    redirectTo: "/auth/spotify",
+  });
+};
+
+export const googleLogout = async () => {
+  try {
+    await signOut({
+      redirect: false,
+    });
+
+    return { status: "success" };
+  } catch (error) {
+    console.log("Google logout error", error);
+    return { status: "error" };
   }
 };
 
