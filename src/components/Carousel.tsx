@@ -75,7 +75,7 @@ export default function Carousel() {
             document.removeEventListener("mouseup", handleMouseUp);
             document.removeEventListener("mouseleave", handleMouseUp);
         };
-    }, [isDragging, dragDistance, handleDragEnd]);
+    }, [handleDragEnd]); 
 
     const getSlideStyle = (index: number) => {
         const offset = (index - activeSlide) * 100 + (isDragging ? (-dragDistance / carouselRef.current!.offsetWidth) * 100 : 0);
@@ -104,7 +104,7 @@ export default function Carousel() {
                             {/* Item 2 */}
                             <div className="flex-shrink-0 w-full" style={getSlideStyle(1)}>
                                 <p className="font-semibold md:text-left sm:text-center sm:text-base"> GRAB DEALS</p>
-                                <p className="text-emerald-700 font-bold pb-2 sm:pb-3 md:text-left sm:text-center sm:text-base">Snag the hottest deals before they're gone—exclusive discounts just for you!</p>
+                                <p className="text-emerald-700 font-bold pb-2 sm:pb-3 md:text-left sm:text-center sm:text-base">Snag the hottest deals before they&apos;re gone—exclusive discounts just for you!</p>
                                 <div className="relative">
                                     <div className="absolute inset-0 z-10" />
                                     <iframe className="w-full h-[400px] rounded-lg pointer-events-none" src="https://www.youtube-nocookie.com/embed/xnIEA8PRpQc?autoplay=1&controls=0&loop=1&playlist=xnIEA8PRpQc&mute=1&cc_load_policy=1" allowFullScreen></iframe>{" "}
