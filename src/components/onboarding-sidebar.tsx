@@ -1,9 +1,16 @@
+"use client";
+
 import GoogleBorderLogo from "@/assets/google-border-logo";
 import LogoCircle from "./ui/logo-circle";
-import SpotifyLogo from "@/assets/spotify-logo";
 import UserCircle from "@/assets/user-circle";
+import { usePathname } from "next/navigation";
+import SpotifyBorderLogo from "@/assets/spotify-border-logo";
 
 const OnboardingSidebar = () => {
+  const pathName = usePathname();
+
+  console.log(pathName);
+
   return (
     <aside className="bg-[#E9FAF7] flex flex-col gap-24 rounded-2xl w-[425px] px-5 py-14">
       <span className="flex gap-3 items-center">
@@ -12,13 +19,12 @@ const OnboardingSidebar = () => {
       </span>
 
       <div className="flex gap-5">
-
         <div className="relative flex flex-col items-start gap-8">
-          <GoogleBorderLogo />
+          <GoogleBorderLogo opacity={pathName == "/auth/login" ? "1" : "0.3"} />
           <Line top="44px" left="21px" />
-          <GoogleBorderLogo />
+          <SpotifyBorderLogo opacity={pathName == "/auth/spotify" ? "1" : "0.3"} />
           <Line top="123px" left="21px" />
-          <UserCircle />
+          <UserCircle opacity={pathName == "/auth/address" ? "1" : "0.3"} />
         </div>
 
         <div className="flex flex-col gap-12 justify-center items-start">
@@ -26,9 +32,7 @@ const OnboardingSidebar = () => {
           <p className="font-semibold text-lg">Connect your Spotify</p>
           <p className="font-semibold text-lg">Add your Details</p>
         </div>
-
       </div>
-      
     </aside>
   );
 };

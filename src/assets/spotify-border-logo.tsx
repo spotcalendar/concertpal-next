@@ -1,37 +1,37 @@
-type SpotifyLogoProps = {
-  height?: string;
-  width?: string;
+type SpotifyBorderLogoProps = {
+  opacity?: string;
 };
 
-const SpotifyLogo = ({ height = "80", width = "80" }: SpotifyLogoProps) => {
+const SpotifyBorderLogo = ({ opacity = "1" }: SpotifyBorderLogoProps) => {
   return (
     <svg
-      width={width}
-      height={height}
-      viewBox="0 0 80 80"
+      width="46"
+      height="46"
+      opacity={opacity}
+      viewBox="0 0 46 46"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
-      <circle cx="39.4477" cy="39.8574" r="37.5246" fill="black" />
+      <circle cx="23.3374" cy="23.2954" r="21.5" fill="white" stroke="#E9E9EA" stroke-width="2" />
       <rect
-        x="0.85083"
-        y="0.252808"
-        width="79.1248"
-        height="79.2091"
-        fill="url(#pattern0_2025_3794)"
+        x="5.72876"
+        y="5.66797"
+        width="35.2173"
+        height="35.2548"
+        fill="url(#pattern0_2025_975)"
       />
       <defs>
         <pattern
-          id="pattern0_2025_3794"
+          id="pattern0_2025_975"
           patternContentUnits="objectBoundingBox"
           width="1"
           height="1"
         >
-          <use xlinkHref="#image0_2025_3794" transform="scale(0.00106496 0.00106383)" />
+          <use xlinkHref="#image0_2025_975" transform="scale(0.00106496 0.00106383)" />
         </pattern>
         <image
-          id="image0_2025_3794"
+          id="image0_2025_975"
           width="939"
           height="940"
           preserveAspectRatio="none"
@@ -42,4 +42,4 @@ const SpotifyLogo = ({ height = "80", width = "80" }: SpotifyLogoProps) => {
   );
 };
 
-export default SpotifyLogo;
+export default SpotifyBorderLogo;

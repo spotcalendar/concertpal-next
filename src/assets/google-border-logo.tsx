@@ -1,13 +1,19 @@
 type GoogleBorderLogoProps = {
   height?: string;
   width?: string;
+  opacity?: string;
 };
 
-const GoogleBorderLogo = ({ height = "46", width = "46" }: GoogleBorderLogoProps) => {
+const GoogleBorderLogo = ({
+  height = "46",
+  width = "46",
+  opacity = "1",
+}: GoogleBorderLogoProps) => {
   return (
     <svg
       width={width}
       height={height}
+      opacity={opacity}
       viewBox="0 0 46 46"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
