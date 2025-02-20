@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Carousel() {
     const [activeSlide, setActiveSlide] = useState(0);
-    const totalSlides = 2;
+    const totalSlides = 3;
     const carouselRef = useRef<HTMLDivElement>(null);
     const [startX, setStartX] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
@@ -98,16 +98,24 @@ export default function Carousel() {
                                 <p className="text-emerald-700 font-bold pb-2 sm:pb-3 md:text-left sm:text-center sm:text-base">Find the cheapest ticket across all ticketing sites for any seat or event.</p>
                                 <div className="relative">
                                     <div className="absolute inset-0 z-10" />
-                                    <iframe className="w-full h-[400px] rounded-lg pointer-events-none" src="https://www.youtube-nocookie.com/embed/ikL5FPQVqmg?autoplay=1&controls=0&loop=1&playlist=ikL5FPQVqmg&mute=1&cc_load_policy=1" allowFullScreen></iframe>{" "}
+                                    <iframe className="w-full h-[400px] rounded-lg pointer-events-none" src="https://www.youtube-nocookie.com/embed/uCrkBjTIXFk?autoplay=1&controls=0&loop=1&playlist=uCrkBjTIXFk&mute=1&cc_load_policy=1" allowFullScreen></iframe>{" "}
                                 </div>
                             </div>
                             {/* Item 2 */}
                             <div className="flex-shrink-0 w-full" style={getSlideStyle(1)}>
+                                <p className="font-semibold md:text-left sm:text-center sm:text-base"> GRAB DEALS</p>
+                                <p className="text-emerald-700 font-bold pb-2 sm:pb-3 md:text-left sm:text-center sm:text-base">Snag the hottest deals before they're gone—exclusive discounts just for you!</p>
+                                <div className="relative">
+                                    <div className="absolute inset-0 z-10" />
+                                    <iframe className="w-full h-[400px] rounded-lg pointer-events-none" src="https://www.youtube-nocookie.com/embed/xnIEA8PRpQc?autoplay=1&controls=0&loop=1&playlist=xnIEA8PRpQc&mute=1&cc_load_policy=1" allowFullScreen></iframe>{" "}
+                                </div>
+                            </div>
+                            <div className="flex-shrink-0 w-full" style={getSlideStyle(2)}>
                                 <p className="font-semibold md:text-left sm:text-center sm:text-base"> TRACK TICKET PRICES</p>
                                 <p className="text-emerald-700 font-bold pb-2 sm:pb-3 md:text-left sm:text-center sm:text-base">Get notified if prices drop and see how they change over time.</p>
                                 <div className="relative">
                                     <div className="absolute inset-0 z-10" />
-                                    <iframe className="w-full h-[400px] rounded-lg pointer-events-none" src="https://www.youtube-nocookie.com/embed/bhwbvFj46bM?autoplay=1&controls=0&loop=1&playlist=bhwbvFj46bM&mute=1" allowFullScreen></iframe>{" "}
+                                    <iframe className="w-full h-[400px] rounded-lg pointer-events-none" src="https://www.youtube-nocookie.com/embed/iaKgShn47Gs?autoplay=1&controls=0&loop=1&playlist=iaKgShn47Gs&mute=1&cc_load_policy=1" allowFullScreen></iframe>{" "}
                                 </div>
                             </div>
                         </div>
