@@ -1,6 +1,12 @@
+import { auth } from "@/auth";
 import OnboardingForm from "@/components/onboarding-form";
+import { redirect } from "next/navigation";
 
-const ConnectSpotifyPage = () => {
+const ConnectSpotifyPage = async () => {
+  const session = await auth();
+
+  if (!session || !session.user) redirect("http://localhost:3000/auth/login");
+
   return (
     <OnboardingForm
       variant="spotify"

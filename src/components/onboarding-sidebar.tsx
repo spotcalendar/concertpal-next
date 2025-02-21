@@ -106,7 +106,7 @@ const StepCompleted = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="23.4443" cy="23" r="21.5" fill="#1A9882" stroke="#E9E9EA" stroke-width="2" />
+      <circle cx="23.4443" cy="23" r="21.5" fill="#1A9882" stroke="#E9E9EA" strokeWidth="2" />
       <path
         d="M12.7483 22.4139L19.7813 29.4469L34.1403 16.5531"
         stroke="#E9FAF7"

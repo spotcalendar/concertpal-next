@@ -1,6 +1,12 @@
+import { auth } from "@/auth";
 import OnboardingForm from "@/components/onboarding-form";
+import { redirect } from "next/navigation";
 
-const LoginPage = () => {
+const GoogleLoginPage = async () => {
+  const session = await auth();
+
+  if (session?.user) redirect("http://localhost:3000/auth/spotify");
+
   return (
     <OnboardingForm
       variant="google"
@@ -10,4 +16,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default GoogleLoginPage;

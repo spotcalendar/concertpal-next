@@ -1,5 +1,9 @@
 "use server";
 
+import { SpotifyArtistData } from "@/types";
+import { randomBytes } from "crypto";
+import { redirect } from "next/navigation";
+
 interface SpotifyActionResponse {
   status: "success" | "error";
 }
@@ -11,6 +15,21 @@ interface TracksResponse extends SpotifyActionResponse {
 interface ArtistImageResponse extends SpotifyActionResponse {
   imageUrl?: string;
 }
+
+export const spotifyLogin = async () => {
+  let state = randomBytes(16).toString("hex");
+  let scope = "user-read-private user-read-email user-library-read user-follow-read";
+
+  const params = new URLSearchParams({
+    response_type: "code",
+    client_id: process.env.SPOTIFY_CLIENT_ID!,
+    scope: scope,
+    redirect_uri: process.env.SPOTIFY_REDIRECT_URI!,
+    state: state,
+  });
+
+  redirect(`https://accounts.spotify.com/authorize?${params.toString()}`);
+};
 
 export const getTopTracks = async (token: string): Promise<TracksResponse> => {
   try {
@@ -52,7 +71,9 @@ export const getSavedTracks = async (token: string): Promise<TracksResponse> => 
 
     if (!data) throw new Error("No data fetched from spotify api");
 
-    const artistData = data.items.map((item: any) => item.track.artists).flat() as SpotifyArtistData[];
+    const artistData = data.items
+      .map((item: any) => item.track.artists)
+      .flat() as SpotifyArtistData[];
 
     return { status: "success", data: artistData };
   } catch (error) {

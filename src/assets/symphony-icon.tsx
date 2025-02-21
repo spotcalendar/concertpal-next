@@ -1,7 +1,7 @@
 const SymyphonyIcon = () => {
   return (
     <svg
-      className="absolute bottom-20 left-[-20px] rotate-[-11deg]"
+      className="absolute bottom-14 left-[-20px] rotate-[-11deg]"
       width="362"
       height="366"
       viewBox="0 0 426 366"
