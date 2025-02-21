@@ -7,6 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import SpotifyBorderLogo from "@/assets/spotify-border-logo";
 import { Session } from "next-auth";
 import { googleLogout } from "@/actions/user";
+import SymyphonyIcon from "@/assets/symphony-icon";
 
 type OnboardingSidebarProps = {
   session: Session | null;
@@ -28,7 +29,8 @@ const OnboardingSidebar = ({ session }: OnboardingSidebarProps) => {
   };
 
   return (
-    <aside className="bg-[#E9FAF7] flex flex-col justify-between rounded-2xl w-[425px] px-5 py-14">
+    <aside className="relative bg-[#E9FAF7] flex flex-col justify-between rounded-2xl w-[425px] px-5 py-14">
+      <SymyphonyIcon />
       <div className="flex flex-col gap-24">
         <span className="flex gap-3 items-center">
           <LogoCircle />
@@ -37,9 +39,17 @@ const OnboardingSidebar = ({ session }: OnboardingSidebarProps) => {
 
         <div className="flex gap-5">
           <div className="relative flex flex-col items-start gap-8">
-            <GoogleBorderLogo opacity={pathName == "/auth/login" ? "1" : "0.3"} />
+            {pathName !== "/auth/login" ? (
+              <StepCompleted />
+            ) : (
+              <GoogleBorderLogo opacity={pathName == "/auth/login" ? "1" : "0.3"} />
+            )}
             <Line top="44px" left="21px" />
-            <SpotifyBorderLogo opacity={pathName == "/auth/spotify" ? "1" : "0.3"} />
+            {pathName == "/auth/address" ? (
+              <StepCompleted />
+            ) : (
+              <SpotifyBorderLogo opacity={pathName == "/auth/spotify" ? "1" : "0.3"} />
+            )}
             <Line top="123px" left="21px" />
             <UserCircle opacity={pathName == "/auth/address" ? "1" : "0.3"} />
           </div>
@@ -55,7 +65,7 @@ const OnboardingSidebar = ({ session }: OnboardingSidebarProps) => {
       {session?.user && (
         <button
           onClick={handleClick}
-          className="w-fit bg-white rounded-md px-3 py-1 text-[#EB3D4D] font-medium"
+          className="w-fit bg-white rounded-md px-3 py-1 text-[#EB3D4D] font-medium z-10"
         >
           Log Out
         </button>
@@ -82,6 +92,27 @@ const Line = ({ top, left }: LineProps) => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path opacity="0.35" d="M1.3374 0.189941V33.7954" stroke="#A5A5AB" strokeWidth="2" />
+    </svg>
+  );
+};
+
+const StepCompleted = () => {
+  return (
+    <svg
+      width="46"
+      height="46"
+      opacity="0.3"
+      viewBox="0 0 46 46"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="23.4443" cy="23" r="21.5" fill="#1A9882" stroke="#E9E9EA" stroke-width="2" />
+      <path
+        d="M12.7483 22.4139L19.7813 29.4469L34.1403 16.5531"
+        stroke="#E9FAF7"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
     </svg>
   );
 };

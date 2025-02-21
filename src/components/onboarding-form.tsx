@@ -48,7 +48,7 @@ const OnboardingForm = ({ variant, title, description }: OnboardingFormProps) =>
 
         {variant != "user-details" && (
           <div className="flex flex-col items-center gap-3">
-            <p className="text-[#1A9882] text-lg font-semibold">What we'll do?</p>
+            <p className="text-[#1A9882] font-serif text-4xl">What we'll do?</p>
             {variant == "google" && <GooglePerms />}
             {variant == "spotify" && <SpotifyPerms />}
           </div>

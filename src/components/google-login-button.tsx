@@ -1,20 +1,9 @@
 import { googleLogin } from "@/actions/user";
 import GoogleLogo from "@/assets/google-logo";
-import { useRouter } from "next/navigation";
 
 const GoogleLoginButton = () => {
-  const router = useRouter();
-
   const handleClick = async () => {
-    const response = await googleLogin();
-
-    // if (response.status == "error") {
-    //   // add a toast message here
-    //   return;
-    // }
-
-    // router.push("/auth/spotify");
-    // router.refresh();
+    await googleLogin();
   };
 
   return (
