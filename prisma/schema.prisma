@@ -8,14 +8,18 @@ generator client {
 }
 
 model User {
-  id               String         @id @default(auto()) @map("_id") @db.ObjectId
+  id               String           @id @default(auto()) @map("_id") @db.ObjectId
   name             String?
-  email            String?        @unique
+  email            String?          @unique
   emailVerified    DateTime?
   image            String?
+  isOnboarded      Boolean          @default(false)
+  onboardingStatus OnboardingStatus @default(INCOMPLETED)
+  city             String?
+  state            String?
+  zipcode          Int?
   accounts         Account[]
   sessions         Session[]
-  isOnboarded      Boolean        @default(false)
   followingArtists UserToArtist[]
 
   createdAt DateTime @default(now())
@@ -100,4 +104,10 @@ model UserToArtist {
 
   user   User   @relation(fields: [userId], references: [id])
   artist Artist @relation(fields: [artistId], references: [id])
+}
+
+enum OnboardingStatus {
+  INCOMPLETED
+  ONGOING
+  COMPLETED
 }

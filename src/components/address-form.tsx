@@ -1,3 +1,4 @@
+import { updateUserDetails } from "@/actions/user";
 import { useToast } from "@/hooks/use-toast";
 import { FormEvent, useState } from "react";
 
@@ -24,12 +25,28 @@ const AddressForm = () => {
     return Object.values(newErrors).every((error) => error === "");
   };
 
-  const handleSubmit = (evt: FormEvent) => {
+  const handleSubmit = async (evt: FormEvent) => {
     evt.preventDefault();
     if (validate()) {
+      const response = await updateUserDetails(
+        formData.city,
+        formData.state,
+        parseInt(formData.zip),
+      );
+
+      if (response.status == "error") {
+        toast({
+          variant: "destructive",
+          title: "An Error Occurred !",
+          description: response.message,
+        });
+        return;
+      }
+
       toast({
         title: "Form Submitted Successfully !",
       });
+
       setFormData({
         city: "",
         state: "",

@@ -25,20 +25,28 @@ export const getUser = async () => {
   }
 };
 
-// export const googleLogin = async () => {
-//   try {
-//     const res = await signIn("google", {
-//       redirect: false,
-//     });
+export const getUserId = async () => {
+  try {
+    const session = await auth();
 
-//     console.log("Google Sign Response", res)
+    if (!session || !session.user || !session.user.email) return null;
 
-//     return { status: "success" };
-//   } catch (error) {
-//     console.log("Google login error", error);
-//     return { status: "error" };
-//   }
-// };
+    const data = await prisma.user.findUnique({
+      where: {
+        email: session.user.email,
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    if (!data) return null;
+
+    return data.id;
+  } catch (error) {
+    return null;
+  }
+};
 
 export const googleLogin = async () => {
   await signIn("google", {
@@ -67,6 +75,7 @@ export const updateOnboardingStatus = async (userId: string) => {
       },
       data: {
         isOnboarded: true,
+        onboardingStatus: "COMPLETED",
       },
     });
 
@@ -172,5 +181,30 @@ export const createEvent = async () => {
     // console.log(res.data);
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const updateUserDetails = async (city: string, state: string, zipcode: number) => {
+  try {
+    const userId = await getUserId();
+
+    if (!userId) return { status: "error", message: "User Data not Found" };
+
+    await prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        city,
+        state,
+        zipcode,
+        isOnboarded: true,
+        onboardingStatus: "COMPLETED",
+      },
+    });
+
+    return { status: "success", message: "Address Details Updated successfully" };
+  } catch (error) {
+    return { status: "error", message: "Internal Server Error" };
   }
 };
