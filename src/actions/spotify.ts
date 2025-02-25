@@ -16,6 +16,20 @@ interface ArtistImageResponse extends SpotifyActionResponse {
   imageUrl?: string;
 }
 
+interface MissingArtist {
+  id: string;
+  name: string;
+  genres: string[];
+}
+
+interface FinalArtistData {
+  userIDs: string[];
+  artistId: string;
+  name: string;
+  image: string;
+  genres: string[];
+}
+
 export const spotifyLogin = async () => {
   let state = randomBytes(16).toString("hex");
   let scope = "user-read-private user-read-email user-library-read user-follow-read";
@@ -33,7 +47,7 @@ export const spotifyLogin = async () => {
 
 export const getTopTracks = async (token: string): Promise<TracksResponse> => {
   try {
-    const response = await fetch("https://api.spotify.com/v1/me/top/tracks?limit=20", {
+    const response = await fetch("https://api.spotify.com/v1/me/top/tracks?limit=30", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -57,7 +71,7 @@ export const getTopTracks = async (token: string): Promise<TracksResponse> => {
 export const getSavedTracks = async (token: string): Promise<TracksResponse> => {
   try {
     const response = await fetch(
-      "https://api.spotify.com/v1/me/tracks?market=US&limit=50&offset=0",
+      "https://api.spotify.com/v1/me/tracks?market=US&limit=30&offset=0",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -77,13 +91,14 @@ export const getSavedTracks = async (token: string): Promise<TracksResponse> => 
 
     return { status: "success", data: artistData };
   } catch (error) {
+    console.log("User saved tracks info error", error);
     return { status: "error" };
   }
 };
 
 export const getFollowedArtists = async (token: string): Promise<TracksResponse> => {
   try {
-    const response = await fetch("https://api.spotify.com/v1/me/following?type=artist&limit=50", {
+    const response = await fetch("https://api.spotify.com/v1/me/following?type=artist&limit=30", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -106,12 +121,14 @@ export const getFollowedArtists = async (token: string): Promise<TracksResponse>
           name: item.name,
           type: item.type,
           uri: item.uri,
+          genres: item.genres,
         } as SpotifyArtistData;
       })
       .flat() as SpotifyArtistData[];
 
     return { status: "success", data: artistData };
   } catch (error) {
+    console.log("User followed artist error", error);
     return { status: "error" };
   }
 };
@@ -139,5 +156,45 @@ export const getArtistImage = async (
   } catch (error) {
     console.log(error);
     return { status: "error" };
+  }
+};
+
+export const getArtistImages = async (
+  token: string,
+  userId: string,
+  missingArtists: MissingArtist[],
+  finalArtistData: FinalArtistData[],
+) => {
+  try {
+    const artistIds = missingArtists.map((artist) => artist.id);
+
+    const response = await fetch(`https://api.spotify.com/v1/artists?ids=${artistIds.join(",")}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response.status !== 200) throw new Error("No response from spotify api");
+
+    const data = await response.json();
+
+    if (!data) throw new Error("No data fetched from spotify api");
+
+    await data.artists.forEach((artist: any) => {
+      if (artist.images.length > 0) {
+        const genre = missingArtists.find((item) => item.id == artist.id);
+
+        finalArtistData.push({
+          userIDs: [userId],
+          artistId: artist.id as string,
+          name: artist.name as string,
+          image: artist.images[0].url,
+          genres: genre ? genre.genres : [""],
+        });
+      }
+    });
+  } catch (error) {
+    console.log(error);
+    return { status: error };
   }
 };

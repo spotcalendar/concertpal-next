@@ -69,11 +69,12 @@ model VerificationToken {
 }
 
 model Artist {
-  id         String  @id @default(auto()) @map("_id") @db.ObjectId
-  artistId   String  @unique
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  artistId   String   @unique
   seatgeekId String?
   name       String
   image      String
+  genres     String[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")

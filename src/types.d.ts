@@ -9,6 +9,7 @@ export type SpotifyArtistData = {
   name: string;
   type: string;
   uri: string;
+  genres: string[];
 };
 
 export type EventData = {
@@ -27,6 +28,7 @@ export type FinalArtistData = {
   artistId: string;
   name: string;
   image: string;
+  genres: string[]
 };
 
 declare module "next-auth" {

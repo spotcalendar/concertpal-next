@@ -1,8 +1,12 @@
 import { updateUserDetails } from "@/actions/user";
 import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
 const AddressForm = () => {
+  const router = useRouter();
+  const { toast } = useToast();
+
   const [formData, setFormData] = useState({
     city: "",
     state: "",
@@ -10,8 +14,6 @@ const AddressForm = () => {
   });
 
   const [errors, setErrors] = useState({ city: "", state: "", zip: "" });
-
-  const { toast } = useToast();
 
   const validate = () => {
     let newErrors = { city: "", state: "", zip: "" };
@@ -46,6 +48,8 @@ const AddressForm = () => {
       toast({
         title: "Form Submitted Successfully !",
       });
+
+      router.push("/test");
 
       setFormData({
         city: "",

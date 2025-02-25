@@ -1,48 +1,33 @@
-import { createEvent } from "@/actions/user";
-import { auth } from "@/auth";
-import { ConnectSpotifyAcc, GoogleSignIn } from "@/components/sign-in";
+import { getUserId } from "@/actions/user";
 import { prisma } from "@/lib/db";
 import { redirect } from "next/navigation";
-import { motion } from "framer-motion";
+import Agenda from "agenda";
+import getSpotifyAccessToken from "@/utils/get-spotify-access-token";
 
-const TestPage = () => {
-  
+const TestPage = async () => {
+  const userId = await getUserId();
 
-  // const session = await auth();
+  if (!userId) redirect("http://localhost:3000/auth/login");
 
-  // if (!session || !session.user)
-  //   return (
-  //     <section className="w-full h-screen flex justify-center items-center">
-  //       <GoogleSignIn />
-  //     </section>
-  //   );
+  const token = await getSpotifyAccessToken();
 
-  // console.log(session);
+  if (!token) redirect("http://localhost:3000/auth/spotify");
 
-  // const user = await prisma.user.findFirst({
-  //   where: {
-  //     email: session.user.email,
-  //   },
-  //   include: {
-  //     accounts: true,
-  //   },
-  // });
+  const agenda = new Agenda({
+    db: {
+      address: process.env.DATABASE_URL as string,
+    },
+  });
 
-  // //const isSpotifyConnected = user?.accounts.filter((acc) => acc.provider == "spotify")[0];
+  await agenda.start();
+  await agenda.now("get-artist-data", { userId, token });
+  await agenda.close();
 
-  // //if (isSpotifyConnected) redirect("http://localhost:3000/test/dashboard");
-
-  // return (
-  //   <div className="w-full h-screen flex justify-center items-center">
-  //     <form action={createEvent}>
-  //       <button type="submit" className="border border-black rounded-md p-2">
-  //         Create Event
-  //       </button>
-  //     </form>
-
-  //     {/* <ConnectSpotifyAcc /> */}
-  //   </div>
-  // );
+  return (
+    <main className="w-full h-screen flex justify-center items-center">
+      <h2>Hello World</h2>
+    </main>
+  );
 };
 
 export default TestPage;
