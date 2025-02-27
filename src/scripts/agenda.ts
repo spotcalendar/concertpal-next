@@ -90,28 +90,40 @@ agenda.define("get-artist-data", async (job: Job<GetArtistData>) => {
 });
 
 agenda.define("get-artist-events", async (job: Job) => {
-  console.log("Started Job");
-  const existingArtists = await prisma.artist.findMany({});
+  try {
+    console.log("Started Job");
+    const existingArtists = await prisma.artist.findMany({});
 
-  const artistNames = existingArtists.map((artist) => artist.name);
+    if (!existingArtists || existingArtists.length == 0) {
+      console.log("No artists found in the database");
+      return;
+    }
 
-  let artistData: ArtistData[] = [];
+    const artistNames = existingArtists.map((artist) => artist.name);
 
-  console.log("started fetching artist data");
+    let artistData: ArtistData[] = [];
 
-  await fetchArtistInfo(artistNames, artistData);
+    console.log("started fetching artist data");
 
-  if (artistData.length == 0) return;
+    await fetchArtistInfo(artistNames, artistData);
 
-  console.log("got artist events", artistData.length);
+    if (artistData.length == 0) {
+      console.log("No artist data found from seatgeek");
+      return;
+    }
 
-  await fetchAndSaveEventsInfo(artistData);
+    console.log("got artist events", artistData.length);
 
-  console.log("Completed Job");
+    await fetchAndSaveEventsInfo(artistData);
+
+    console.log("Completed Job");
+  } catch (error) {
+    console.log("Error while getting artist events", error);
+  }
 });
 
 (async function () {
   await agenda.start();
   console.log("Agenda worker started, listening for jobs...");
-  // await agenda.now("get-artist-events", {});
+  await agenda.every("every 1 minute", "get-artist-events", {});
 })();

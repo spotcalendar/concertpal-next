@@ -3,7 +3,10 @@
 import { auth, signIn, signOut } from "@/auth";
 import { prisma } from "@/lib/db";
 import { getGoogleAccessToken } from "@/utils/get-google-access-token";
+import getSpotifyAccessToken from "@/utils/get-spotify-access-token";
+import Agenda from "agenda";
 import { google } from "googleapis";
+import { revalidatePath } from "next/cache";
 
 export const getUser = async () => {
   try {
@@ -207,4 +210,32 @@ export const updateUserDetails = async (city: string, state: string, zipcode: nu
   } catch (error) {
     return { status: "error", message: "Internal Server Error" };
   }
+};
+
+export const getUserArtistData = async () => {
+  const userId = await getUserId();
+
+  if (!userId) return;
+
+  const token = await getSpotifyAccessToken();
+
+  if (!token) return;
+
+  try {
+    const agenda = new Agenda({
+      db: {
+        address: process.env.DATABASE_URL as string,
+      },
+    });
+
+    await agenda.start();
+    await agenda.now("get-artist-data", { userId, token });
+    await agenda.close();
+  } catch (error) {
+    console.log("Agenda Error", error);
+  }
+};
+
+export const revalidate = async () => {
+  revalidatePath("/calendar", "page");
 };

@@ -1,7 +1,6 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import SpotifyLogo from "@/assets/spotify-logo";
-import { getUserId } from "@/actions/user";
 import GoogleCalendar from "@/assets/google-calendar";
 import GreenCheck from "@/assets/green-check";
 import UpcomingEvents from "@/components/upcoming-events";
@@ -10,38 +9,49 @@ import { Suspense } from "react";
 import TopArtistLoading from "@/components/top-artists-loading";
 import getSpotifyAccessToken from "@/utils/get-spotify-access-token";
 import Agenda from "agenda";
+import { prisma } from "@/lib/db";
+import UpcomingEventsLoading from "@/components/upcoming-events-loading";
 
 const CalendarPage = async () => {
   const session = await auth();
-  const userId = await getUserId();
 
-  if (!session || !session.user || !userId) redirect("htpp://localhost:3000/auth/login");
+  if (!session || !session.user || !session.user.email)
+    redirect("htpp://localhost:3000/auth/login");
+
+  const data = await prisma.user.findUnique({
+    where: {
+      email: session.user.email,
+    },
+  });
+
+  if (!data) redirect("htpp://localhost:3000/auth/login");
 
   const token = await getSpotifyAccessToken();
 
   if (!token) redirect("http://localhost:3000/auth/spotify");
 
-  const agenda = new Agenda({
-    db: {
-      address: process.env.DATABASE_URL as string,
-    },
-  });
+  // const agenda = new Agenda({
+  //   db: {
+  //     address: process.env.DATABASE_URL as string,
+  //   },
+  // });
 
-  await agenda.start();
-  await agenda.now("get-artist-data", { userId, token });
-  await agenda.close();
+  // await agenda.start();
+  // await agenda.now("get-artist-data", { userId, token });
+  // await agenda.close();
 
   const userProfile = session.user.image ? session.user.image : "public/bg3.png";
 
   return (
     <main className="w-full min-h-screen bg-gray-200 flex flex-col justify-start items-center gap-5 p-10">
-      <div className="w-2/4 bg-white flex items-start gap-5 p-4 rounded">
+      <div className="h-full w-2/4 bg-white flex items-center gap-5 p-4 rounded">
         <img className="w-24 h-24 rounded-full" src={userProfile} alt="image" />
-        <div className="h-full flex flex-col justify-around">
+
+        <div className="h-24 flex flex-col justify-around">
           <h3 className="text-lg capitalize font-medium">{session.user.name}</h3>
           <p className="text-sm text-gray-400">{session.user.email}</p>
 
-          <span className="flex items-center gap-2">
+          <span className="flex items-center gap-3">
             <SpotifyLogo width="20" height="20" />
             <GoogleCalendar />
           </span>
@@ -61,11 +71,13 @@ const CalendarPage = async () => {
         </div>
       </div>
 
-      <Suspense fallback={<TopArtistLoading />}>
-        <TopArtists userId={userId} />
+      <Suspense fallback={<UpcomingEventsLoading />}>
+        <UpcomingEvents userId={data.id} eventStatus={data.eventStatus} />
       </Suspense>
 
-      <UpcomingEvents />
+      <Suspense fallback={<TopArtistLoading />}>
+        <TopArtists userId={data.id} />
+      </Suspense>
     </main>
   );
 };

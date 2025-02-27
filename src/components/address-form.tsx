@@ -1,4 +1,4 @@
-import { updateUserDetails } from "@/actions/user";
+import { getUserArtistData, updateUserDetails } from "@/actions/user";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
@@ -49,13 +49,15 @@ const AddressForm = () => {
         title: "Form Submitted Successfully !",
       });
 
-      router.push("/test");
-
       setFormData({
         city: "",
         state: "",
         zip: "",
       });
+
+      await getUserArtistData();
+
+      router.push("/calendar");
     }
   };
 

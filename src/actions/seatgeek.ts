@@ -1,5 +1,7 @@
 "use server";
 
+import { EventData } from "@/types";
+
 export const getArtistInfo = async (artistName: string) => {
   try {
     const response = await fetch(

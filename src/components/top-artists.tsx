@@ -57,7 +57,7 @@ const TopArtists = async ({ userId }: TopArtistsProps) => {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid justify-evenly grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
           {artistData.map((artist) => (
             <ArtistInfo
               key={artist.id}
@@ -67,17 +67,6 @@ const TopArtists = async ({ userId }: TopArtistsProps) => {
             />
           ))}
         </div>
-
-        // <div className="flex flex-wrap justify-evenly gap-5">
-        //   {artistData.map((artist) => (
-        //     <ArtistInfo
-        //       key={artist.id}
-        //       name={artist.name}
-        //       categories={artist.genres}
-        //       imageSrc={artist.image}
-        //     />
-        //   ))}
-        // </div>
       )}
     </div>
   );
