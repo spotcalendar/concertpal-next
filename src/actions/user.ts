@@ -7,6 +7,8 @@ import getSpotifyAccessToken from "@/utils/get-spotify-access-token";
 import Agenda from "agenda";
 import { google } from "googleapis";
 import { revalidatePath } from "next/cache";
+// @ts-ignore
+import zippy from "zipcode-city-distance";
 
 export const getUser = async () => {
   try {
@@ -88,7 +90,15 @@ export const updateOnboardingStatus = async (userId: string) => {
   }
 };
 
-export const createEvent = async ({ id, email }: { id: string; email: string | null }) => {
+export const createEvent = async ({
+  id,
+  email,
+  zipcode,
+}: {
+  id: string;
+  email: string | null;
+  zipcode: number | null;
+}) => {
   try {
     const token = await getGoogleAccessToken(id);
 
@@ -112,9 +122,12 @@ export const createEvent = async ({ id, email }: { id: string; email: string | n
 
     if (!userArtists?.followingArtists || userArtists.followingArtists.length == 0) return;
 
+    const zipcodesInUsersRange = zippy.getRadius(zipcode, 10, "K");
+
     const events = await prisma.event.findMany({
       where: {
         artistId: userArtists.followingArtists[0].artistId,
+        zipcode: zipcodesInUsersRange.map((data: any) => data.zipcode),
       },
       take: 2,
     });

@@ -1,6 +1,8 @@
 import NoConcerts from "@/assets/no-concerts";
 import { prisma } from "@/lib/db";
 import formatDateTime from "@/utils/format-date-time";
+//@ts-ignore
+import zippy from "zipcode-city-distance";
 import { EventStatus } from "@prisma/client";
 import { Clock, MapPin, Wifi } from "lucide-react";
 import { ReactNode } from "react";
@@ -8,6 +10,9 @@ import { ReactNode } from "react";
 type UpcomingEventsProps = {
   userId: string;
   eventStatus: EventStatus;
+  state: string | null;
+  city: string | null;
+  zipcode: number | null;
 };
 
 type EventInfoProps = {
@@ -56,7 +61,13 @@ const EventInfo = ({ artistName, artistImage, venue, dateTime }: EventInfoProps)
   );
 };
 
-const UpcomingEvents = async ({ userId, eventStatus }: UpcomingEventsProps) => {
+const UpcomingEvents = async ({
+  userId,
+  eventStatus,
+  city,
+  state,
+  zipcode,
+}: UpcomingEventsProps) => {
   if (eventStatus == "FAILED")
     return (
       <UpcomingEventsWrapper>
@@ -84,13 +95,20 @@ const UpcomingEvents = async ({ userId, eventStatus }: UpcomingEventsProps) => {
 
   if (artists.length == 0) return;
 
+  const zipcodesInUsersRange = zippy.getRadius(zipcode, 10, "K");
+
   const events = await prisma.event.findMany({
     where: {
       artistId: {
         in: artists.map((data) => data.id),
       },
+      zipcode: {
+        in: zipcodesInUsersRange.map((data: any) => data.zipcode),
+      },
     },
   });
+
+  console.log("User Events", events);
 
   if (!events || events.length == 0)
     return (

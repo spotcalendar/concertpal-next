@@ -18,7 +18,7 @@ const fetchUsersInBatches = async (batchSize: number) => {
         break;
       }
 
-      const userData = users.map((user) => ({ id: user.id, email: user.email }));
+      const userData = users.map((user) => ({ id: user.id, email: user.email, zipcode: user.zipcode }));
 
       console.log("User data", userData);
 
