@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/db";
-import { Loader2 } from "lucide-react";
 
 type ArtistInfoProps = {
   name: string;

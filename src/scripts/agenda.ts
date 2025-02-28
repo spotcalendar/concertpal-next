@@ -2,8 +2,8 @@ import { getArtistImages, getFollowedArtists, getSavedTracks } from "@/actions/s
 import { prisma } from "@/lib/db";
 import { FinalArtistData, SpotifyArtistData } from "@/types";
 import { addArtistsForUser } from "@/utils/add-artists-for-user";
-import { fetchAndSaveEventsInfo } from "@/utils/fetch-and-save-event-info";
-import { fetchArtistInfo } from "@/utils/fetch-artist-info";
+import fetchArtistsInBatches from "@/utils/fetch-artists-in-batch";
+import fetchUsersInBatches from "@/utils/fetch-user-in-batch";
 import Agenda, { Job } from "agenda";
 
 type ArtistData = {
@@ -91,39 +91,24 @@ agenda.define("get-artist-data", async (job: Job<GetArtistData>) => {
 
 agenda.define("get-artist-events", async (job: Job) => {
   try {
-    console.log("Started Job");
-    const existingArtists = await prisma.artist.findMany({});
-
-    if (!existingArtists || existingArtists.length == 0) {
-      console.log("No artists found in the database");
-      return;
-    }
-
-    const artistNames = existingArtists.map((artist) => artist.name);
-
-    let artistData: ArtistData[] = [];
-
-    console.log("started fetching artist data");
-
-    await fetchArtistInfo(artistNames, artistData);
-
-    if (artistData.length == 0) {
-      console.log("No artist data found from seatgeek");
-      return;
-    }
-
-    console.log("got artist events", artistData.length);
-
-    await fetchAndSaveEventsInfo(artistData);
-
-    console.log("Completed Job");
+    await fetchArtistsInBatches(20);
   } catch (error) {
     console.log("Error while getting artist events", error);
+  }
+});
+
+agenda.define("set-events-in-calendar", async (job: Job) => {
+  try {
+    console.log("Job Received");
+    await fetchUsersInBatches(5);
+  } catch (error) {
+    console.log("Error while creating events", error);
   }
 });
 
 (async function () {
   await agenda.start();
   console.log("Agenda worker started, listening for jobs...");
-  await agenda.every("every 1 minute", "get-artist-events", {});
+  //await agenda.every("every 1 week", "get-artist-events", {});
+  await agenda.now("set-events-in-calendar", {});
 })();

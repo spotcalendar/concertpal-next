@@ -62,8 +62,8 @@ const UpcomingEvents = async ({ userId, eventStatus }: UpcomingEventsProps) => {
       <UpcomingEventsWrapper>
         <div className="w-full flex flex-col items-center gap-5">
           <NoConcerts />
-          <h4 className="text-4xl font-light font-serif text-black">Oops! Something went wrong.</h4>
-          <p className="max-w-[417px] text-lg text-gray-400 font-light text-center">
+          <h4 className="text-3xl font-light font-serif text-black">Oops! Something went wrong.</h4>
+          <p className="max-w-[417px] text-gray-400 font-light text-center">
             We ran into a technical issue. Please try again later.
           </p>
         </div>
@@ -97,11 +97,9 @@ const UpcomingEvents = async ({ userId, eventStatus }: UpcomingEventsProps) => {
       <UpcomingEventsWrapper>
         <div className="w-full flex flex-col items-center gap-5">
           <NoConcerts />
-          <h4 className="text-4xl font-light font-serif text-black">
-            No concerts near your area at the moment!
-          </h4>
-          <p className="max-w-[417px] text-lg text-gray-400 font-light text-center">
-            There are no upcoming concerts of your favourtie artists. Please check again later.
+          <h4 className="text-3xl font-light font-serif text-black">Oops! Something went wrong.</h4>
+          <p className="max-w-[417px] text-gray-400 font-light text-center">
+            We ran into a technical issue. Please try again later.
           </p>
         </div>
       </UpcomingEventsWrapper>
@@ -109,7 +107,7 @@ const UpcomingEvents = async ({ userId, eventStatus }: UpcomingEventsProps) => {
 
   return (
     <UpcomingEventsWrapper>
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-2 gap-8">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-2 gap-8">
         {events.map((event) => {
           const artist = artists.find((artist) => artist.id == event.artistId);
           if (!artist) return;

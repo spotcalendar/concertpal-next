@@ -88,15 +88,11 @@ export const updateOnboardingStatus = async (userId: string) => {
   }
 };
 
-export const createEvent = async () => {
+export const createEvent = async ({ id, email }: { id: string; email: string | null }) => {
   try {
-    const session = await auth();
+    const token = await getGoogleAccessToken(id);
 
-    // console.log(session);
-
-    if (!session || !session.user) return;
-
-    const token = await getGoogleAccessToken();
+    console.log("Google Access Token", token);
 
     if (!token) return;
 
@@ -107,14 +103,12 @@ export const createEvent = async () => {
 
     const userArtists = await prisma.user.findFirst({
       where: {
-        email: session.user.email,
+        email,
       },
       select: {
         followingArtists: true,
       },
     });
-
-    // console.log("User Artists", userArtists);
 
     if (!userArtists?.followingArtists || userArtists.followingArtists.length == 0) return;
 
@@ -125,7 +119,7 @@ export const createEvent = async () => {
       take: 2,
     });
 
-    // console.log("Events", events);
+    console.log("Events for the artists", events);
 
     if (events.length == 0) return;
 
@@ -153,35 +147,6 @@ export const createEvent = async () => {
     });
 
     console.log(response);
-
-    // for (const event of calendarData) {
-    //   const response = await calendar.events.insert({
-    //     calendarId: "primary",
-    //     requestBody: event,
-    //   });
-
-    //   console.log(response);
-    // }
-
-    // const event = {
-    //   summary: "Next.js Meeting",
-    //   description: "Discuss Next.js authentication and Google Calendar integration",
-    //   start: {
-    //     dateTime: "2025-02-15T10:00:00-05:00", // Adjust timezone
-    //     timeZone: "America/New_York",
-    //   },
-    //   end: {
-    //     dateTime: "2025-02-15T11:00:00-05:00",
-    //     timeZone: "America/New_York",
-    //   },
-    // };
-
-    // const res = await calendar.events.insert({
-    //   calendarId: "primary",
-    //   requestBody: event,
-    // });
-
-    // console.log(res.data);
   } catch (error) {
     console.log(error);
   }

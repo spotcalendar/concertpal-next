@@ -2,29 +2,24 @@ import { getUser } from "@/actions/user";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/db";
 
-export const getGoogleAccessToken = async () => {
+export const getGoogleAccessToken = async (id: string) => {
   try {
-    const session = await auth();
-
-    if (!session || !session.refreshToken || !session.user) return null;
-
-    const user = await getUser();
-
-    if (!user) return null;
-
     const account = await prisma.account.findFirst({
       where: {
-        userId: user.id,
+        userId: id,
         provider: "google",
       },
       select: {
         id: true,
+        expires_at: true,
+        refresh_token: true,
+        access_token: true,
       },
     });
 
-    if (!account) return;
+    if (!account || !account.refresh_token) return;
 
-    const isExpired = session.expiresAt && Date.now() / 1000 >= session.expiresAt;
+    const isExpired = account.expires_at && Date.now() / 1000 >= account.expires_at;
 
     if (isExpired) {
       console.log("Fetching a new refresh token");
@@ -35,7 +30,7 @@ export const getGoogleAccessToken = async () => {
         body: new URLSearchParams({
           client_id: process.env.AUTH_GOOGLE_ID!,
           client_secret: process.env.AUTH_GOOGLE_SECRET!,
-          refresh_token: session.refreshToken,
+          refresh_token: account.refresh_token,
           grant_type: "refresh_token",
         }),
       });
@@ -52,14 +47,14 @@ export const getGoogleAccessToken = async () => {
         },
         data: {
           access_token: refreshedTokens.access_token,
-          expires_at: refreshedTokens.expires_in.Date.now() + refreshedTokens.expires_in * 1000,
+          expires_at: Date.now() + refreshedTokens.expires_in * 1000,
         },
       });
 
       return refreshedTokens.access_token as string;
     }
 
-    return session.accessToken;
+    return account.access_token;
   } catch (error) {
     console.log(error);
   }

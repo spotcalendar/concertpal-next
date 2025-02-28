@@ -83,6 +83,8 @@ model Artist {
 
   followedBy UserToArtist[]
   Event      Event[]
+
+  @@index([name])
 }
 
 model Event {
