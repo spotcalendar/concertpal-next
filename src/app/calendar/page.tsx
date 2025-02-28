@@ -8,7 +8,6 @@ import TopArtists from "@/components/top-artists";
 import { Suspense } from "react";
 import TopArtistLoading from "@/components/top-artists-loading";
 import getSpotifyAccessToken from "@/utils/get-spotify-access-token";
-import Agenda from "agenda";
 import { prisma } from "@/lib/db";
 import UpcomingEventsLoading from "@/components/upcoming-events-loading";
 
@@ -29,16 +28,6 @@ const CalendarPage = async () => {
   const token = await getSpotifyAccessToken();
 
   if (!token) redirect("http://localhost:3000/auth/spotify");
-
-  // const agenda = new Agenda({
-  //   db: {
-  //     address: process.env.DATABASE_URL as string,
-  //   },
-  // });
-
-  // await agenda.start();
-  // await agenda.now("get-artist-data", { userId, token });
-  // await agenda.close();
 
   const userProfile = session.user.image ? session.user.image : "public/bg3.png";
 
