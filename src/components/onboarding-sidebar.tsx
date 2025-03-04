@@ -57,7 +57,7 @@ const OnboardingSidebar = ({ session }: OnboardingSidebarProps) => {
           <div className="flex flex-col gap-12 justify-center items-start">
             <p className="font-semibold text-lg">Login With Google</p>
             <p className="font-semibold text-lg">Connect your Spotify</p>
-            <p className="font-semibold text-lg">Add your Details</p>
+            <p className="font-semibold text-lg">Add your Location</p>
           </div>
         </div>
       </div>

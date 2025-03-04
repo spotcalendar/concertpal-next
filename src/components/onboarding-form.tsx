@@ -55,7 +55,6 @@ const OnboardingForm = ({ variant, title, description }: OnboardingFormProps) =>
         )}
 
         {variant == "user-details" && <AddressForm />}
-
         {variant == "google" && <GoogleLoginButton />}
         {variant == "spotify" && <SpotifyConnectButton />}
       </div>

@@ -127,7 +127,9 @@ export const createEvent = async ({
     const events = await prisma.event.findMany({
       where: {
         artistId: userArtists.followingArtists[0].artistId,
-        zipcode: zipcodesInUsersRange.map((data: any) => data.zipcode),
+        zipcode: {
+          in: zipcodesInUsersRange.map((data: any) => data.zipcode),
+        },
       },
       take: 2,
     });
@@ -165,7 +167,7 @@ export const createEvent = async ({
   }
 };
 
-export const updateUserDetails = async (city: string, state: string, zipcode: number) => {
+export const updateUserDetails = async (zipcode: number) => {
   try {
     const userId = await getUserId();
 
@@ -176,8 +178,6 @@ export const updateUserDetails = async (city: string, state: string, zipcode: nu
         id: userId,
       },
       data: {
-        city,
-        state,
         zipcode,
         isOnboarded: true,
         onboardingStatus: "COMPLETED",

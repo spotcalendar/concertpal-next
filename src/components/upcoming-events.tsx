@@ -97,13 +97,28 @@ const UpcomingEvents = async ({
 
   const zipcodesInUsersRange = zippy.getRadius(zipcode, 10, "K");
 
+  console.log("nearby codes", zipcodesInUsersRange);
+
+  if (zipcodesInUsersRange.error)
+    return (
+      <UpcomingEventsWrapper>
+        <div className="w-full flex flex-col items-center gap-5">
+          <NoConcerts />
+          <h4 className="text-3xl font-light font-serif text-black">Oops! Something went wrong.</h4>
+          <p className="max-w-[417px] text-gray-400 font-light text-center">
+            We ran into a technical issue. Please try again later.
+          </p>
+        </div>
+      </UpcomingEventsWrapper>
+    );
+
   const events = await prisma.event.findMany({
     where: {
       artistId: {
         in: artists.map((data) => data.id),
       },
       zipcode: {
-        in: zipcodesInUsersRange.map((data: any) => data.zipcode),
+        in: zipcodesInUsersRange?.map((data: any) => data.zipcode),
       },
     },
   });
