@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
+import { auth } from "@/auth";
 
 export const metadata: Metadata = {
   title: "Concertpal.io - Never miss your favorite artist's concerts again.",
@@ -15,18 +16,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+
   return (
     <html lang="en">
       <body
         className={`flex flex-col  min-h-screen max-w-[2500px] m-auto`}
         suppressHydrationWarning
       >
-        <Navbar />
+        <Navbar session={session} />
         <ScrollToTop />
         <main className=" overflow-x-hidden" suppressHydrationWarning>
           <Toaster />

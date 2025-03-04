@@ -1,11 +1,13 @@
 import { spotifyLogin } from "@/actions/spotify";
 import { useToast } from "@/hooks/use-toast";
+import { Loader2 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const SpotifyConnectButton = () => {
   const searchParams = useSearchParams();
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const errorParam = searchParams.get("error");
@@ -27,7 +29,9 @@ const SpotifyConnectButton = () => {
   }, [searchParams]);
 
   const handleClick = async () => {
+    setIsLoading(true);
     await spotifyLogin();
+    setIsLoading(false);
   };
 
   return (
@@ -35,7 +39,11 @@ const SpotifyConnectButton = () => {
       onClick={handleClick}
       className="w-[330px] bg-[#116557] rounded-md flex justify-center items-center gap-2 p-3"
     >
-      <p className="font-medium text-white">Login to Spotify</p>
+      {isLoading ? (
+        <Loader2 className="animate-spin text-white" />
+      ) : (
+        <p className="font-medium text-white">Login to Spotify</p>
+      )}
     </button>
   );
 };
