@@ -12,7 +12,7 @@ type UpcomingEventsProps = {
   eventStatus: EventStatus;
   state: string | null;
   city: string | null;
-  zipcode: number | null;
+  zipcode: string | null;
 };
 
 type EventInfoProps = {
@@ -36,7 +36,7 @@ const UpcomingEventsWrapper = ({ children }: { children: ReactNode }) => {
 
 const EventInfo = ({ artistName, artistImage, venue, dateTime }: EventInfoProps) => {
   return (
-    <div className="flex justify-start items-start gap-4">
+    <div className="flex justify-start items-start gap-2">
       <span>
         <img className="h-12 w-12 rounded-full object-cover" src={artistImage} alt="img" />
       </span>
@@ -95,18 +95,18 @@ const UpcomingEvents = async ({
 
   if (artists.length == 0) return;
 
-  const zipcodesInUsersRange = zippy.getRadius(zipcode, 10, "K");
-
-  console.log("nearby codes", zipcodesInUsersRange);
+  const zipcodesInUsersRange = zippy.getRadius(zipcode, process.env.NEXT_PUBIC_EVENT_RADIUS, "M");
 
   if (zipcodesInUsersRange.error)
     return (
       <UpcomingEventsWrapper>
-        <div className="w-full flex flex-col items-center gap-5">
+        <div className="w-full flex flex-col items-center gap-4">
           <NoConcerts />
-          <h4 className="text-3xl font-light font-serif text-black">Oops! Something went wrong.</h4>
+          <h4 className="text-3xl font-light font-serif text-black">
+            This zipcode is not yet supported !
+          </h4>
           <p className="max-w-[417px] text-gray-400 font-light text-center">
-            We ran into a technical issue. Please try again later.
+            We are not supporting the concerts in your area yet. Please try again later.
           </p>
         </div>
       </UpcomingEventsWrapper>
@@ -118,21 +118,21 @@ const UpcomingEvents = async ({
         in: artists.map((data) => data.id),
       },
       zipcode: {
-        in: zipcodesInUsersRange?.map((data: any) => data.zipcode),
+        in: [...zipcodesInUsersRange?.map((data: any) => data.zipcode), zipcode],
       },
     },
   });
-
-  console.log("User Events", events);
 
   if (!events || events.length == 0)
     return (
       <UpcomingEventsWrapper>
         <div className="w-full flex flex-col items-center gap-5">
           <NoConcerts />
-          <h4 className="text-3xl font-light font-serif text-black">Oops! Something went wrong.</h4>
+          <h4 className="text-3xl font-light font-serif text-black">
+            No concerts near your area at the moment!
+          </h4>
           <p className="max-w-[417px] text-gray-400 font-light text-center">
-            We ran into a technical issue. Please try again later.
+            We found no artists performing near you. Please try again later.
           </p>
         </div>
       </UpcomingEventsWrapper>

@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   const state = searchParams.get("state");
 
   if (!code || !state) {
-    return NextResponse.redirect("http://localhost:3000/auth/spotify?error=missing_code");
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify?error=missing_code`);
   }
 
   try {
@@ -30,13 +30,13 @@ export async function GET(request: Request) {
     const data = await response.json();
 
     if (!data.access_token) {
-      return NextResponse.redirect("http://localhost:3000/auth/spotify?error=token_error");
+      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify?error=token_error`);
     }
 
     const session = await auth();
 
     if (!session?.user?.email) {
-      return NextResponse.redirect("http://localhost:3000/auth/spotify?error=no_session");
+      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify?error=no_session`);
     }
 
     const user = await prisma.user.findUnique({
@@ -45,7 +45,8 @@ export async function GET(request: Request) {
       },
     });
 
-    if (!user) return NextResponse.redirect("http://localhost:3000/auth/spotify?error=no_user");
+    if (!user)
+      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify?error=no_user`);
 
     await prisma.account.upsert({
       where: {
@@ -70,8 +71,8 @@ export async function GET(request: Request) {
       },
     });
 
-    return NextResponse.redirect("http://localhost:3000/auth/address");
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/auth/address`);
   } catch (error) {
-    return NextResponse.redirect("http://localhost:3000/auth/spotify?error=server_error");
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify?error=server_error`);
   }
 }

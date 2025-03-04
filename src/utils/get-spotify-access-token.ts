@@ -22,7 +22,7 @@ const getSpotifyAccessToken = async () => {
   const isExpired = account.expires_at && Date.now() / 1000 >= account.expires_at;
 
   if (isExpired) {
-    const response = await fetch(`http://localhost:3000/api/refresh?email=${user.email}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/refresh?email=${user.email}`);
     const data = await response.json();
 
     console.log("Response from route", data);

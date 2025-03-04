@@ -15,7 +15,7 @@ const CalendarPage = async () => {
   const session = await auth();
 
   if (!session || !session.user || !session.user.email)
-    redirect("htpp://localhost:3000/auth/login");
+    redirect(`${process.env.NEXT_PUBLIC_URL}/auth/login`);
 
   const data = await prisma.user.findUnique({
     where: {
@@ -23,11 +23,11 @@ const CalendarPage = async () => {
     },
   });
 
-  if (!data) redirect("htpp://localhost:3000/auth/login");
+  if (!data) redirect(`${process.env.NEXT_PUBLIC_URL}/auth/login`);
 
   const token = await getSpotifyAccessToken();
 
-  if (!token) redirect("http://localhost:3000/auth/spotify");
+  if (!token) redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify`);
 
   const userProfile = session.user.image ? session.user.image : "public/bg3.png";
 

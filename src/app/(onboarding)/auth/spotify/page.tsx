@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 const ConnectSpotifyPage = async () => {
   const session = await auth();
 
-  if (!session || !session.user) redirect("http://localhost:3000/auth/login");
+  if (!session || !session.user) redirect(`${process.env.NEXT_PUBLIC_URL}/auth/login`);
 
   return (
     <OnboardingForm

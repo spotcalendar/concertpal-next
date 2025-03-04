@@ -26,13 +26,13 @@ const GoogleLoginPage = async () => {
     },
   });
 
-  if (userData && userData.isOnboarded) redirect("http://localhost:3000");
+  if (userData && userData.isOnboarded) redirect(process.env.NEXT_PUBLIC_URL as string);
 
   const isSpotifyConnected = userData?.accounts.map((account) => account.provider == "spotify")[0];
 
-  if (!isSpotifyConnected) redirect("http://localhost:3000/auth/spotify");
+  if (!isSpotifyConnected) redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify`);
 
-  redirect("http://localhost:3000/auth/address");
+  redirect(`${process.env.NEXT_PUBLIC_URL}/auth/address`);
 };
 
 export default GoogleLoginPage;

@@ -2,6 +2,7 @@
 
 import { auth, signIn, signOut } from "@/auth";
 import { prisma } from "@/lib/db";
+import { getConcertCalendarId } from "@/utils/get-concert-calendar-id";
 import { getGoogleAccessToken } from "@/utils/get-google-access-token";
 import getSpotifyAccessToken from "@/utils/get-spotify-access-token";
 import Agenda from "agenda";
@@ -97,7 +98,7 @@ export const createEvent = async ({
 }: {
   id: string;
   email: string | null;
-  zipcode: number | null;
+  zipcode: string | null;
 }) => {
   try {
     const token = await getGoogleAccessToken(id);
@@ -122,13 +123,17 @@ export const createEvent = async ({
 
     if (!userArtists?.followingArtists || userArtists.followingArtists.length == 0) return;
 
-    const zipcodesInUsersRange = zippy.getRadius(zipcode, 10, "K");
+    const zipcodesInUsersRange = zippy.getRadius(zipcode, process.env.NEXT_PUBIC_EVENT_RADIUS, "M");
+
+    console.log(zipcodesInUsersRange);
 
     const events = await prisma.event.findMany({
       where: {
-        artistId: userArtists.followingArtists[0].artistId,
+        artistId: {
+          in: userArtists.followingArtists.map((data) => data.artistId),
+        },
         zipcode: {
-          in: zipcodesInUsersRange.map((data: any) => data.zipcode),
+          in: [...zipcodesInUsersRange.map((data: any) => data.zipcode), zipcode],
         },
       },
       take: 2,
@@ -141,9 +146,9 @@ export const createEvent = async ({
     const calendarData = events.map((event) => {
       return {
         summary: event.title,
+        location: `${event.venue}, ${event.state}, ${event.country}`,
         description: `
-        Venue - ${event.venue},
-        Country - ${event.country} 
+        Event Link - ${event.url}
         `,
         start: {
           dateTime: event.dateTime.toISOString(),
@@ -151,13 +156,17 @@ export const createEvent = async ({
         },
         end: {
           dateTime: event.dateTime.toISOString(),
-          timeZone: "",
+          timeZone: "America/New_York",
         },
       };
     });
 
+    const calendarId = await getConcertCalendarId(calendar);
+
+    if (!calendarId) return;
+
     const response = await calendar.events.insert({
-      calendarId: "primary",
+      calendarId: calendarId,
       requestBody: calendarData[0],
     });
 
@@ -167,7 +176,7 @@ export const createEvent = async ({
   }
 };
 
-export const updateUserDetails = async (zipcode: number) => {
+export const updateUserDetails = async (zipcode: string) => {
   try {
     const userId = await getUserId();
 

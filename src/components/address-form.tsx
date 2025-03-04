@@ -38,7 +38,7 @@ const AddressForm = () => {
       return;
     }
 
-    const response = await updateUserDetails(parseInt(locationData.postcode));
+    const response = await updateUserDetails(locationData.postcode);
 
     if (response.status == "error") {
       toast({

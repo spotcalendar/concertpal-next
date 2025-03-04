@@ -19,7 +19,7 @@ model User {
   eventStatus      EventStatus      @default(IDLE)
   city             String?
   state            String?
-  zipcode          Int?
+  zipcode          String?
   accounts         Account[]
   sessions         Session[]
   followingArtists UserToArtist[]
