@@ -1,27 +1,20 @@
-import { getEventInfo } from "@/actions/seatgeek";
-import { getFollowedArtists, getSavedTracks } from "@/actions/spotify";
+import { getArtistImages, getFollowedArtists, getSavedTracks } from "@/actions/spotify";
 import { prisma } from "@/lib/db";
-import { SpotifyArtistData } from "@/types";
-import { fetchAndSaveEventsInfo } from "@/utils/fetch-and-save-event-info";
-import { fetchArtistImages } from "@/utils/fetch-artist-images";
-import { fetchArtistInfo } from "@/utils/fetch-artist-info";
+import { FinalArtistData, SpotifyArtistData } from "@/types";
+import { addArtistsForUser } from "@/utils/add-artists-for-user";
+import fetchArtistsInBatches from "@/utils/fetch-artists-in-batch";
+import fetchUsersInBatches from "@/utils/fetch-user-in-batch";
 import Agenda, { Job } from "agenda";
 
 type ArtistData = {
   id: string;
   name: string;
+  genres: string[];
 };
 
 type GetArtistData = {
   userId: string;
   token: string;
-};
-
-type FinalArtistData = {
-  userIDs: string[];
-  artistId: string;
-  name: string;
-  image: string;
 };
 
 const agenda = new Agenda({
@@ -30,136 +23,94 @@ const agenda = new Agenda({
   },
 });
 
-const addArtistsForUser = async (userId: string, artistData: FinalArtistData[]) => {
+agenda.define("get-artist-data", async (job: Job<GetArtistData>) => {
   try {
-    await prisma.artist.createMany({
-      data: artistData.map((artist) => ({
-        artistId: artist.artistId,
-        name: artist.name,
-        image: artist.image,
-      })),
+    console.log("Started fetching artist info from user's spotify");
+
+    const { userId, token } = job.attrs.data;
+
+    let rawArtistsData: SpotifyArtistData[] = [];
+
+    const savedTracksRes = await getSavedTracks(token);
+    const followedTracksRes = await getFollowedArtists(token);
+
+    if (savedTracksRes.data) rawArtistsData = [...savedTracksRes.data];
+    if (followedTracksRes.data) rawArtistsData = [...followedTracksRes.data];
+
+    if (rawArtistsData.length == 0) return;
+
+    console.log("Artist found from user's spotify", rawArtistsData.length);
+
+    const uniqueArtists = rawArtistsData.reduce<ArtistData[]>((acc, artist) => {
+      if (!acc.some((a) => a.id === artist.id)) {
+        acc.push(artist);
+      }
+      return acc;
+    }, []);
+
+    const artistData = uniqueArtists.map((artist) => {
+      return { id: artist.id, name: artist.name, genres: artist.genres };
     });
 
-    const insertedArtists = await prisma.artist.findMany({
+    if (artistData.length == 0) return;
+
+    const artistIds = artistData.map((data) => data.id);
+
+    const existingArtistIds = await prisma.artist.findMany({
       where: {
         artistId: {
-          in: artistData.map((artist) => artist.artistId),
+          in: artistIds,
         },
       },
       select: {
-        id: true,
         artistId: true,
       },
     });
 
-    const artistIdMap = new Map(insertedArtists.map((a) => [a.artistId, a.id]));
+    const existingIds = new Set(existingArtistIds.map((artist) => artist.artistId));
 
-    const userArtistLinks = artistData
-      .map((artist) => {
-        const mongoArtistId = artistIdMap.get(artist.artistId);
-        if (!mongoArtistId) return null;
-        return {
-          userId,
-          artistId: mongoArtistId,
-        };
-      })
-      .filter(Boolean);
+    const missingArtists = artistData.filter((data) => !existingIds.has(data.id));
 
-    const finaData = userArtistLinks.filter((data) => data !== null);
+    if (missingArtists.length == 0) return;
 
-    if (finaData.length > 0) {
-      await prisma.userToArtist.createMany({
-        data: finaData,
-      });
-    }
+    let finalData: FinalArtistData[] = [];
+
+    await getArtistImages(token, userId, missingArtists, finalData);
+
+    console.log("Final Artist Data", finalData);
+
+    // await fetchArtistImages(token, userId, missingArtists, finalData);
+
+    await addArtistsForUser(userId, finalData);
+
+    console.log("Saved artist for the user");
   } catch (error) {
     console.log(error);
   }
-};
-
-agenda.define("get-artist-data", async (job: Job<GetArtistData>) => {
-  console.log("Started fetching artist info from user's spotify");
-
-  const { userId, token } = job.attrs.data;
-
-  let rawArtistsData: SpotifyArtistData[] = [];
-
-  const savedTracksRes = await getSavedTracks(token);
-  const followedTracksRes = await getFollowedArtists(token);
-
-  if (savedTracksRes.data) rawArtistsData = [...savedTracksRes.data];
-  if (followedTracksRes.data) rawArtistsData = [...followedTracksRes.data];
-
-  if (rawArtistsData.length == 0) return;
-
-  console.log("Artist found from user's spotify", rawArtistsData.length);
-
-  const uniqueArtists = rawArtistsData.reduce<ArtistData[]>((acc, artist) => {
-    if (!acc.some((a) => a.id === artist.id)) {
-      acc.push(artist);
-    }
-    return acc;
-  }, []);
-
-  const artistData = uniqueArtists.map((artist) => {
-    return { id: artist.id, name: artist.name };
-  });
-
-  if (artistData.length == 0) return;
-
-  const artistIds = artistData.map((data) => data.id);
-
-  const existingArtistIds = await prisma.artist.findMany({
-    where: {
-      artistId: {
-        in: artistIds,
-      },
-    },
-    select: {
-      artistId: true,
-    },
-  });
-
-  const existingIds = new Set(existingArtistIds.map((artist) => artist.artistId));
-
-  const missingArtists = artistData.filter((data) => !existingIds.has(data.id));
-
-  if (missingArtists.length == 0) return;
-
-  let finalData: FinalArtistData[] = [];
-
-  await fetchArtistImages(token, userId, missingArtists, finalData);
-
-  await addArtistsForUser(userId, finalData);
-
-  console.log("Saved artist for the user");
 });
 
 agenda.define("get-artist-events", async (job: Job) => {
-  console.log("Started Job");
-  const existingArtists = await prisma.artist.findMany({});
+  try {
+    await fetchArtistsInBatches(20);
+  } catch (error) {
+    console.log("Error while getting artist events", error);
+  }
+});
 
-  const artistNames = existingArtists.map((artist) => artist.name);
-
-  let artistData: ArtistData[] = [];
-
-  console.log("started fetching artist data");
-
-  await fetchArtistInfo(artistNames, artistData);
-
-  if (artistData.length == 0) return;
-
-  console.log("got artist events", artistData.length);
-
-  await fetchAndSaveEventsInfo(artistData);
-
-  console.log("Completed Job");
+agenda.define("set-events-in-calendar", async (job: Job) => {
+  try {
+    console.log("Job Received");
+    await fetchUsersInBatches(5);
+  } catch (error) {
+    console.log("Error while creating events", error);
+  }
 });
 
 (async function () {
   await agenda.start();
   console.log("Agenda worker started, listening for jobs...");
-  await agenda.now("get-artist-events", {});
+  // await agenda.now("get-artist-events", {});
+  // await agenda.now("set-events-in-calendar", {});
+  // await agenda.every("every 1 week", "get-artist-events", {});
+  // await agenda.schedule("every 1 week", "set-events-in-calendar", {});
 })();
-
-

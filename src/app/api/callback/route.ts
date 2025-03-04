@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   const state = searchParams.get("state");
 
   if (!code || !state) {
-    return NextResponse.json({ error: "Missing authorization code" }, { status: 400 });
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify?error=missing_code`);
   }
 
   try {
@@ -30,12 +30,14 @@ export async function GET(request: Request) {
     const data = await response.json();
 
     if (!data.access_token) {
-      return NextResponse.json({ error: "Failed to get access token" }, { status: 400 });
+      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify?error=token_error`);
     }
 
     const session = await auth();
 
-    if (!session?.user?.email) return;
+    if (!session?.user?.email) {
+      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify?error=no_session`);
+    }
 
     const user = await prisma.user.findUnique({
       where: {
@@ -43,7 +45,8 @@ export async function GET(request: Request) {
       },
     });
 
-    if (!user) return;
+    if (!user)
+      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify?error=no_user`);
 
     await prisma.account.upsert({
       where: {
@@ -68,8 +71,8 @@ export async function GET(request: Request) {
       },
     });
 
-    return NextResponse.redirect("http://localhost:3000/test/dashboard");
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/auth/address`);
   } catch (error) {
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify?error=server_error`);
   }
 }

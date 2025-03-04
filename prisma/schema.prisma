@@ -8,14 +8,20 @@ generator client {
 }
 
 model User {
-  id               String         @id @default(auto()) @map("_id") @db.ObjectId
+  id               String           @id @default(auto()) @map("_id") @db.ObjectId
   name             String?
-  email            String?        @unique
+  email            String?          @unique
   emailVerified    DateTime?
   image            String?
+  isOnboarded      Boolean          @default(false)
+  onboardingStatus OnboardingStatus @default(INCOMPLETED)
+  artistStatus     ArtistStatus     @default(IDLE)
+  eventStatus      EventStatus      @default(IDLE)
+  city             String?
+  state            String?
+  zipcode          String?
   accounts         Account[]
   sessions         Session[]
-  isOnboarded      Boolean        @default(false)
   followingArtists UserToArtist[]
 
   createdAt DateTime @default(now())
@@ -65,17 +71,20 @@ model VerificationToken {
 }
 
 model Artist {
-  id         String  @id @default(auto()) @map("_id") @db.ObjectId
-  artistId   String  @unique
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  artistId   String   @unique
   seatgeekId String?
   name       String
   image      String
+  genres     String[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   followedBy UserToArtist[]
   Event      Event[]
+
+  @@index([name])
 }
 
 model Event {
@@ -100,4 +109,24 @@ model UserToArtist {
 
   user   User   @relation(fields: [userId], references: [id])
   artist Artist @relation(fields: [artistId], references: [id])
+}
+
+enum OnboardingStatus {
+  INCOMPLETED
+  ONGOING
+  COMPLETED
+}
+
+enum ArtistStatus {
+  IDLE
+  QUEUE
+  FETCHED
+  FAILED
+}
+
+enum EventStatus {
+  IDLE
+  QUEUE
+  FETCHED
+  FAILED
 }
