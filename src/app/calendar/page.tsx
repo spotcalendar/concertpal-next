@@ -55,7 +55,7 @@ const CalendarPage = async () => {
           </span>
 
           <p className="text-sm text-gray-400">
-            Your top 50 artists' concerts will be automatically synced to your Google Calendar.
+            Your top 50 artists&apos; concerts will be automatically synced to your Google Calendar.
           </p>
         </div>
       </div>

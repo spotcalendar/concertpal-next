@@ -1,4 +1,5 @@
 import { getArtistInfo } from "@/actions/seatgeek";
+import { logger } from "@/lib/winston-loggger";
 
 type ArtistData = {
   id: string;
@@ -15,6 +16,6 @@ export const fetchArtistInfo = async (artistNames: string[], artistData: ArtistD
       }
     }
   } catch (error) {
-    console.log(error);
+    logger.error(error);
   }
 };

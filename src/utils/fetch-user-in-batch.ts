@@ -1,5 +1,6 @@
 import { createEvent } from "@/actions/user";
 import { prisma } from "@/lib/db";
+import { logger } from "@/lib/winston-loggger";
 
 const fetchUsersInBatches = async (batchSize: number) => {
   try {
@@ -18,9 +19,11 @@ const fetchUsersInBatches = async (batchSize: number) => {
         break;
       }
 
-      const userData = users.map((user) => ({ id: user.id, email: user.email, zipcode: user.zipcode }));
-
-      console.log("User data", userData);
+      const userData = users.map((user) => ({
+        id: user.id,
+        email: user.email,
+        zipcode: user.zipcode,
+      }));
 
       for (const user of userData) {
         await createEvent(user);
@@ -29,7 +32,7 @@ const fetchUsersInBatches = async (batchSize: number) => {
       offset += batchSize;
     }
   } catch (error) {
-    console.log("Error while fetching users from db", error);
+    logger.error(error);
   }
 };
 

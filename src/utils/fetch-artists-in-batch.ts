@@ -13,8 +13,6 @@ const fetchArtistsInBatches = async (batchSize: number) => {
   let hasMore = true;
 
   while (hasMore) {
-    console.log(`Fetching artists from offset: ${offset}`);
-
     const artists = await prisma.artist.findMany({
       take: batchSize, // Fetch 20-30 artists at a time
       skip: offset,
@@ -29,11 +27,9 @@ const fetchArtistsInBatches = async (batchSize: number) => {
     const artistNames = artists.map((artist) => artist.name);
     let artistData: ArtistData[] = [];
 
-    console.log("Fetching artist data...");
     await fetchArtistInfo(artistNames, artistData);
 
     if (artistData.length > 0) {
-      console.log("Saving event info...");
       await fetchAndSaveEventsInfo(artistData);
     }
 

@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "start:worker": "bun run src/scripts/agenda.ts",
+    "build": "next build && tsc src/scripts/agenda.ts --outDir dist",
+    "start": "concurrently \"node server.js\" \"bun run dist/agenda.js\" --names \"next,worker\" --prefix-colors \"blue,yellow\" --kill-others",
+    "start:worker": "bun run dist/agenda.js",
     "lint": "next lint",
     "format": "prettier --write 'src/**/*.{js,ts,jsx,tsx}'"
   },
@@ -21,6 +21,7 @@
     "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "framer-motion": "^11.11.11",
     "googleapis": "^144.0.0",
     "lucide-react": "^0.428.0",
@@ -36,6 +37,8 @@
     "swiper": "^11.1.9",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
+    "winston": "^3.17.0",
+    "winston-daily-rotate-file": "^5.0.0",
     "zipcode-city-distance": "^1.0.6"
   },
   "devDependencies": {
@@ -43,6 +46,7 @@
     "@types/nodemailer": "^6.4.15",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "concurrently": "^9.1.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "postcss": "^8",
