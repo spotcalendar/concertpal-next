@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && tsc src/scripts/agenda.ts --outDir dist",
-    "start": "concurrently \"node server.js\" \"bun run dist/agenda.js\" --names \"next,worker\" --prefix-colors \"blue,yellow\" --kill-others",
-    "start:worker": "bun run dist/agenda.js",
+    "build": "next build",
+    "start": "next start",
+    "start:worker": "bun run src/scripts/agenda.ts",
     "lint": "next lint",
     "format": "prettier --write 'src/**/*.{js,ts,jsx,tsx}'"
   },
