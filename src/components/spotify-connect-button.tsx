@@ -1,3 +1,5 @@
+"use client"
+
 import { spotifyLogin } from "@/actions/spotify";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";

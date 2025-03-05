@@ -1,6 +1,6 @@
 "use server";
 
-import { logger } from "@/lib/winston-loggger";
+// import { logger } from "@/lib/winston-loggger";
 import { SpotifyArtistData } from "@/types";
 import { randomBytes } from "crypto";
 import { redirect } from "next/navigation";
@@ -65,7 +65,7 @@ export const getTopTracks = async (token: string): Promise<TracksResponse> => {
 
     return { status: "success", data: artistData };
   } catch (error) {
-    logger.error(`Error occured while fetching top tracks | ${error}`);
+    console.log(`Error occured while fetching top tracks | ${error}`);
     return { status: "error" };
   }
 };
@@ -93,7 +93,7 @@ export const getSavedTracks = async (token: string): Promise<TracksResponse> => 
 
     return { status: "success", data: artistData };
   } catch (error) {
-    logger.error(`Error occured while fetching saved tracks | ${error}`);
+    console.log(`Error occured while fetching saved tracks | ${error}`);
     return { status: "error" };
   }
 };
@@ -130,7 +130,7 @@ export const getFollowedArtists = async (token: string): Promise<TracksResponse>
 
     return { status: "success", data: artistData };
   } catch (error) {
-    logger.error(`Error occured while fetching followed artists | ${error}`);
+    console.log(`Error occured while fetching followed artists | ${error}`);
     return { status: "error" };
   }
 };
