@@ -1,0 +1,132 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id               String           @id @default(auto()) @map("_id") @db.ObjectId
+  name             String?
+  email            String?          @unique
+  emailVerified    DateTime?
+  image            String?
+  isOnboarded      Boolean          @default(false)
+  onboardingStatus OnboardingStatus @default(INCOMPLETED)
+  artistStatus     ArtistStatus     @default(IDLE)
+  eventStatus      EventStatus      @default(IDLE)
+  city             String?
+  state            String?
+  zipcode          String?
+  accounts         Account[]
+  sessions         Session[]
+  followingArtists UserToArtist[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String   @db.ObjectId
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationToken {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Artist {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  artistId   String   @unique
+  seatgeekId String?
+  name       String
+  image      String
+  genres     String[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  followedBy UserToArtist[]
+  Event      Event[]
+
+  @@index([name])
+}
+
+model Event {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  url      String
+  venue    String
+  city     String?
+  state    String?
+  country  String
+  zipcode  String
+  dateTime DateTime
+  artistId String   @db.ObjectId
+
+  artist Artist @relation(fields: [artistId], references: [id])
+}
+
+model UserToArtist {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String @db.ObjectId
+  artistId String @db.ObjectId
+
+  user   User   @relation(fields: [userId], references: [id])
+  artist Artist @relation(fields: [artistId], references: [id])
+}
+
+enum OnboardingStatus {
+  INCOMPLETED
+  ONGOING
+  COMPLETED
+}
+
+enum ArtistStatus {
+  IDLE
+  QUEUE
+  FETCHED
+  FAILED
+}
+
+enum EventStatus {
+  IDLE
+  QUEUE
+  FETCHED
+  FAILED
+}

@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  concertpal-website:
+    image: vineetagarwal2004/concertpal-website:latest
+    container_name: concertpal-website
+
+    ports:
+      - "3005:3000"
+    env_file:
+      - .env
+    restart: always 
+    environment:
+      - NODE_ENV=production 
+
