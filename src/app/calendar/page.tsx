@@ -10,6 +10,7 @@ import TopArtistLoading from "@/components/top-artists-loading";
 import getSpotifyAccessToken from "@/utils/get-spotify-access-token";
 import { prisma } from "@/lib/db";
 import UpcomingEventsLoading from "@/components/upcoming-events-loading";
+import Image from "next/image";
 
 const CalendarPage = async () => {
   const session = await auth();
@@ -34,7 +35,7 @@ const CalendarPage = async () => {
   return (
     <main className="w-full min-h-screen bg-gray-200 flex flex-col justify-start items-center gap-5 p-10">
       <div className="h-full w-2/4 bg-white flex items-center gap-5 p-4 rounded">
-        <img className="w-24 h-24 rounded-full" src={userProfile} alt="image" />
+        <Image className="w-24 h-24 rounded-full" src={userProfile} alt="image" />
 
         <div className="h-24 flex flex-col justify-around">
           <h3 className="text-lg capitalize font-medium">{session.user.name}</h3>

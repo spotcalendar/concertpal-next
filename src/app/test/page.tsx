@@ -1,12 +1,11 @@
-"use client"
+"use client";
 
 import { revalidate } from "@/actions/user";
 
-const TestPage = async () => {
-
+const TestPage = () => {
   const handleClick = async () => {
-    await revalidate()
-  }
+    await revalidate();
+  };
 
   return (
     <main className="w-full h-screen flex justify-center items-center">

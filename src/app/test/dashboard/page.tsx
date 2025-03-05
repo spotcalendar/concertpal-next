@@ -2,6 +2,7 @@ import { getUser, updateOnboardingStatus } from "@/actions/user";
 import getSpotifyAccessToken from "@/utils/get-spotify-access-token";
 import Agenda from "agenda";
 import { Clock, MapPin } from "lucide-react";
+import Image from "next/image";
 
 const TestDashboardPage = async () => {
   const user = await getUser();
@@ -56,7 +57,7 @@ const TestDashboardPage = async () => {
 
             <div className="w-fit flex flex-col items-start gap-2">
               <h4 className="text-gray-600 font-medium text-lg">Taylor Swift</h4>
-              <img
+              <Image
                 className="w-6 h-6 rounded-full"
                 src="https://seatgeekimages.com/performers-landscape/gracie-abrams-79de1f/786104/1500x2000.jpg?auto=webp&width=3840&quality=75"
                 alt="blah"
