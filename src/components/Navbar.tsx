@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React, { useState } from "react";
 import { NavItems } from "@/lib/constants";
 import Link from "next/link";

@@ -30,7 +30,7 @@ export const supportedProviders = [
 export const NavItems = [
     {
         name: "How it works",
-        link: "#steps",
+        link: "/#steps",
     },
     {
         name: "Testimonials",
@@ -38,10 +38,10 @@ export const NavItems = [
     },
     {
         name: "Get help",
-        link: "#footer",
+        link: "/#footer",
     },
     {
-        name: "BLogs",
+        name: "Blog",
         link: "/blog",
     },
 ];
