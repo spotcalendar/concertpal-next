@@ -14,7 +14,7 @@ const NeedHelp = () => {
             Toast.ErrorShowToast("Issue should be greater than 1 character");
             return;
         }
-        setIsSendingMessage(true);
+        setIsSendingMessage(true);  
         try {
             const req = await axios.post("/api/contact-us", { message: message });
             const res = req.data;
