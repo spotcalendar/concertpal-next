@@ -2,10 +2,7 @@ import { getBlogPost } from "@/lib/blog";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Calendar, Clock, User } from "lucide-react";
-import BackButton from "@/components/ui/back-button";
-
-// Enable caching for 1 hour
-export const revalidate = 3600;
+import BlogFooter from "@/components/Blog-footer";
 
 interface BlogPostPageProps {
     params: {
@@ -70,7 +67,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </div>
         </article>
-      </div><BackButton /></>
+      </div>
+      <BlogFooter/>
+     </>
         
-    );
+    );  
 }

@@ -20,12 +20,12 @@ export function BlogCard({ post }: BlogCardProps) {
       year: "numeric",
     })
 
-    // Estimate reading time (assuming average reading speed of 200 words per minute)
-    const wordCount = post.description.split(" ").length
-    const readingTime = Math.ceil(wordCount / 200)
+    // Estimate reading time (assuming average reading speed of 250 words per minute)
+    const wordCount = post.content.split(" ").length
+    const readingTime = Math.ceil(wordCount / 250)
 
     return { formattedDate, readingTime }
-  }, [post.date, post.description])
+  }, [post.date, post.content])
 
   const handleClick = () => {
     setIsLoading(true)
