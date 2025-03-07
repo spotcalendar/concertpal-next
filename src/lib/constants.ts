@@ -40,6 +40,10 @@ export const NavItems = [
         name: "Get help",
         link: "#footer",
     },
+    {
+        name: "BLogs",
+        link: "/blog",
+    },
 ];
 
 export const Legal = [
