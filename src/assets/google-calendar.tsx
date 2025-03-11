@@ -1,8 +1,13 @@
-const GoogleCalendar = () => {
+type GoogleCalendarProps = {
+  width?: string;
+  height?: string;
+};
+
+const GoogleCalendar = ({ width = "20", height = "20" }: GoogleCalendarProps) => {
   return (
     <svg
-      width="20"
-      height="20"
+      width={width}
+      height={height}
       viewBox="0 0 385 385"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

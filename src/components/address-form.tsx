@@ -4,7 +4,7 @@ import { useToast } from "@/hooks/use-toast";
 import fetchZipCode from "@/utils/fetch-zipcode";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AddressForm = () => {
   const router = useRouter();
@@ -12,9 +12,16 @@ const AddressForm = () => {
   const { location, permission, requestLocation, error } = useLocation();
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    requestLocation();
+  }, []);
+
+  const handleGrantLoc = () => {
+    requestLocation();
+  };
+
   const handleSubmit = async () => {
     setIsLoading(true);
-    requestLocation();
 
     if (!location) {
       toast({
@@ -59,16 +66,29 @@ const AddressForm = () => {
 
   return (
     <>
-      <button
-        onClick={handleSubmit}
-        className="w-[330px] bg-[#D3F4EF] rounded-md flex justify-center items-center gap-2 p-3"
-      >
-        {isLoading ? (
-          <Loader2 className="animate-spin" />
-        ) : (
-          <p className="font-medium">Grant Access</p>
-        )}
-      </button>
+      {!location ? (
+        <button
+          onClick={handleGrantLoc}
+          className="w-[330px] bg-[#D3F4EF] rounded-md flex justify-center items-center gap-2 p-3"
+        >
+          {isLoading ? (
+            <Loader2 className="animate-spin" />
+          ) : (
+            <p className="font-medium">Grant Access</p>
+          )}
+        </button>
+      ) : (
+        <button
+          onClick={handleSubmit}
+          className="w-[330px] bg-[#D3F4EF] rounded-md flex justify-center items-center gap-2 p-3"
+        >
+          {isLoading ? (
+            <Loader2 className="animate-spin" />
+          ) : (
+            <p className="font-medium">Proceed</p>
+          )}
+        </button>
+      )}
     </>
 
     // <form onSubmit={handleSubmit} className="flex flex-col items-center gap-8">

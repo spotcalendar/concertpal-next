@@ -1,4 +1,13 @@
 import { prisma } from "@/lib/db";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CustomCarouselNext,
+  CustomCarouselPrev,
+} from "@/components/ui/carousel";
+
+import { chunkArray } from "@/utils/chunk-array";
 
 type ArtistInfoProps = {
   name: string;
@@ -12,7 +21,7 @@ type TopArtistsProps = {
 
 const ArtistInfo = ({ name, categories, imageSrc }: ArtistInfoProps) => {
   return (
-    <div className="flex gap-2 items-center">
+    <div className="w-[280px] flex bg-white p-4 gap-4 items-center rounded-lg">
       <img className="w-14 h-14 rounded-full" src={imageSrc} alt="" />
       <span className="flex flex-col">
         <h4 className="text-lg font-semibold tracking-tight">{name}</h4>
@@ -38,37 +47,76 @@ const TopArtists = async ({ userId }: TopArtistsProps) => {
   });
 
   const artistData = data.map((item) => item.artist);
+  const chunkedArtists = chunkArray(artistData, 15);
 
   return (
-    <div className="w-2/4 h-fit bg-white flex flex-col items-start gap-10 p-4 rounded">
-      <div className="flex flex-col">
-        <h4 className="text-lg tracking-tight font-semibold text-gray-900">Top Artists</h4>
-
-        <p className="text-sm text-gray-400">
-          Click on an artist to see their upcoming concerts in your area.
-        </p>
+    <section className="w-full flex flex-col rounded-lg">
+      <div className="bg-[#D3F4EF] flex items-center gap-4 p-3 rounded-t-lg">
+        <BeatIcon />
+        <h2 className="text-xl font-medium">Your Top Artists</h2>
       </div>
+      <div className="bg-white/50 flex flex-col gap-6 p-3">
+        <p className="text-[#1A9882] text-sm font-semibold">
+          Click on an artist to see their upcoming concerts in your area!
+        </p>
+        <Carousel>
+          <div className="flex flex-col gap-5">
+            <CarouselContent>
+              {chunkedArtists.map((artistChunk, index) => (
+                <CarouselItem key={index}>
+                  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                    {artistChunk.map((artist) => (
+                      <ArtistInfo
+                        key={artist.name}
+                        name={artist.name}
+                        categories={artist.genres}
+                        imageSrc={artist.image}
+                      />
+                    ))}
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex items-center justify-between">
+              <p className="text-[#A5A5AB]">Showing 9 of 15</p>
 
-      {!artistData || artistData.length == 0 ? (
-        <div className="w-full flex flex-col justify-center items-center gap-2 p-4">
-          <p className="font-light tracking-tight text-gray-400">
-            We are still processing your artist data. Come back later..
-          </p>
-        </div>
-      ) : (
-        <div className="grid justify-evenly grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
-          {artistData.map((artist) => (
-            <ArtistInfo
-              key={artist.id}
-              name={artist.name}
-              categories={artist.genres}
-              imageSrc={artist.image}
-            />
-          ))}
-        </div>
-      )}
-    </div>
+              <span className="flex justify-center items-center gap-2 pr-10">
+                <CustomCarouselPrev />
+                <CustomCarouselNext />
+              </span>
+            </div>
+          </div>
+        </Carousel>
+      </div>
+    </section>
   );
 };
 
 export default TopArtists;
+
+const BeatIcon = () => {
+  return (
+    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M4.57449 24.1641C6.27249 24.1641 7.64899 22.9865 7.64899 21.5337C7.64899 20.081 6.27249 18.9033 4.57449 18.9033C2.8765 18.9033 1.5 20.081 1.5 21.5337C1.5 22.9865 2.8765 24.1641 4.57449 24.1641Z"
+        stroke="#1A9882"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+      />
+      <path
+        d="M20.9729 20.6566C22.6709 20.6566 24.0474 19.4789 24.0474 18.0262C24.0474 16.5734 22.6709 15.3958 20.9729 15.3958C19.2749 15.3958 17.8984 16.5734 17.8984 18.0262C17.8984 19.4789 19.2749 20.6566 20.9729 20.6566Z"
+        stroke="#1A9882"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+      />
+      <path
+        d="M24.0457 18.0264V1.36719L7.64844 4.87439V21.5336M24.0457 7.5048L7.64844 11.012"
+        stroke="#1A9882"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};

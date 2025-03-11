@@ -29,6 +29,10 @@ const useLocation = () => {
           lat: position.coords.latitude,
           lon: position.coords.longitude,
         });
+        navigator.permissions.query({ name: "geolocation" as PermissionName }).then((result) => {
+          setPermission(result.state);
+          result.onchange = () => setPermission(result.state);
+        });
         setError(null);
       },
       (err) => setError(err.message),
