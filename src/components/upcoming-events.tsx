@@ -6,6 +6,14 @@ import zippy from "zipcode-city-distance";
 import { EventStatus } from "@prisma/client";
 import { Clock, MapPin, Wifi } from "lucide-react";
 import { ReactNode } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CustomCarouselNext,
+  CustomCarouselPrev,
+} from "@/components/ui/carousel";
+import { chunkArray } from "@/utils/chunk-array";
 
 type UpcomingEventsProps = {
   userId: string;
@@ -24,21 +32,21 @@ type EventInfoProps = {
 
 const UpcomingEventsWrapper = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="w-2/4 h-fit bg-white flex flex-col items-start gap-10 p-4 rounded">
-      <div className="w-full flex flex-col">
-        <h4 className="text-lg tracking-tight font-semibold text-gray-900">Upcoming Events</h4>
-        <p className="text-sm text-gray-400">Here are the upcoming events you can attend.</p>
+    <section className="w-full flex flex-col rounded-lg">
+      <div className="bg-[#D3F4EF] flex items-center gap-4 p-3 rounded-t-lg">
+        <EventIcon />
+        <h2 className="text-xl font-medium">Upcoming Events</h2>
       </div>
-      {children}
-    </div>
+      <div className="bg-white/50 flex flex-col gap-6 p-3 rounded-b-lg">{children}</div>
+    </section>
   );
 };
 
 const EventInfo = ({ artistName, artistImage, venue, dateTime }: EventInfoProps) => {
   return (
-    <div className="flex justify-start items-start gap-2">
+    <div className="w-[280px] p-4 bg-white flex justify-start items-start gap-4 rounded-lg">
       <span>
-        <img className="h-12 w-12 rounded-full object-cover" src={artistImage} alt="img" />
+        <img className="h-14 w-14 rounded-full object-cover" src={artistImage} alt="img" />
       </span>
 
       <div className="flex flex-col items-start gap-1">
@@ -85,7 +93,6 @@ const UpcomingEvents = async ({
     where: {
       userId,
     },
-
     include: {
       artist: true,
     },
@@ -93,11 +100,11 @@ const UpcomingEvents = async ({
 
   const artists = artistData.map((data) => data.artist);
 
-  if (artists.length == 0) return;
+  if (artists.length == 0) return null;
 
   const zipcodesInUsersRange = zippy.getRadius(zipcode, process.env.NEXT_PUBIC_EVENT_RADIUS, "M");
 
-  if (zipcodesInUsersRange.error)
+  if (zipcodesInUsersRange.error) {
     return (
       <UpcomingEventsWrapper>
         <div className="w-full flex flex-col items-center gap-4">
@@ -111,6 +118,7 @@ const UpcomingEvents = async ({
         </div>
       </UpcomingEventsWrapper>
     );
+  }
 
   const events = await prisma.event.findMany({
     where: {
@@ -123,7 +131,7 @@ const UpcomingEvents = async ({
     },
   });
 
-  if (!events || events.length == 0)
+  if (!events || events.length == 0) {
     return (
       <UpcomingEventsWrapper>
         <div className="w-full flex flex-col items-center gap-5">
@@ -132,15 +140,55 @@ const UpcomingEvents = async ({
             No concerts near your area at the moment!
           </h4>
           <p className="max-w-[417px] text-gray-400 font-light text-center">
-            We found no artists performing near you. Please try again later.
+            We are still finding concerts near you. Please come back later.
           </p>
         </div>
       </UpcomingEventsWrapper>
     );
+  }
+
+  const chunkedEvents = chunkArray(events, 15);
 
   return (
     <UpcomingEventsWrapper>
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-2 gap-8">
+      <p className="text-[#1A9882] text-sm font-semibold">
+        Here are the upcoming events you can attend.
+      </p>
+      <Carousel>
+        <div className="flex flex-col gap-5">
+          <CarouselContent>
+            {chunkedEvents.map((eventChunk, index) => (
+              <CarouselItem key={index}>
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                  {eventChunk.map((event) => {
+                    const artist = artists.find((artist) => artist.id == event.artistId);
+                    if (!artist) return null;
+
+                    return (
+                      <EventInfo
+                        key={event.id}
+                        artistName={artist.name}
+                        artistImage={artist.image}
+                        venue={event.venue}
+                        dateTime={event.dateTime}
+                      />
+                    );
+                  })}
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="flex items-center justify-end">
+            {/* <p className="text-[#A5A5AB]">Showing 9 of 15</p> */}
+
+            <span className="flex justify-center items-center gap-2 pr-10">
+              <CustomCarouselPrev />
+              <CustomCarouselNext />
+            </span>
+          </div>
+        </div>
+      </Carousel>
+      {/* <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-2 gap-8">
         {events.map((event) => {
           const artist = artists.find((artist) => artist.id == event.artistId);
           if (!artist) return;
@@ -154,9 +202,69 @@ const UpcomingEvents = async ({
             />
           );
         })}
-      </div>
+      </div> */}
     </UpcomingEventsWrapper>
   );
 };
 
 export default UpcomingEvents;
+
+const EventIcon = () => {
+  return (
+    <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M10.5117 3.26904V7.0238"
+        stroke="#1A9882"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M20.5264 3.26904V7.0238"
+        stroke="#1A9882"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M4.88086 12.1426H26.1578"
+        stroke="#1A9882"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M26.7834 11.4039V22.0424C26.7834 25.7972 24.9061 28.3004 20.5255 28.3004H10.5128C6.13226 28.3004 4.25488 25.7972 4.25488 22.0424V11.4039C4.25488 7.64917 6.13226 5.146 10.5128 5.146H20.5255C24.9061 5.146 26.7834 7.64917 26.7834 11.4039Z"
+        stroke="#1A9882"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M15.5134 17.9124H15.5247"
+        stroke="#1A9882"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M10.8806 17.9124H10.8919"
+        stroke="#1A9882"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M10.8806 21.6673H10.8919"
+        stroke="#1A9882"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};

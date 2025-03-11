@@ -6,7 +6,6 @@ import {
   CustomCarouselNext,
   CustomCarouselPrev,
 } from "@/components/ui/carousel";
-
 import { chunkArray } from "@/utils/chunk-array";
 
 type ArtistInfoProps = {
@@ -55,7 +54,7 @@ const TopArtists = async ({ userId }: TopArtistsProps) => {
         <BeatIcon />
         <h2 className="text-xl font-medium">Your Top Artists</h2>
       </div>
-      <div className="bg-white/50 flex flex-col gap-6 p-3">
+      <div className="bg-white/50 flex flex-col gap-6 p-3 rounded-b-lg">
         <p className="text-[#1A9882] text-sm font-semibold">
           Click on an artist to see their upcoming concerts in your area!
         </p>
@@ -77,8 +76,8 @@ const TopArtists = async ({ userId }: TopArtistsProps) => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex items-center justify-between">
-              <p className="text-[#A5A5AB]">Showing 9 of 15</p>
+            <div className="flex items-center justify-end">
+              {/* <p className="text-[#A5A5AB]">Showing 9 of 15</p> */}
 
               <span className="flex justify-center items-center gap-2 pr-10">
                 <CustomCarouselPrev />
