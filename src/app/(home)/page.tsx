@@ -53,18 +53,32 @@ const Page = () => {
             </div>
 
             <div className="flex flex-col items-center gap-5 w-full md:p-0">
-                <h1 className="text-4xl md:text-5xl font-semibold text-center md:max-w-[40%] mb-4 tracking-wide text-black/80">
+                <h1 className="text-4xl md:text-5xl font-semibold text-center max-w-[90%] md:max-w-[60%] lg:max-w-[40%] mx-auto mb-12 tracking-wide text-black/80">
                     Synced with all your <span className="text-primary">favorite ticketing</span> platforms.
                 </h1>
-                <section className="w-full py-12 bg-background">
-                    <div className="container px-4 md:px-6">
-                        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
+                <section className="w-full py-8 md:py-12">
+                    <div className="container mx-auto px-4 md:px-6">
+                        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16 lg:gap-20">
                             {supportedProviders.map((provider, index) => (
-                                <motion.div key={provider.name} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="group relative cursor-pointer">
+                                <motion.div 
+                                    key={provider.name} 
+                                    initial={{ opacity: 0, y: 20 }} 
+                                    animate={{ opacity: 1, y: 0 }} 
+                                    transition={{ 
+                                        duration: 0.5, 
+                                        delay: index * 0.1,
+                                        ease: "easeOut"
+                                    }} 
+                                >
                                     <Link href={provider.link}>
-                                        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                        <div className="relative w-[120px] h-[120px] md:w-[200px] md:h-[200px] floodOpacitycard rounded-full p-4 transition-transform duration-300 hover:scale-110">
-                                            <Image src={provider.image} alt={`${provider.name} logo`} width={300} height={300} className="w-full h-full object-contain rounded-full" />
+                                        <div className="w-[100px] h-[100px] md:w-[120px] md:h-[130px] relative transition-transform duration-300 hover:scale-125">
+                                            <Image 
+                                                src={provider.image} 
+                                                alt={`${provider.name} logo`} 
+                                                fill
+                                                className="object-contain hover:opacity-80 transition-opacity duration-200 rounded-full"
+                                                sizes="(max-width: 640px) 100px, 120px"
+                                            />
                                         </div>
                                     </Link>
                                 </motion.div>

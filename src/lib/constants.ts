@@ -26,6 +26,11 @@ export const supportedProviders = [
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxU_0WqcRr4_w0nIXkcjALNRFqDzlAr4XSsw&s",
         link: "https://www.viagogo.com/",
     },
+    {
+        name: "Live Nation",
+        image: "https://logos-world.net/wp-content/uploads/2024/07/Live-Nation-Logo.png ",
+        link: "https://www.livenation.me/",
+    },
 ];
 export const NavItems = [
     {
@@ -75,4 +80,4 @@ export const Socials = [
     },
 ];
 
-// test 2
+// test 4
