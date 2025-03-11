@@ -60,25 +60,19 @@ const Page = () => {
                     <div className="container mx-auto px-4 md:px-6">
                         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16 lg:gap-20">
                             {supportedProviders.map((provider, index) => (
-                                <motion.div 
-                                    key={provider.name} 
-                                    initial={{ opacity: 0, y: 20 }} 
-                                    animate={{ opacity: 1, y: 0 }} 
-                                    transition={{ 
-                                        duration: 0.5, 
+                                <motion.div
+                                    key={provider.name}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{
+                                        duration: 0.5,
                                         delay: index * 0.1,
-                                        ease: "easeOut"
-                                    }} 
+                                        ease: "easeOut",
+                                    }}
                                 >
                                     <Link href={provider.link}>
-                                        <div className="w-[100px] h-[100px] md:w-[120px] md:h-[130px] relative transition-transform duration-300 hover:scale-125">
-                                            <Image 
-                                                src={provider.image} 
-                                                alt={`${provider.name} logo`} 
-                                                fill
-                                                className="object-contain hover:opacity-80 transition-opacity duration-200 rounded-full"
-                                                sizes="(max-width: 640px) 100px, 120px"
-                                            />
+                                        <div className="w-[100px] h-[100px] md:w-[130px] md:h-[130px] relative transition-transform duration-300 hover:scale-125">
+                                            <Image src={provider.image} alt={`${provider.name} logo`} fill className="object-contain hover:opacity-80 transition-opacity duration-200 rounded-full" sizes="(max-width: 640px) 100px, 120px" />
                                         </div>
                                     </Link>
                                 </motion.div>
