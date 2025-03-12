@@ -7,6 +7,8 @@ import {
   CustomCarouselPrev,
 } from "@/components/ui/carousel";
 import { chunkArray } from "@/utils/chunk-array";
+import { ReactNode } from "react";
+import NoConcerts from "@/assets/no-concerts";
 
 type ArtistInfoProps = {
   name: string;
@@ -34,6 +36,18 @@ const ArtistInfo = ({ name, categories, imageSrc }: ArtistInfoProps) => {
   );
 };
 
+const TopArtistsWrapper = ({ children }: { children: ReactNode }) => {
+  return (
+    <section className="w-full flex flex-col rounded-lg">
+      <div className="bg-[#D3F4EF] flex items-center gap-4 p-3 rounded-t-lg">
+        <BeatIcon />
+        <h2 className="text-xl font-medium">Your Top Artists</h2>
+      </div>
+      <div className="bg-white/50 flex flex-col gap-6 p-3 rounded-b-lg">{children}</div>
+    </section>
+  );
+};
+
 const TopArtists = async ({ userId }: TopArtistsProps) => {
   const data = await prisma.userToArtist.findMany({
     where: {
@@ -45,49 +59,58 @@ const TopArtists = async ({ userId }: TopArtistsProps) => {
     },
   });
 
+  if (!data || data.length == 0)
+    return (
+      <TopArtistsWrapper>
+        <div className="w-full flex flex-col items-center gap-5">
+          <NoConcerts />
+          <h4 className="text-3xl font-light font-serif text-black">
+            We are processing your artist data at the moment!
+          </h4>
+          <p className="max-w-[417px] text-gray-400 font-light text-center">
+            We are still finding top artists from your spotify. Please come back later.
+          </p>
+        </div>
+      </TopArtistsWrapper>
+    );
+
   const artistData = data.map((item) => item.artist);
   const chunkedArtists = chunkArray(artistData, 15);
 
   return (
-    <section className="w-full flex flex-col rounded-lg">
-      <div className="bg-[#D3F4EF] flex items-center gap-4 p-3 rounded-t-lg">
-        <BeatIcon />
-        <h2 className="text-xl font-medium">Your Top Artists</h2>
-      </div>
-      <div className="bg-white/50 flex flex-col gap-6 p-3 rounded-b-lg">
-        <p className="text-[#1A9882] text-sm font-semibold">
-          Click on an artist to see their upcoming concerts in your area!
-        </p>
-        <Carousel>
-          <div className="flex flex-col gap-5">
-            <CarouselContent>
-              {chunkedArtists.map((artistChunk, index) => (
-                <CarouselItem key={index}>
-                  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
-                    {artistChunk.map((artist) => (
-                      <ArtistInfo
-                        key={artist.name}
-                        name={artist.name}
-                        categories={artist.genres}
-                        imageSrc={artist.image}
-                      />
-                    ))}
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="flex items-center justify-end">
-              {/* <p className="text-[#A5A5AB]">Showing 9 of 15</p> */}
+    <TopArtistsWrapper>
+      <p className="text-[#1A9882] text-sm font-semibold">
+        Click on an artist to see their upcoming concerts in your area!
+      </p>
+      <Carousel>
+        <div className="flex flex-col gap-5">
+          <CarouselContent>
+            {chunkedArtists.map((artistChunk, index) => (
+              <CarouselItem key={index}>
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                  {artistChunk.map((artist) => (
+                    <ArtistInfo
+                      key={artist.name}
+                      name={artist.name}
+                      categories={artist.genres}
+                      imageSrc={artist.image}
+                    />
+                  ))}
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="flex items-center justify-end">
+            {/* <p className="text-[#A5A5AB]">Showing 9 of 15</p> */}
 
-              <span className="flex justify-center items-center gap-2 pr-10">
-                <CustomCarouselPrev />
-                <CustomCarouselNext />
-              </span>
-            </div>
+            <span className="flex justify-center items-center gap-2 pr-10">
+              <CustomCarouselPrev />
+              <CustomCarouselNext />
+            </span>
           </div>
-        </Carousel>
-      </div>
-    </section>
+        </div>
+      </Carousel>
+    </TopArtistsWrapper>
   );
 };
 
