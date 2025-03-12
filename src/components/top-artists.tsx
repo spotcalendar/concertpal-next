@@ -22,7 +22,7 @@ type TopArtistsProps = {
 
 const ArtistInfo = ({ name, categories, imageSrc }: ArtistInfoProps) => {
   return (
-    <div className="w-[280px] flex bg-white p-4 gap-4 items-center rounded-lg">
+    <div className="w-[280px] flex bg-white p-4 gap-4 items-center rounded-lg cursor-pointer hover:scale-95 duration-300">
       <img className="w-14 h-14 rounded-full" src={imageSrc} alt="" />
       <span className="flex flex-col">
         <h4 className="text-lg font-semibold tracking-tight">{name}</h4>

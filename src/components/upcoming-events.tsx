@@ -45,28 +45,30 @@ const UpcomingEventsWrapper = ({ children }: { children: ReactNode }) => {
 
 const EventInfo = ({ artistName, artistImage, venue, dateTime, url }: EventInfoProps) => {
   return (
-    <div className="w-[280px] p-4 bg-white flex justify-start items-start gap-4 rounded-lg">
-      <span>
-        <img className="h-14 w-14 rounded-full object-cover" src={artistImage} alt="img" />
-      </span>
-
-      <div className="flex flex-col items-start gap-1">
-        <span className="flex justify-center items-center gap-2">
-          <Wifi className="rotate-45" size={16} />
-          <p className="font-semibold tracking-tight text-gray-900">{artistName}</p>
+    <a href={url} target="_blank" className="w-fit rounded-lg hover:scale-95 duration-300">
+      <div className="w-[280px] p-4 bg-white flex justify-start items-start gap-4 rounded-lg cursor-pointer">
+        <span>
+          <img className="h-14 w-14 rounded-full object-cover" src={artistImage} alt="img" />
         </span>
 
-        <span className="flex justify-center items-center gap-2">
-          <MapPin className="text-white fill-gray-400" size={16} />
-          <p className="text-gray-600 text-sm font-medium tracking-tight">{venue}</p>
-        </span>
+        <div className="flex flex-col items-start gap-1">
+          <span className="flex justify-center items-center gap-2">
+            <Wifi className="rotate-45" size={16} />
+            <p className="font-semibold tracking-tight text-gray-900">{artistName}</p>
+          </span>
 
-        <span className="flex justify-center items-center gap-2">
-          <Clock className="text-white fill-gray-400" size={16} />
-          <p className="text-xs font-light text-gray-400">{formatDateTime(dateTime)}</p>
-        </span>
+          <span className="flex justify-center items-center gap-2">
+            <MapPin className="text-white fill-gray-400" size={16} />
+            <p className="text-gray-600 text-sm font-medium tracking-tight">{venue}</p>
+          </span>
+
+          <span className="flex justify-center items-center gap-2">
+            <Clock className="text-white fill-gray-400" size={16} />
+            <p className="text-xs font-light text-gray-400">{formatDateTime(dateTime)}</p>
+          </span>
+        </div>
       </div>
-    </div>
+    </a>
   );
 };
 
