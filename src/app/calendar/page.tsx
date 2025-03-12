@@ -101,9 +101,12 @@ const CalendarPage = async () => {
           />
         </Suspense>
 
-        <Suspense fallback={<TopArtistLoading />}>
+        {/* <Suspense fallback={<TopArtistLoading />}>
           <TopArtists userId={data.id} />
-        </Suspense>
+        </Suspense> */}
+
+          <TopArtistLoading />
+
       </div>
 
       {/* <div className="h-full w-2/4 bg-white flex items-center gap-5 p-4 rounded">

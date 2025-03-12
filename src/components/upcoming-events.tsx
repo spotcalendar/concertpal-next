@@ -28,6 +28,7 @@ type EventInfoProps = {
   artistImage: string;
   venue: string;
   dateTime: Date;
+  url: string;
 };
 
 const UpcomingEventsWrapper = ({ children }: { children: ReactNode }) => {
@@ -42,7 +43,7 @@ const UpcomingEventsWrapper = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const EventInfo = ({ artistName, artistImage, venue, dateTime }: EventInfoProps) => {
+const EventInfo = ({ artistName, artistImage, venue, dateTime, url }: EventInfoProps) => {
   return (
     <div className="w-[280px] p-4 bg-white flex justify-start items-start gap-4 rounded-lg">
       <span>
@@ -171,6 +172,7 @@ const UpcomingEvents = async ({
                         artistImage={artist.image}
                         venue={event.venue}
                         dateTime={event.dateTime}
+                        url={event.url}
                       />
                     );
                   })}
@@ -188,21 +190,6 @@ const UpcomingEvents = async ({
           </div>
         </div>
       </Carousel>
-      {/* <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-2 gap-8">
-        {events.map((event) => {
-          const artist = artists.find((artist) => artist.id == event.artistId);
-          if (!artist) return;
-          return (
-            <EventInfo
-              key={event.id}
-              artistName={artist.name}
-              artistImage={artist.image}
-              venue={event.venue}
-              dateTime={event.dateTime}
-            />
-          );
-        })}
-      </div> */}
     </UpcomingEventsWrapper>
   );
 };

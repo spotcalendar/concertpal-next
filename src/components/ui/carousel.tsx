@@ -233,11 +233,12 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
 CarouselNext.displayName = "CarouselNext";
 
 const CustomCarouselNext = () => {
-  const { scrollNext } = useCarousel();
+  const { scrollNext, canScrollNext } = useCarousel();
   return (
     <button
+      disabled={!canScrollNext}
       onClick={scrollNext}
-      className="bg-[#1A9882] flex justify-center items-center rounded-md px-4 py-2"
+      className="bg-[#1A9882] flex justify-center items-center rounded-md px-4 py-2 disabled:bg-gray-200"
     >
       <RightArrow />
     </button>
@@ -245,12 +246,13 @@ const CustomCarouselNext = () => {
 };
 
 const CustomCarouselPrev = () => {
-  const { scrollPrev } = useCarousel();
+  const { scrollPrev, canScrollPrev } = useCarousel();
 
   return (
     <button
+      disabled={!canScrollPrev}
       onClick={scrollPrev}
-      className="bg-white border border-[#1A9882] flex justify-center items-center rounded-md px-4 py-2"
+      className="bg-white border border-[#1A9882] flex justify-center items-center rounded-md px-4 py-2 disabled:bg-gray-200 disabled:border-none"
     >
       <LeftArrow />
     </button>
