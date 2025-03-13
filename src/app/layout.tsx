@@ -7,6 +7,7 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 });
 
 const instrument = Instrument_Serif({
@@ -14,6 +15,7 @@ const instrument = Instrument_Serif({
   subsets: ["latin"],
   variable: "--font-instrument-serif",
   display: "swap",
+  preload: true,
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
