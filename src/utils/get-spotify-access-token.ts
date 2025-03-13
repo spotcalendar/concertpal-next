@@ -37,6 +37,11 @@ const getSpotifyAccessToken = async () => {
     if (isExpired) {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_URL}/api/refresh?email=${user.email}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
       );
 
       console.log("Response from route", response);
