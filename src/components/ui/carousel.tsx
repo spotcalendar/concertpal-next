@@ -238,7 +238,7 @@ const CustomCarouselNext = () => {
     <button
       disabled={!canScrollNext}
       onClick={scrollNext}
-      className="bg-[#1A9882] flex justify-center items-center rounded-md px-4 py-2 disabled:bg-gray-200"
+      className="flex justify-center items-center bg-white border-[0.6px] border-[#A7EADE] rounded-md px-4 py-2 disabled:bg-[#E9E9EA] hover:bg-[#E9FAF7] hover:transition-colors hover:duration-150"
     >
       <RightArrow />
     </button>
@@ -252,7 +252,7 @@ const CustomCarouselPrev = () => {
     <button
       disabled={!canScrollPrev}
       onClick={scrollPrev}
-      className="bg-white border border-[#1A9882] flex justify-center items-center rounded-md px-4 py-2 disabled:bg-gray-200 disabled:border-none"
+      className="flex justify-center items-center bg-white rounded-md border-[0.6px] border-[#A7EADE] px-4 py-2 disabled:bg-[#E9E9EA] hover:bg-[#E9FAF7] hover:transition-colors hover:duration-150"
     >
       <LeftArrow />
     </button>
@@ -272,10 +272,10 @@ export {
 
 const RightArrow = () => {
   return (
-    <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
-        d="M0.59 10.9374L5.17 6.531L0.59 2.1246L2 0.770996L8 6.531L2 12.291L0.59 10.9374Z"
-        fill="#E9FAF7"
+        d="M0.0900002 10.172L4.67 5.76562L0.0900002 1.35922L1.5 0.00561523L7.5 5.76562L1.5 11.5256L0.0900002 10.172Z"
+        fill="#116557"
       />
     </svg>
   );
@@ -283,10 +283,10 @@ const RightArrow = () => {
 
 const LeftArrow = () => {
   return (
-    <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="8" height="12" viewBox="0 0 9 12" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
-        d="M7.41 10.9374L2.83 6.531L7.41 2.1246L6 0.770996L0 6.531L6 12.291L7.41 10.9374Z"
-        fill="#1A9882"
+        d="M8.27328 10.172L3.69328 5.76562L8.27328 1.35922L6.86328 0.00561523L0.863281 5.76562L6.86328 11.5256L8.27328 10.172Z"
+        fill="#116557"
       />
     </svg>
   );
