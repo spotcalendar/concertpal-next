@@ -37,6 +37,7 @@ const getSpotifyAccessToken = async () => {
 
     return account.access_token;
   } catch (error) {
+    console.log("Error", error);
     return null;
   }
 };
