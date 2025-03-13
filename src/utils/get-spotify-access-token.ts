@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { auth } from "@/auth";
 import { prisma } from "@/lib/db";
@@ -29,6 +29,10 @@ const getSpotifyAccessToken = async () => {
     if (!account || !account.access_token) return null;
 
     const isExpired = account.expires_at && Date.now() / 1000 >= account.expires_at;
+
+    console.log("Access Token Expired", isExpired);
+
+    console.log("next public url", process.env.NEXT_PUBLIC_URL);
 
     if (isExpired) {
       const response = await fetch(
