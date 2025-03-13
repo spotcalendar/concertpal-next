@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
+import { auth } from "@/auth";
 
 export async function GET(request: NextRequest) {
   try {
+    const session = await auth();
+
+    console.log("Session in /api/refresh");
+
+    if (!session || !session.user)
+      return NextResponse.json({ error: "No session found" }, { status: 401 });
     const searchParams = request.nextUrl.searchParams;
     const email = searchParams.get("email");
 
