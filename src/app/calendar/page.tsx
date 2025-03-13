@@ -30,8 +30,6 @@ const CalendarPage = async () => {
 
   const token = await getSpotifyAccessToken();
 
-  console.log("Spotify Access Token", token);
-
   if (!token) redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify`);
 
   const userProfile = session.user.image ? session.user.image : "public/bg3.png";
@@ -96,7 +94,7 @@ const CalendarPage = async () => {
           </div>
         </div>
 
-        {/* <Suspense fallback={<UpcomingEventsLoading />}>
+        <Suspense fallback={<UpcomingEventsLoading />}>
           <UpcomingEvents
             state={data.state}
             city={data.city}
@@ -108,7 +106,7 @@ const CalendarPage = async () => {
 
         <Suspense fallback={<TopArtistLoading />}>
           <TopArtists userId={data.id} />
-        </Suspense> */}
+        </Suspense>
       </div>
     </main>
   );

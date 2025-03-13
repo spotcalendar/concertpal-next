@@ -3,8 +3,6 @@ import { prisma } from "@/lib/db";
 import { auth } from "@/auth";
 
 export async function GET(request: NextRequest) {
-  console.log("inside api handler /api/refresh");
-
   try {
     const searchParams = request.nextUrl.searchParams;
     const email = searchParams.get("email");
