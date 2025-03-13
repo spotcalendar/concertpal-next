@@ -2,11 +2,18 @@ import { Instrument_Serif, Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
-const inter = Inter({ weight: "400", subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 const instrument = Instrument_Serif({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-instrument-serif",
+  display: "swap",
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
