@@ -94,7 +94,7 @@ const CalendarPage = async () => {
           </div>
         </div>
 
-        <Suspense fallback={<UpcomingEventsLoading />}>
+        {/* <Suspense fallback={<UpcomingEventsLoading />}>
           <UpcomingEvents
             state={data.state}
             city={data.city}
@@ -106,7 +106,7 @@ const CalendarPage = async () => {
 
         <Suspense fallback={<TopArtistLoading />}>
           <TopArtists userId={data.id} />
-        </Suspense>
+        </Suspense> */}
       </div>
     </main>
   );
