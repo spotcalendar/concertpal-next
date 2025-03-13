@@ -17,12 +17,8 @@ import { Mail, MapPin } from "lucide-react";
 const CalendarPage = async () => {
   const session = await auth();
 
-  console.log("User Session", session);
-
   if (!session || !session.user || !session.user.email)
     redirect(`${process.env.NEXT_PUBLIC_URL}/auth/login`);
-
-  console.log("Redirect Uri", process.env.NEXT_PUBLIC_URL);
 
   const data = await prisma.user.findUnique({
     where: {
@@ -30,13 +26,11 @@ const CalendarPage = async () => {
     },
   });
 
-  console.log("User Data", data);
-
   if (!data) redirect(`${process.env.NEXT_PUBLIC_URL}/auth/login`);
 
   const token = await getSpotifyAccessToken();
 
-  console.log("Spotify Access Token", token)
+  console.log("Spotify Access Token", token);
 
   if (!token) redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify`);
 
