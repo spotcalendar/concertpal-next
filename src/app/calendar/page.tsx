@@ -17,14 +17,20 @@ import { Mail, MapPin } from "lucide-react";
 const CalendarPage = async () => {
   const session = await auth();
 
+  console.log("User Session", session);
+
   if (!session || !session.user || !session.user.email)
     redirect(`${process.env.NEXT_PUBLIC_URL}/auth/login`);
+
+  console.log("Redirect Uri", process.env.NEXT_PUBLIC_URL);
 
   const data = await prisma.user.findUnique({
     where: {
       email: session.user.email,
     },
   });
+
+  console.log("User Data", data);
 
   if (!data) redirect(`${process.env.NEXT_PUBLIC_URL}/auth/login`);
 
