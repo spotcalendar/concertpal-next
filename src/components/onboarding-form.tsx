@@ -18,7 +18,7 @@ type OnboardingFormProps = {
 
 const OnboardingForm = ({ variant, title, description }: OnboardingFormProps) => {
   return (
-    <section className="w-full h-full flex flex-col justify-start px-5 py-14 font-sans">
+    <section className="w-full h-full flex flex-col justify-start px-5 py-14">
       <div className="flex justify-end">
         {variant == "google" && <GoogleLoader />}
         {variant == "spotify" && <SpotifyLoader />}
