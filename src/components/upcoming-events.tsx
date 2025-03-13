@@ -54,12 +54,12 @@ const EventInfo = ({ artistName, artistImage, venue, dateTime, url }: EventInfoP
         <div className="flex flex-col items-start gap-1">
           <span className="flex justify-center items-center gap-2">
             <Wifi className="rotate-45" size={16} />
-            <p className="font-semibold tracking-tight text-gray-900">{artistName}</p>
+            <p className="max-w-[150px] font-semibold tracking-tight text-gray-900 truncate">{artistName}</p>
           </span>
 
           <span className="flex justify-center items-center gap-2">
             <MapPin className="text-white fill-gray-400" size={16} />
-            <p className="text-gray-600 text-sm font-medium tracking-tight">{venue}</p>
+            <p className="max-w-[150px] text-gray-600 text-sm font-medium tracking-tight truncate">{venue}</p>
           </span>
 
           <span className="flex justify-center items-center gap-2">
@@ -105,32 +105,32 @@ const UpcomingEvents = async ({
 
   if (artists.length == 0) return null;
 
-  const zipcodesInUsersRange = zippy.getRadius(zipcode, process.env.NEXT_PUBIC_EVENT_RADIUS, "M");
+  // const zipcodesInUsersRange = zippy.getRadius(zipcode, process.env.NEXT_PUBIC_EVENT_RADIUS, "M");
 
-  if (zipcodesInUsersRange.error) {
-    return (
-      <UpcomingEventsWrapper>
-        <div className="w-full flex flex-col items-center gap-4">
-          <NoConcerts />
-          <h4 className="text-3xl font-light font-serif text-black">
-            This zipcode is not yet supported !
-          </h4>
-          <p className="max-w-[417px] text-gray-400 font-light text-center">
-            We are not supporting the concerts in your area yet. Please try again later.
-          </p>
-        </div>
-      </UpcomingEventsWrapper>
-    );
-  }
+  // if (zipcodesInUsersRange.error) {
+  //   return (
+  //     <UpcomingEventsWrapper>
+  //       <div className="w-full flex flex-col items-center gap-4">
+  //         <NoConcerts />
+  //         <h4 className="text-3xl font-light font-serif text-black">
+  //           This zipcode is not yet supported !
+  //         </h4>
+  //         <p className="max-w-[417px] text-gray-400 font-light text-center">
+  //           We are not supporting the concerts in your area yet. Please try again later.
+  //         </p>
+  //       </div>
+  //     </UpcomingEventsWrapper>
+  //   );
+  // }
 
   const events = await prisma.event.findMany({
     where: {
       artistId: {
         in: artists.map((data) => data.id),
       },
-      zipcode: {
-        in: [...zipcodesInUsersRange?.map((data: any) => data.zipcode), zipcode],
-      },
+      // zipcode: {
+      //   in: [...zipcodesInUsersRange?.map((data: any) => data.zipcode), zipcode],
+      // },
     },
   });
 

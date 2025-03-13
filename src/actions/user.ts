@@ -125,8 +125,6 @@ export const createEvent = async ({
 
     const zipcodesInUsersRange = zippy.getRadius(zipcode, process.env.NEXT_PUBIC_EVENT_RADIUS, "M");
 
-    console.log(zipcodesInUsersRange);
-
     const events = await prisma.event.findMany({
       where: {
         artistId: {
