@@ -36,6 +36,8 @@ const CalendarPage = async () => {
 
   const token = await getSpotifyAccessToken();
 
+  console.log("Spotify Access Token", token)
+
   if (!token) redirect(`${process.env.NEXT_PUBLIC_URL}/auth/spotify`);
 
   const userProfile = session.user.image ? session.user.image : "public/bg3.png";
