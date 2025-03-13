@@ -39,7 +39,7 @@ const ArtistInfo = ({ name, categories, imageSrc }: ArtistInfoProps) => {
 const TopArtistsWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <section className="w-full flex flex-col rounded-lg">
-      <div className="bg-[#D3F4EF] flex items-center gap-4 p-3 rounded-t-lg">
+      <div className="bg-[#2FB59F33] flex items-center gap-4 p-3 rounded-t-lg">
         <BeatIcon />
         <h2 className="text-xl font-medium">Your Top Artists</h2>
       </div>
@@ -123,7 +123,7 @@ const BeatIcon = () => {
         d="M4.57449 24.1641C6.27249 24.1641 7.64899 22.9865 7.64899 21.5337C7.64899 20.081 6.27249 18.9033 4.57449 18.9033C2.8765 18.9033 1.5 20.081 1.5 21.5337C1.5 22.9865 2.8765 24.1641 4.57449 24.1641Z"
         stroke="#1A9882"
         strokeWidth="1.5"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
       />
       <path
         d="M20.9729 20.6566C22.6709 20.6566 24.0474 19.4789 24.0474 18.0262C24.0474 16.5734 22.6709 15.3958 20.9729 15.3958C19.2749 15.3958 17.8984 16.5734 17.8984 18.0262C17.8984 19.4789 19.2749 20.6566 20.9729 20.6566Z"

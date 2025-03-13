@@ -12,6 +12,7 @@ import { prisma } from "@/lib/db";
 import UpcomingEventsLoading from "@/components/upcoming-events-loading";
 import Image from "next/image";
 import { FullLogo } from "@/assets/logo";
+import { Mail, MapPin } from "lucide-react";
 
 const CalendarPage = async () => {
   const session = await auth();
@@ -53,8 +54,9 @@ const CalendarPage = async () => {
             </span>
           </div>
 
-          <div className="w-full flex flex-col bg-[#E9FAF7] rounded-b-lg py-2">
-            <div className="w-full bg-inherit">
+          <div className="w-full flex flex-col bg-[#2FB59F33] rounded-b-lg py-2">
+            <div className="w-full flex justify-center items-center gap-1">
+              <Mail className="text-[#777980]" size={24} />
               <p className="text-[#777980] text-xl font-medium p-2 text-center">
                 {session?.user?.email}
               </p>
@@ -64,7 +66,8 @@ const CalendarPage = async () => {
               <div className="bg-[#C7EBE4] h-[2px]"></div>
             </span>
 
-            <div className="w-full ">
+            <div className="w-full flex justify-center items-center gap-1">
+              <MapPin className="text-[#777980]" size={24} />
               <p className="text-[#777980] text-xl font-medium p-2 text-center">{data.zipcode}</p>
             </div>
           </div>
@@ -105,53 +108,6 @@ const CalendarPage = async () => {
           <TopArtists userId={data.id} />
         </Suspense>
       </div>
-
-      {/* <div className="h-full w-2/4 bg-white flex items-center gap-5 p-4 rounded">
-        <Image
-          width={500}
-          height={500}
-          className="w-24 h-24 rounded-full"
-          src={userProfile}
-          alt="image"
-        />
-
-        <div className="h-24 flex flex-col justify-around">
-          <h3 className="text-lg capitalize font-medium">{session.user.name}</h3>
-          <p className="text-sm text-gray-400">{session.user.email}</p>
-
-          <span className="flex items-center gap-3">
-            <SpotifyLogo width="20" height="20" />
-            <GoogleCalendar />
-          </span>
-        </div>
-      </div>
-
-      <div className="w-2/4 h-fit bg-white flex flex-col items-start gap-10 p-4 rounded">
-        <div className="flex flex-col">
-          <span className="flex items-center gap-2">
-            <h4 className="text-lg tracking-tight font-semibold text-gray-900">Google Calendar</h4>
-            <GreenCheck />
-          </span>
-
-          <p className="text-sm text-gray-400">
-            Your top 50 artists&apos; concerts will be automatically synced to your Google Calendar.
-          </p>
-        </div>
-      </div>
-
-      <Suspense fallback={<UpcomingEventsLoading />}>
-        <UpcomingEvents
-          state={data.state}
-          city={data.city}
-          userId={data.id}
-          eventStatus={data.eventStatus}
-          zipcode={data.zipcode}
-        />
-      </Suspense>
-
-      <Suspense fallback={<TopArtistLoading />}>
-        <TopArtists userId={data.id} />
-      </Suspense> */}
     </main>
   );
 };

@@ -23,7 +23,7 @@ const EventIcon = () => {
         d="M10.5117 3.26904V7.0238"
         stroke="#1A9882"
         strokeWidth="1.5"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
@@ -31,7 +31,7 @@ const EventIcon = () => {
         d="M20.5264 3.26904V7.0238"
         stroke="#1A9882"
         strokeWidth="1.5"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
@@ -39,7 +39,7 @@ const EventIcon = () => {
         d="M4.88086 12.1426H26.1578"
         stroke="#1A9882"
         strokeWidth="1.5"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
@@ -47,7 +47,7 @@ const EventIcon = () => {
         d="M26.7834 11.4039V22.0424C26.7834 25.7972 24.9061 28.3004 20.5255 28.3004H10.5128C6.13226 28.3004 4.25488 25.7972 4.25488 22.0424V11.4039C4.25488 7.64917 6.13226 5.146 10.5128 5.146H20.5255C24.9061 5.146 26.7834 7.64917 26.7834 11.4039Z"
         stroke="#1A9882"
         strokeWidth="1.5"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
