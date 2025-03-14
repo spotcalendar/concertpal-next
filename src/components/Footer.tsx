@@ -74,7 +74,7 @@ export default function Component() {
             <div className="container px-4 md:px-6">
                 <div className="grid gap-8 lg:grid-cols-4">
                     <div className="space-y-4">
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-2 justify-center">
                             <div className="">
                                 <Logo />
                             </div>
