@@ -97,9 +97,9 @@ const UpcomingEvents = async ({
     );
 
   const artistData = await prisma.userToArtist.findMany({
-    where: {
-      userId,
-    },
+    // where: {
+    //   userId,
+    // },
     include: {
       artist: true,
     },

@@ -50,9 +50,9 @@ const TopArtistsWrapper = ({ children }: { children: ReactNode }) => {
 
 const TopArtists = async ({ userId }: TopArtistsProps) => {
   const data = await prisma.userToArtist.findMany({
-    where: {
-      userId,
-    },
+    // where: {
+    //   userId,
+    // },
 
     include: {
       artist: true,
