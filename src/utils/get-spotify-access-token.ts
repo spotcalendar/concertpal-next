@@ -27,9 +27,9 @@ const getSpotifyAccessToken = async () => {
     if (isExpired) {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_URL}/api/refresh?email=${user.email}`,
-        {
-          method: "OPTIONS",
-        },
+        // {
+        //   method: "OPTIONS",
+        // },
       );
 
       const data = await response.json();
