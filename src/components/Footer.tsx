@@ -1,11 +1,13 @@
 "use client";
-import { useState } from "react";
-import { Logo } from "@/assets";
-import { Input } from "./ui/input";
-import axios from "axios";
+
 import { AlertTriangle, Facebook, Instagram, Linkedin, Loader, MessageSquare, Twitter } from "lucide-react";
+
+import { Input } from "./ui/input";
 import Link from "next/link";
+import { Logo } from "@/assets";
 import Toast from "@/utils/toast";
+import axios from "axios";
+import { useState } from "react";
 
 export default function Component() {
     const [isSent, setIsSent] = useState(false);
@@ -44,8 +46,8 @@ export default function Component() {
         try {
             setIsLoading(true);
             setErrorMessage("");
-             const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-             const endpoint = `${BASE_URL}/assist/help`;
+            const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+            const endpoint = `${BASE_URL}/assist/help`;
             const res = await axios.post(endpoint, {
                 email,
             });
@@ -70,11 +72,11 @@ export default function Component() {
     };
 
     return (
-        <footer className="w-full bg-gray-950/90 text-white py-12 md:mt-32" id="footer">
+        <footer className="w-full bg-gray-950/90 text-white py-12 md:mt-32 flex justify-center" id="footer">
             <div className="container px-4 md:px-6">
                 <div className="grid gap-8 lg:grid-cols-4">
                     <div className="space-y-4">
-                        <div className="flex items-center space-x-2 justify-center">
+                        <div className="flex items-center space-x-2 justify-start">
                             <div className="">
                                 <Logo />
                             </div>
