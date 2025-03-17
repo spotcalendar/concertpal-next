@@ -136,6 +136,9 @@ const UpcomingEvents = async ({
       //   in: [...zipcodesInUsersRange?.map((data: any) => data.zipcode), zipcode],
       // },
     },
+    orderBy: {
+      dateTime: "asc",
+    },
   });
 
   if (!events || events.length == 0) {
