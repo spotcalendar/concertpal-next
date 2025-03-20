@@ -10,10 +10,10 @@ import { Card, CardContent } from "./ui/card";
 import { Star } from "lucide-react";
 const TestimonialsSlider = () => {
     return (
-        <div className="flex flex-col items-center justify-center py-12 bg-white md:mt-32 select-none cursor-pointer" id="testimonials">
+        <div className="flex flex-col items-center justify-center py-12 bg-white md:mt-2 select-none cursor-pointer" id="testimonials">
             <div className="text-center mb-12">
                 <h2 className="text-4xl md:text-7xl font-bold tracking-tight mb-4">
-                    <span className="text-primary"> Users love us!</span>
+                    <span className="text-[#1A9882]"> Users love us!</span>
                 </h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">Join satisfied users who have simplified their ticket booking experience</p>
             </div>

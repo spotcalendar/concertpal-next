@@ -3,13 +3,12 @@ import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { Logo, Compare } from "@/assets";
 const Steps = () => {
     return (
         <AnimatePresence>
-            <motion.div id="how-it-works" className="z-50 flex w-full  items-center justify-center p-4 px-3 pt-10 font-base text-white" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5 }}>
+            <motion.div id="how-it-works" className="z-50 flex w-full  items-center justify-center  px-3  font-base text-white" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.5 }}>
                 <Tabs defaultValue="Compare" className="flex w-full max-w-[1150px] flex-col items-center py-8 p-0">
-                    <TabsList className=" rounded-xl md:rounded-lg border-2 border-primary   bg-white py-6 md:py-7 px-0">
+                    <TabsList className=" rounded-xl md:rounded-lg border-2 border-primary  bg-white py-6 md:py-7 px-0">
                         <TabsTrigger className="font-semibold  min-w-[100px] duration-100 ease-in-out  text-xs md:text-lg py-4  px-8 md:px-16  rounded-lg text-primary" value="Compare">
                             Compare
                         </TabsTrigger>

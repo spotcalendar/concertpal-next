@@ -39,4 +39,19 @@ export const testimonials = [
         author: "Swetanshu Singh",
         image: "https://lh3.googleusercontent.com/a/ACg8ocIAHWojX2dgUB7zBZP3XIdyIsHKpNorajl5Byke2Gw8L2qaQw=s48-w48-h48",
     },
+    {
+        quote: "Super great tool to quickly find the best deals. Highly recommend!!",
+        author: "Olivya Johns",
+        image: "https://lh3.googleusercontent.com/a/ACg8ocLrHif5EwSaO5JV77a1TkQsxLalA_p6b4Sp-9ulNQATMWiGCQ=s96-w96-h96",
+    },
+    {
+        quote: "This extension is a great way to save money on expensive concert tickets. Love this!",
+        author: "alexa tucci",
+        image: "https://lh3.googleusercontent.com/a-/ALV-UjX_CtE2ZFqUS32RUwUb36NgDZ7Nkgv2Wx6jcWLkAl2Q0rSwkHo=s96-w96-h96",
+    },
+    {
+        quote: "Works smoothly! Snagged me a sweet discount for a concert I was eyeing",
+        author: "Aryan Venishetty",
+        image: "https://lh3.googleusercontent.com/a-/ALV-UjW_HHMZIFOrIGTP5On7PuGmclam9HGLRZr2HIS9C_S2-mpXVqO_=s96-w96-h96",
+    },
 ];

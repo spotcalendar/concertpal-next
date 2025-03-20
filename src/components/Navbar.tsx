@@ -17,13 +17,13 @@ const Navbar = () => {
                 </Link>
                 <ul className=" hidden lg:flex items-center gap-12 justify-between lg:mr-14">
                     {NavItems.map((item, i) => (
-                        <Link href={item.link} key={i} className=" uppercase text-primary font-semibold">
+                        <Link href={item.link} key={i} className=" uppercase text-[#1A9882] font-semibold">
                             {item.name}
                         </Link>
                     ))}
                 </ul>
                 <motion.div whileHover={{ scale: 1.1 }} className="hidden lg:flex gap-7 items-center">
-                    <Link href={"https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja"} target="_blank" className=" rounded-xl bg-primary text-white px-6 py-2 flex items-center gap-2">
+                    <Link href={"https://chromewebstore.google.com/detail/concertpal/nnbeepdmhiimdmeifpkbeinmbafaedja"} target="_blank" className=" rounded-xl bg-[#116557] text-white px-6 py-2 flex items-center gap-2">
                         Install
                     </Link>
                 </motion.div>
