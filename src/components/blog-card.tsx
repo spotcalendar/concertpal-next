@@ -35,7 +35,7 @@ export function BlogCard({ post }: BlogCardProps) {
         <Link href={`/blog/${post.slug}`} className="block" onClick={handleClick}>
             <Card className="group overflow-hidden w-full max-w-3xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 rounded-xl border-border mb-9">
                 <CardHeader className="space-y-2 pb-3">
-                    <CardTitle className="text-2xl md:text-3xl font-bold tracking-tight text-foreground leading-tight">{post.title}</CardTitle>
+                    <CardTitle className="text-2xl md:text-3xl font-bold tracking-tight  leading-tight text-primary">{post.title}</CardTitle>
                 </CardHeader>
 
                 <CardContent className="space-y-4 pt-0">

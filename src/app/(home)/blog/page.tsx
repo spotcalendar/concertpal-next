@@ -6,13 +6,13 @@ export default async function Page() {
   // Fetch all blog posts data
   const posts = await getBlogPosts()
   return (
-    <>
-      {/* Main container with top padding */}
-      <div className="pt-14">
-        {/* Page title */}
-        <h1 className="text-4xl font-bold mb-8 flex justify-center items-center">Blog Posts</h1>
-        <BlogList posts={posts} />
-      </div>
-    </>
-  )
+      <>
+          {/* Main container with top padding */}
+          <div className="pt-14">
+              {/* Page title */}
+              <h1 className="text-4xl font-bold mb-8 flex justify-center items-center text-[#1A9882]">Blog Posts</h1>
+              <BlogList posts={posts} />
+          </div>
+      </>
+  );
 }

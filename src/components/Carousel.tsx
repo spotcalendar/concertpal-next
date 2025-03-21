@@ -95,7 +95,7 @@ export default function Carousel() {
                             {/* Item 1 */}
                             <div className="flex-shrink-0 w-full" style={getSlideStyle(0)}>
                                 <p className="font-semibold md:text-left sm:text-center sm:text-base">COMPARE TICKET PRICES</p>
-                                <p className="text-emerald-700 font-bold pb-2 sm:pb-3 md:text-left sm:text-center sm:text-base">Find the cheapest ticket across all ticketing sites for any seat or event.</p>
+                                <p className="text-[#1A9882] font-bold pb-2 sm:pb-3 md:text-left sm:text-center sm:text-base">Find the cheapest ticket across all ticketing sites for any seat or event.</p>
                                 <div className="relative">
                                     <div className="absolute inset-0 z-10" />
                                     <iframe className="w-full h-[400px] rounded-lg pointer-events-none" src="https://www.youtube-nocookie.com/embed/uCrkBjTIXFk?autoplay=1&controls=0&loop=1&playlist=uCrkBjTIXFk&mute=1&cc_load_policy=1" allowFullScreen></iframe>{" "}
@@ -104,7 +104,7 @@ export default function Carousel() {
                             {/* Item 2 */}
                             <div className="flex-shrink-0 w-full" style={getSlideStyle(1)}>
                                 <p className="font-semibold md:text-left sm:text-center sm:text-base"> GRAB DEALS</p>
-                                <p className="text-emerald-700 font-bold pb-2 sm:pb-3 md:text-left sm:text-center sm:text-base">Snag the hottest deals before they&apos;re gone—exclusive discounts just for you!</p>
+                                <p className="text-[#1A9882]  font-bold pb-2 sm:pb-3 md:text-left sm:text-center sm:text-base">Snag the hottest deals before they&apos;re gone—exclusive discounts just for you!</p>
                                 <div className="relative">
                                     <div className="absolute inset-0 z-10" />
                                     <iframe className="w-full h-[400px] rounded-lg pointer-events-none" src="https://www.youtube-nocookie.com/embed/xnIEA8PRpQc?autoplay=1&controls=0&loop=1&playlist=xnIEA8PRpQc&mute=1&cc_load_policy=1" allowFullScreen></iframe>{" "}
@@ -112,7 +112,7 @@ export default function Carousel() {
                             </div>
                             <div className="flex-shrink-0 w-full" style={getSlideStyle(2)}>
                                 <p className="font-semibold md:text-left sm:text-center sm:text-base"> TRACK TICKET PRICES</p>
-                                <p className="text-emerald-700 font-bold pb-2 sm:pb-3 md:text-left sm:text-center sm:text-base">Get notified if prices drop and see how they change over time.</p>
+                                <p className="text-[#1A9882]  font-bold pb-2 sm:pb-3 md:text-left sm:text-center sm:text-base">Get notified if prices drop and see how they change over time.</p>
                                 <div className="relative">
                                     <div className="absolute inset-0 z-10" />
                                     <iframe className="w-full h-[400px] rounded-lg pointer-events-none" src="https://www.youtube-nocookie.com/embed/iaKgShn47Gs?autoplay=1&controls=0&loop=1&playlist=iaKgShn47Gs&mute=1&cc_load_policy=1" allowFullScreen></iframe>{" "}
@@ -122,22 +122,22 @@ export default function Carousel() {
                     </div>
                     {/* Navigation Arrows */}
                     <div className="xl:invisible">
-                        <button className="absolute left-0 sm:left-4 top-1/2 -translate-y-1/2 text-white bg-primary rounded-full p-1 sm:p-2 shadow-lg hover:bg-primary/90 invisible md:visible sm:invisible" onClick={handlePrev} aria-label="Previous slide">
+                        <button className="absolute left-0 sm:left-4 top-1/2 -translate-y-1/2 text-white bg-[#1A9882] rounded-full p-1 sm:p-2 shadow-lg hover:bg-primary-foreground invisible md:visible sm:invisible" onClick={handlePrev} aria-label="Previous slide">
                             <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6 " />
                         </button>
-                        <button className="absolute right-0 sm:right-4 top-1/2 -translate-y-1/2 bg-primary text-white rounded-full p-1 sm:p-2 shadow-lg hover:bg-primary/90 invisible md:visible xs:invisible sm:invisible" onClick={handleNext} aria-label="Next slide">
+                        <button className="absolute right-0 sm:right-4 top-1/2 -translate-y-1/2 bg-[#1A9882]  text-white rounded-full p-1 sm:p-2 shadow-lg hover:bg-primary-foreground invisible md:visible xs:invisible sm:invisible" onClick={handleNext} aria-label="Next slide">
                             <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
                         </button>
                     </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mt-6 sm:gap-4 px-4 sm:px-0">
                     <Link href="https://seatgeek.com/kendrick-lamar-tickets/east-rutherford-new-jersey-metlife-stadium-2025-05-08-7-pm/concert/17291958" className="w-full sm:w-auto">
-                        <button className="flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-primary text-white cursor-pointer w-full sm:w-auto text-base">
+                        <button className=" shadow-md flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-primary-foreground text-white cursor-pointer w-full sm:w-auto text-base">
                             See a real comparison <ExternalLink size={16} />
                         </button>
                     </Link>
                     <Link href="https://www.youtube.com/watch?v=ikL5FPQVqmg" className="w-full sm:w-auto">
-                        <button className="px-3 py-2 rounded-xl bg-white text-emerald-700 cursor-pointer border border-emerald-700 w-full sm:w-auto text-base">Step-by-Step Video Tutorial</button>
+                        <button className="px-3 py-2 rounded-xl bg-white text-[#1A9882]  cursor-pointer border border-[#1A9882] shadow-md w-full sm:w-auto text-base">Step-by-Step Video Tutorial</button>
                     </Link>
                 </div>
             </div>
@@ -145,7 +145,7 @@ export default function Carousel() {
             {/* Dots  */}
             <div className="flex justify-center space-x-2 mb-4">
                 {[...Array(totalSlides)].map((_, index) => (
-                    <button key={index} onClick={() => setActiveSlide(index)} className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${activeSlide === index ? "bg-primary" : "bg-primary/30"}`} aria-label={`Go to slide ${index + 1}`} />
+                    <button key={index} onClick={() => setActiveSlide(index)} className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${activeSlide === index ? "bg-[#1A9882]" : "bg-primary/30"}`} aria-label={`Go to slide ${index + 1}`} />
                 ))}
             </div>
         </div>
