@@ -18,7 +18,6 @@ export default function ChromeExtensionButton() {
                         </div>
                         <div className="">
                             <h2 className="text-base font-medium pr-6">Chrome Web Store</h2>
-                            <p className="text-xs">1,000+ users</p>
                         </div>
                     </div>
 
@@ -27,9 +26,9 @@ export default function ChromeExtensionButton() {
                             {[1, 2, 3, 4, 5].map((star) => (
                                 <Star key={star} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                             ))}
-                            <span className="ml-2 text-xs font-semibold">4.7/5.0</span>
+                            <span className="ml-2 text-xs font-semibold">4.6/5.0</span>
                         </div>
-                        <p className="text-gray-700 text-xs">1k+ ratings</p>
+                        <p className="text-gray-700 text-xs">1k+ users</p>
                     </div>
                 </div>
             </div>
