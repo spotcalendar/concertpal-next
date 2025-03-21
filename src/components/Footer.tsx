@@ -110,13 +110,13 @@ export default function Component() {
                     <div className="md:col-span-4 space-y-4 ">
                         <h3 className="text-2xl font-semibold">Need Help?</h3>
                         <div className="flex  overflow-hidden  ">
-                            <Input
+                            <input
                                 type="email"
                                 placeholder="Input email address"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 onKeyDown={handleKeyDown} // Listen for Enter key press
-                                className="flex-1 px-4 py-2 bg-[#116557] text-white placeholder:text-[#a5f0e4] outline-none rounded-l-lg border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                                className="rounded-l-lg flex-1 px-4 py-2 bg-[#116557] text-white placeholder:text-[#a5f0e4] outline-none  border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                             />
                             <button type="submit" onClick={handleClick} disabled={isLoading} className="px-4 bg-[#D3F4EF] text-black font-medium rounded-r-lg hover:bg-[#b3e5df] transition-colors py-2">
                                 {isLoading ? <Loader className="animate-spin" /> : isSent ? "Sent" : "Send"}

@@ -28,7 +28,7 @@ export default function ChromeExtensionButton() {
                             ))}
                             <span className="ml-2 text-xs font-semibold">4.6/5.0</span>
                         </div>
-                        <p className="text-gray-700 text-xs">1k+ users</p>
+                        <p className="text-gray-700 text-xs p-1">Trusted by over 1k concertgoers</p>
                     </div>
                 </div>
             </div>
