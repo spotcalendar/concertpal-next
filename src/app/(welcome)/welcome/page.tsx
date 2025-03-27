@@ -11,7 +11,7 @@ export default function Page() {
                     <FullLogo width="180" height="50" />
                 </Link>
             </header>
-            <div className="flex-1 bg-gradient-to-b from-[#EAF2EF] via-transparent to-transparent">
+            <div className="flex-1 bg-[#EAF2EF]">
                 <main className="h-full md:pt-16 pt-0">
                     <Carousel />
                 </main>

@@ -87,7 +87,7 @@ export default function Carousel() {
 
     return (
         <div className="flex flex-col items-center gap-4 w-full px-4 sm:px-0 ">
-            <div className="w-full max-w-4xl mx-auto pt-4 pb-6 rounded-lg md:bg-white md:border md:border-slate-400 sm:border-none xs:border-none">
+                <div className="w-full max-w-4xl mx-auto pt-4 pb-6 rounded-xl md:bg-white md:border-2 ">
                 {/* Carousel wrapper */}
                 <div className="relative md:bg-white sm:px-20 pb-4 pt-3 ">
                     <div ref={carouselRef} className="relative overflow-hidden rounded-lg cursor-grab active:cursor-grabbing" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleDragEnd} onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={handleDragEnd} onMouseLeave={handleDragEnd} style={{ touchAction: "pan-y" }}>
